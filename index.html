@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STARK GAMES - Catálogo de Contas Lords Mobile</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #0b0f19; color: #f8fafc; padding: 20px; }
+    
+    header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 2px solid #1e293b; }
+    header h1 { color: #f59e0b; font-size: 2.5rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+    header p { color: #94a3b8; font-size: 1.1rem; }
+
+    /* PAINEL DE FILTROS ESTILO IMOBILIÁRIA */
+    .filter-card { background: #161e2e; border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 35px; }
+    .filter-section-title { font-size: 0.85rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; margin-top: 15px; }
+    .filter-section-title:first-child { margin-top: 0; }
+
+    /* Tags de Tipo de Conta */
+    .type-tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+    .type-tag { padding: 8px 16px; background: #0f172a; border: 1px solid #334155; color: #cbd5e1; font-weight: 600; border-radius: 20px; cursor: pointer; transition: 0.2s; font-size: 0.85rem; user-select: none; }
+    .type-tag:hover { border-color: #22c55e; color: #fff; }
+    .type-tag.active { background: #22c55e; color: #fff; border-color: #22c55e; }
+
+    /* Grid de Checkboxes */
+    .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 15px; }
+    .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #e2e8f0; cursor: pointer; }
+    .checkbox-item input { accent-color: #22c55e; width: 16px; height: 16px; cursor: pointer; }
+
+    /* Faixa de Valores */
+    .price-range-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    .input-box label { font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 6px; font-weight: bold; }
+    .input-box input { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
+    .input-box input:focus { border-color: #22c55e; }
+
+    /* Rodapé dos Filtros */
+    .filter-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 20px; gap: 15px; flex-wrap: wrap; }
+    .btn-clear { background: transparent; border: none; color: #94a3b8; font-weight: bold; cursor: pointer; font-size: 0.9rem; text-decoration: underline; }
+    .btn-clear:hover { color: #f8fafc; }
+    .btn-search { background: #22c55e; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s; }
+    .btn-search:hover { background: #16a34a; }
+
+    /* GRID DO CATÁLOGO */
+    .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    
+    .card { background: #161e2e; border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; transition: all 0.3s ease; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(34, 197, 94, 0.15); border-color: #22c55e; }
+    
+    .card-header-badge { background: #f59e0b; color: #000; font-weight: 900; padding: 6px 12px; font-size: 0.85rem; text-transform: uppercase; text-align: center; }
+    
+    /* IMAGEM SEM CORTAR */
+    .card-img-container { position: relative; width: 100%; height: auto; background: #050811; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .card-img { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block; }
+    
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .ref-title { color: #f59e0b; font-size: 1.3rem; font-weight: bold; margin-bottom: 12px; }
+    
+    .details-list { list-style: none; margin-bottom: 20px; font-size: 0.95rem; display: flex; flex-direction: column; gap: 8px; }
+    .details-list li { background: #0f172a; padding: 8px 12px; border-radius: 6px; border-left: 3px solid #f59e0b; color: #e2e8f0; }
+
+    .price-box { background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
+    .main-price { font-size: 1.5rem; color: #10b981; font-weight: 800; }
+    .down-payment { font-size: 0.9rem; color: #f59e0b; margin-top: 4px; font-weight: 600; }
+
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
+    .btn { padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; text-decoration: none; text-align: center; transition: background 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+    .btn-drive { background: #334155; color: #f8fafc; }
+    .btn-drive:hover { background: #475569; }
+    .btn-whatsapp { background: #25d366; color: #fff; }
+    .btn-whatsapp:hover { background: #1da851; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>💥 STARK GAMES 💥</h1>
+    <p>Catálogo Oficial de Contas - Lords Mobile</p>
+  </header>
+
+  <section class="filter-card">
+    <div class="filter-section-title">Tipo / Atributo da Conta</div>
+    <div class="type-tags-container" id="type-tags-box">
+      <div class="type-tag active" onclick="toggleTypeTag(this, 'all')">Todas</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, 'Filler')">Filler</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, '1100%')">1100%</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, '1200%')">1200%</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, '1300%')">1300%</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, '1400%')">1400%</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, '1500%')">1500%</div>
+      <div class="type-tag" onclick="toggleTypeTag(this, '1500%+')">1500%+</div>
+    </div>
+
+    <div class="filter-section-title">Quantidade de Champs</div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item"><input type="checkbox" value="1 champ" onchange="updateSearch()"> 1 Champ</label>
+      <label class="checkbox-item"><input type="checkbox" value="2 champ" onchange="updateSearch()"> 2 Champs</label>
+      <label class="checkbox-item"><input type="checkbox" value="3 champ" onchange="updateSearch()"> 3 Champs</label>
+      <label class="checkbox-item"><input type="checkbox" value="4 champ" onchange="updateSearch()"> 4 Champs</label>
+      <label class="checkbox-item"><input type="checkbox" value="5 champ" onchange="updateSearch()"> 5 Champs</label>
+      <label class="checkbox-item"><input type="checkbox" value="6 champ" onchange="updateSearch()"> 6 Champs</label>
+      <label class="checkbox-item"><input type="checkbox" value="7 champ" onchange="updateSearch()"> 7+ Champs</label>
+      <label class="checkbox-item"><input type="checkbox" value="full champ" onchange="updateSearch()"> Full Champs</label>
+    </div>
+
+    <div class="filter-section-title">Outras Características Específicas</div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item"><input type="checkbox" value="tropa_magica_mana" onchange="updateSearch()"> Tropa Mágica / Mana</label>
+      <label class="checkbox-item"><input type="checkbox" value="skin_lider" onchange="updateSearch()"> Skin de Líder</label>
+      <label class="checkbox-item"><input type="checkbox" value="restrita_ate_1600" onchange="updateSearch()"> Restrita (K) até 1600</label>
+      <label class="checkbox-item"><input type="checkbox" value="restrita_1600_plus" onchange="updateSearch()"> Restrita (K) 1600+</label>
+      <label class="checkbox-item"><input type="checkbox" value="LOW QUEST" onchange="updateSearch()"> Low Quest</label>
+    </div>
+
+    <div class="filter-section-title">Valor (R$)</div>
+    <div class="price-range-grid">
+      <div class="input-box">
+        <label>Mínimo</label>
+        <input type="number" id="price-min" placeholder="R$ 0" oninput="updateSearch()">
+      </div>
+      <div class="input-box">
+        <label>Máximo</label>
+        <input type="number" id="price-max" placeholder="R$ 50.000+" oninput="updateSearch()">
+      </div>
+    </div>
+
+    <div class="filter-footer">
+      <button class="btn-clear" onclick="clearFilters()">Limpar Filtros</button>
+      <button class="btn-search" id="btn-search-count" onclick="applyFilters()">Procurar Contas (2)</button>
+    </div>
+  </section>
+
+  <main class="catalog" id="catalog-container"></main>
+
+  <script>
+    const SEU_NUMERO_WHATSAPP = "5555981208377";
+
+    const accounts = [
+      {
+        ref: "REF MR 605",
+        types: ["1200%", "tropa mana", "2 champs"], 
+        stats: "1225%",
+        details: [
+          "2 Champ🧡💛 / 4 Taças🧡",
+          "Bônus 1225%",
+          "3 Heróis Wow💛",
+          "Tropa Mana Lv1💜"
+        ],
+        priceTotal: 7500,
+        priceEntry: 1000,
+        driveUrl: "https://photos.app.goo.gl/ewBo5uRY9y71YjUy9",
+        imgUrl: "https://i.ibb.co/cq5yXnQ/Whats-App-Image-2026-08-30-at-18-54-26.jpg"
+      },
+      {
+        ref: "REF MC 31",
+        types: ["1200%", "tropa mágica", "restrita"], 
+        stats: "1214 / 1206 / 1198% FF",
+        details: [
+          "IND 1214/1206/1198% FF",
+          "LOW QUEST",
+          "Tropa Mágica LVL 1 💜",
+          "MUITO ASTRO MOB 😱😱",
+          "RESTRITA K1663"
+        ],
+        priceTotal: 11500,
+        priceEntry: 1500,
+        driveUrl: "https://drive.google.com/drive/folders/1Yxk6aND7fFizxwI5V9yY65BaLriUZTCb",
+        imgUrl: "https://i.ibb.co/zhG5Qrrw/Whats-App-Image-2026-08-30-at-11-11-23.jpg"
+      }
+    ];
+
+    let selectedType = 'all';
+
+    function toggleTypeTag(element, category) {
+      document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
+      element.classList.add('active');
+      selectedType = category.toLowerCase();
+      updateSearch();
+    }
+
+    function getFilteredData() {
+      const minPrice = parseFloat(document.getElementById('price-min').value) || 0;
+      const maxPrice = parseFloat(document.getElementById('price-max').value) || Infinity;
+      
+      const selectedFeatures = Array.from(document.querySelectorAll('.checkbox-grid input:checked')).map(cb => cb.value.toLowerCase());
+
+      return accounts.filter(acc => {
+        // Lógica para Tag de Tipo
+        let matchType = false;
+        if (selectedType === 'all') {
+          matchType = true;
+        } else {
+          matchType = acc.types && acc.types.some(t => t.toLowerCase() === selectedType);
+        }
+
+        const matchPrice = (acc.priceTotal >= minPrice && acc.priceTotal <= maxPrice);
+        
+        // Lógica para Checkboxes de Características
+        const accDetailsText = acc.details.join(' ').toLowerCase();
+        const accTypesText = acc.types ? acc.types.join(' ').toLowerCase() : '';
+        const fullAccText = accDetailsText + ' ' + accTypesText;
+
+        // Extrai o número do reino Restrito (ex: K1663 -> 1663)
+        const kingdomMatch = fullAccText.match(/k\s*(\d+)/i);
+        const kingdomNumber = kingdomMatch ? parseInt(kingdomMatch[1]) : null;
+
+        const matchFeatures = selectedFeatures.every(feat => {
+          if (feat === 'tropa_magica_mana') {
+            return fullAccText.includes('tropa mágica') || fullAccText.includes('tropa magica') || fullAccText.includes('tropa mana');
+          }
+          if (feat === 'skin_lider') {
+            return fullAccText.includes('skin leader') || fullAccText.includes('skin de líder') || fullAccText.includes('skin de lider') || fullAccText.includes('skin lider');
+          }
+          if (feat === 'restrita_ate_1600') {
+            return fullAccText.includes('restrita') && kingdomNumber !== null && kingdomNumber <= 1600;
+          }
+          if (feat === 'restrita_1600_plus') {
+            return fullAccText.includes('restrita') && kingdomNumber !== null && kingdomNumber > 1600;
+          }
+          return fullAccText.includes(feat);
+        });
+
+        return matchType && matchPrice && matchFeatures;
+      });
+    }
+
+    function updateSearch() {
+      const filtered = getFilteredData();
+      document.getElementById('btn-search-count').innerText = `Procurar Contas (${filtered.length})`;
+    }
+
+    function applyFilters() {
+      renderCatalog(getFilteredData());
+    }
+
+    function clearFilters() {
+      document.getElementById('price-min').value = '';
+      document.getElementById('price-max').value = '';
+      document.querySelectorAll('.checkbox-grid input').forEach(cb => cb.checked = false);
+      
+      const allTag = document.querySelectorAll('.type-tag')[0];
+      toggleTypeTag(allTag, 'all');
+      
+      renderCatalog(accounts);
+    }
+
+    function renderCatalog(data) {
+      const container = document.getElementById('catalog-container');
+      container.innerHTML = '';
+
+      if (data.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #94a3b8; padding: 40px;">Nenhuma conta encontrada com esses filtros.</p>';
+        return;
+      }
+
+      data.forEach(acc => {
+        const msgWhatsapp = encodeURIComponent(`Olá STARK GAMES! Tenho interesse na conta [${acc.ref}] no valor de R$ ${acc.priceTotal.toLocaleString('pt-BR')}.`);
+        const linkWhatsapp = `https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${msgWhatsapp}`;
+
+        const detailsHTML = acc.details.map(item => `<li>🔲 ${item}</li>`).join('');
+
+        const cardHTML = `
+          <div class="card">
+            <div class="card-header-badge">STARK GAMES</div>
+            <div class="card-img-container">
+              <img src="${acc.imgUrl}" class="card-img" alt="${acc.ref}">
+            </div>
+            <div class="card-body">
+              <div class="ref-title">💥 ${acc.ref}</div>
+              <ul class="details-list">${detailsHTML}</ul>
+              <div class="price-box">
+                <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
+                ${acc.priceEntry ? `<div class="down-payment">🔥 ENTRADA DE R$ ${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>` : ''}
+              </div>
+              <div class="actions">
+                <a href="${acc.driveUrl}" target="_blank" class="btn btn-drive">📁 Ver Prints</a>
+                <a href="${linkWhatsapp}" target="_blank" class="btn btn-whatsapp">💬 Comprar</a>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += cardHTML;
+      });
+    }
+
+    renderCatalog(accounts);
+    updateSearch();
+  </script>
+</body>
+</html>
