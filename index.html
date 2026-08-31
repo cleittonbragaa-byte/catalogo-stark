@@ -18,9 +18,72 @@
       padding: 20px; 
     }
     
-    header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 2px solid #1e293b; }
+    header { text-align: center; margin-bottom: 25px; padding: 20px 0; border-bottom: 2px solid #1e293b; }
     header h1 { color: #f59e0b; font-size: 2.5rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
     header p { color: #94a3b8; font-size: 1.1rem; }
+
+    /* SEÇÃO GRUPOS DO WHATSAPP */
+    .whatsapp-groups-card {
+      background: rgba(22, 30, 46, 0.85);
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    .groups-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #f59e0b;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .groups-subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+    .groups-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .group-btn {
+      flex: 1;
+      min-width: 220px;
+      background: #25d366;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    }
+    .group-btn:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+    }
+    .group-btn.btn-leilao {
+      background: #7c3aed;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+    }
+    .group-btn.btn-leilao:hover {
+      background: #6d28d9;
+    }
+    .group-btn.btn-avisos {
+      background: #0284c7;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+    }
+    .group-btn.btn-avisos:hover {
+      background: #0369a1;
+    }
 
     /* PAINEL DE FILTROS ESTILO IMOBILIÁRIA */
     .filter-card { background: rgba(22, 30, 46, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 35px; backdrop-filter: blur(8px); }
@@ -110,6 +173,17 @@
     <p>Catálogo Oficial de Contas - Lords Mobile</p>
   </header>
 
+  <!-- SEÇÃO DE GRUPOS DO WHATSAPP -->
+  <section class="whatsapp-groups-card">
+    <div class="groups-title">📢 NOSSOS GRUPOS DO WHATSAPP</div>
+    <div class="groups-subtitle">Entre nos nossos grupos oficiais para participar de leilões, sorteios e ver novidades em primeira mão:</div>
+    <div class="groups-grid">
+      <a href="https://chat.whatsapp.com/GbySR9Fq65SAe6a1JjVEHu" target="_blank" class="group-btn">
+        <span>💬 Stark - Made In China Oficial</span>
+      </a>
+    </div>
+  </section>
+
   <section class="filter-card">
     <div class="filter-section-title">Tipo / Atributo da Conta</div>
     <div class="type-tags-container" id="type-tags-box">
@@ -170,9 +244,7 @@
       <div class="modal-title">Escolha o Vendedor</div>
       <div class="modal-subtitle">Com quem você deseja efetuar a compra?</div>
       
-      <div class="vendor-list" id="vendor-list">
-        <!-- Lista de vendedores gerada por JS -->
-      </div>
+      <div class="vendor-list" id="vendor-list"></div>
 
       <button class="btn-close-modal" onclick="closeVendorModal()">Cancelar</button>
     </div>
