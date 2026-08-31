@@ -22,7 +22,7 @@
     header h1 { color: #f59e0b; font-size: 2.5rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
     header p { color: #94a3b8; font-size: 1.1rem; }
 
-    /* ABA LATERAL FLUTUANTE (CANTO DIREITO) - GRUPOS DO WHATSAPP */
+    /* ABA LATERAL FLUTUANTE - GRUPOS DO WHATSAPP */
     .whatsapp-drawer-wrapper {
       position: fixed;
       right: 0;
@@ -34,7 +34,6 @@
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Botão/Gatilho da Aba */
     .whatsapp-drawer-toggle {
       background: #25d366;
       color: #fff;
@@ -55,14 +54,9 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-right: none;
     }
-    .whatsapp-drawer-toggle:hover {
-      background: #1da851;
-    }
-    .whatsapp-drawer-toggle span {
-      transform: rotate(180deg);
-    }
+    .whatsapp-drawer-toggle:hover { background: #1da851; }
+    .whatsapp-drawer-toggle span { transform: rotate(180deg); }
 
-    /* Conteúdo Expandível da Aba */
     .whatsapp-drawer-content {
       width: 0;
       opacity: 0;
@@ -79,7 +73,6 @@
       max-height: 85vh;
     }
 
-    /* Estado Aberto (Classe ativa ou no Hover da aba) */
     .whatsapp-drawer-wrapper.open .whatsapp-drawer-content,
     .whatsapp-drawer-wrapper:hover .whatsapp-drawer-content {
       width: 320px;
@@ -88,34 +81,11 @@
       padding: 20px;
     }
 
-    .drawer-header {
-      border-bottom: 1px solid #334155;
-      padding-bottom: 12px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .drawer-title {
-      font-size: 1.05rem;
-      font-weight: bold;
-      color: #f59e0b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .drawer-subtitle {
-      font-size: 0.8rem;
-      color: #94a3b8;
-      margin-top: 4px;
-    }
+    .drawer-header { border-bottom: 1px solid #334155; padding-bottom: 12px; margin-bottom: 15px; text-align: center; }
+    .drawer-title { font-size: 1.05rem; font-weight: bold; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .drawer-subtitle { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
 
-    .drawer-groups-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 60vh;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-
+    .drawer-groups-list { display: flex; flex-direction: column; gap: 10px; max-height: 60vh; overflow-y: auto; padding-right: 4px; }
     .drawer-group-btn {
       background: #1e293b;
       border: 1px solid #334155;
@@ -130,36 +100,27 @@
       gap: 10px;
       transition: all 0.2s ease;
     }
-    .drawer-group-btn:hover {
-      background: #25d366;
-      color: #fff;
-      border-color: #25d366;
-      transform: translateX(-4px);
-    }
+    .drawer-group-btn:hover { background: #25d366; color: #fff; border-color: #25d366; transform: translateX(-4px); }
 
     /* PAINEL DE FILTROS */
     .filter-card { background: rgba(22, 30, 46, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 35px; backdrop-filter: blur(8px); }
     .filter-section-title { font-size: 0.85rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; margin-top: 15px; }
     .filter-section-title:first-child { margin-top: 0; }
 
-    /* Tags de Tipo de Conta */
     .type-tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
     .type-tag { padding: 8px 16px; background: #0f172a; border: 1px solid #334155; color: #cbd5e1; font-weight: 600; border-radius: 20px; cursor: pointer; transition: 0.2s; font-size: 0.85rem; user-select: none; }
     .type-tag:hover { border-color: #22c55e; color: #fff; }
     .type-tag.active { background: #22c55e; color: #fff; border-color: #22c55e; }
 
-    /* Grid de Checkboxes */
     .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 15px; }
     .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #e2e8f0; cursor: pointer; }
     .checkbox-item input { accent-color: #22c55e; width: 16px; height: 16px; cursor: pointer; }
 
-    /* Faixa de Valores */
     .price-range-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 20px; }
     .input-box label { font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 6px; font-weight: bold; }
     .input-box input { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
     .input-box input:focus { border-color: #22c55e; }
 
-    /* Rodapé dos Filtros */
     .filter-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 20px; gap: 15px; flex-wrap: wrap; }
     .btn-clear { background: transparent; border: none; color: #94a3b8; font-weight: bold; cursor: pointer; font-size: 0.9rem; text-decoration: underline; }
     .btn-clear:hover { color: #f8fafc; }
@@ -168,10 +129,8 @@
 
     /* GRID DO CATÁLOGO */
     .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    
     .card { background: rgba(22, 30, 46, 0.90); border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; transition: all 0.3s ease; display: flex; flex-direction: column; backdrop-filter: blur(6px); }
     .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(34, 197, 94, 0.15); border-color: #22c55e; }
-    
     .card-header-badge { background: #f59e0b; color: #000; font-weight: 900; padding: 6px 12px; font-size: 0.85rem; text-transform: uppercase; text-align: center; }
     
     .card-img-container { position: relative; width: 100%; height: auto; background: #050811; overflow: hidden; display: flex; justify-content: center; align-items: center; }
@@ -212,7 +171,6 @@
     .btn-close-modal { margin-top: 15px; background: transparent; border: 1px solid #334155; color: #cbd5e1; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; flex-shrink: 0; }
     .btn-close-modal:hover { background: #334155; }
 
-    /* Scrollbars customizados */
     .drawer-groups-list::-webkit-scrollbar,
     .vendor-list::-webkit-scrollbar { width: 6px; }
     .drawer-groups-list::-webkit-scrollbar-track,
@@ -222,7 +180,6 @@
     .drawer-groups-list::-webkit-scrollbar-thumb:hover,
     .vendor-list::-webkit-scrollbar-thumb:hover { background: #22c55e; }
 
-    /* OCULTA BADGES EXTERNOS OU IFRAMES */
     [data-netlify-deploy-id],
     #netlify-modal-root,
     iframe[src*="netlify"],
@@ -240,7 +197,6 @@
     <p>Catálogo Oficial de Contas - Lords Mobile</p>
   </header>
 
-  <!-- ABA FLUTUANTE DO CANTO DIREITO (NOSSOS GRUPOS DO WHATSAPP) -->
   <div class="whatsapp-drawer-wrapper" id="whatsapp-drawer">
     <div class="whatsapp-drawer-toggle" onclick="toggleDrawer()">
       <span>💬 Nossos Grupos</span>
@@ -267,7 +223,6 @@
     </div>
   </div>
 
-  <!-- PAINEL DE FILTROS -->
   <section class="filter-card">
     <div class="filter-section-title">Tipo / Atributo da Conta</div>
     <div class="type-tags-container" id="type-tags-box">
@@ -301,7 +256,8 @@
       <label class="checkbox-item"><input type="checkbox" value="skin_lider" onchange="updateSearch()"> Skin de Líder</label>
       <label class="checkbox-item"><input type="checkbox" value="restrita_ate_1600" onchange="updateSearch()"> Restrita (K) até 1600</label>
       <label class="checkbox-item"><input type="checkbox" value="restrita_1600_plus" onchange="updateSearch()"> Restrita (K) 1600+</label>
-      <label class="checkbox-item"><input type="checkbox" value="LOW QUEST" onchange="updateSearch()"> Low Quest</label>
+      <label class="checkbox-item"><input type="checkbox" value="low quest" onchange="updateSearch()"> Low Quest</label>
+      <label class="checkbox-item"><input type="checkbox" value="t5" onchange="updateSearch()"> T5 Liberada</label>
     </div>
 
     <div class="filter-section-title">Valor (R$)</div>
@@ -324,7 +280,6 @@
 
   <main class="catalog" id="catalog-container"></main>
 
-  <!-- MODAL DE ESCOLHA DE VENDEDOR -->
   <div class="modal-overlay" id="vendor-modal">
     <div class="modal-box">
       <div class="modal-title">Escolha o Vendedor</div>
@@ -351,6 +306,372 @@
     ];
 
     const accounts = [
+      {
+        ref: "REF R 203",
+        types: ["1100%", "1000%"], 
+        stats: "1091% / 1045% / 1170%",
+        details: [
+          "IND (FF) 1091% / 1045% / 1170% 🔥",
+          "2.4M Gemas 😱",
+          "Heróis P2W 💛",
+          "44M Tropas ⚔️",
+          "Skin Godzilla 🏰"
+        ],
+        priceTotal: 3000,
+        priceEntry: 800,
+        driveUrl: "https://photos.app.goo.gl/MdGkZBaiYWJ4xVkG7",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+R+203"
+      },
+      {
+        ref: "REF RM 201",
+        types: ["1000%", "3 champs", "3 champ"],
+        stats: "1050% / 1010% / 1007%",
+        details: [
+          "IND (FF) 1050% / 1010% / 1007% 🔥",
+          "3 Champs 🧡💛",
+          "5 Fam Full + 1 Niv 7 🐉",
+          "Elite ON ⚡",
+          "Heróis (3 WH) 💛"
+        ],
+        priceTotal: 3800,
+        priceEntry: 800,
+        driveUrl: "https://photos.app.goo.gl/6zXoUA5V7URxmmhd8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+RM+201"
+      },
+      {
+        ref: "REF R 204",
+        types: ["900%", "tropa mana", "tropa mágica"],
+        stats: "977% / 966% / 901%",
+        details: [
+          "IND (FF) 977% / 966% / 901% 🔥",
+          "1M Gemas 💎",
+          "Elite ON ⚡",
+          "45M Tropas ⚔️",
+          "Tropas Mágicas 1 💜",
+          "Aceita conta de Entrada 🛑"
+        ],
+        priceTotal: 2500,
+        priceEntry: 500,
+        driveUrl: "https://photos.app.goo.gl/oV5GS8QQbZmMrp7c8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+R+204"
+      },
+      {
+        ref: "REF C 64",
+        types: ["1000%"],
+        stats: "1056% / 1004% / 1036%",
+        details: [
+          "IND 1056% / 1004% / 1036% FF 🔥",
+          "3 Taças Míticas 🧡",
+          "4 FAM FULL + 1 Nvl 7 🐉",
+          "16 Heróis 💛 (3 de WoW💛)"
+        ],
+        priceTotal: 3000,
+        priceEntry: 400,
+        driveUrl: "https://drive.google.com/drive/folders/1OROPNPqjr-uFia4CmvyHXs_XzxMqC8vR",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+C+64"
+      },
+      {
+        ref: "REF R 101",
+        types: ["1 champ", "fillers"],
+        stats: "1 Champ",
+        details: [
+          "1 Champ 💛",
+          "5 Heróis 💛",
+          "26M Tropas ⚔️",
+          "Elite ON ⚡"
+        ],
+        priceTotal: 1500,
+        priceEntry: 400,
+        driveUrl: "https://photos.app.goo.gl/bjwad4taSLp9XArZ8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+R+101"
+      },
+      {
+        ref: "REF R 200",
+        types: ["1100%", "skin de líder"],
+        stats: "1169% / 1103% / 1130%",
+        details: [
+          "IND (FF) 1169% / 1103% / 1130% 🔥",
+          "25 Heróis 💛 (1x 11k 💛)",
+          "1M de Gemas 💎",
+          "Skin de Exército 👑",
+          "7 Fam Pagos Full 💥"
+        ],
+        priceTotal: 12000,
+        priceEntry: 1500,
+        driveUrl: "https://photos.app.goo.gl/ifBuYVgnqRwTMvqx8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+R+200"
+      },
+      {
+        ref: "REF MB 09",
+        types: ["tropa mana", "tropa mágica", "t5"],
+        stats: "51M Tropas Total",
+        details: [
+          "1.6M de Gemas 💎",
+          "Tropas Mágicas 85% 💜",
+          "Bag Top 🎒",
+          "1M de Cada T5 (51M Total) ⚔️"
+        ],
+        priceTotal: 750,
+        priceEntry: 300,
+        driveUrl: "https://photos.app.goo.gl/VrS4vjz2acFRcTAh8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MB+09"
+      },
+      {
+        ref: "REF MR 111",
+        types: ["1000%", "skin de líder"],
+        stats: "1046% / 1015% / 1050%",
+        details: [
+          "IND 1046% / 1015% / 1050% FF 🔥",
+          "6 Fam Pagos Full 💥",
+          "Skin de Exército 👑",
+          "5 Heróis 💛 (3 WH)",
+          "22M Tropas ⚔️"
+        ],
+        priceTotal: 2800,
+        priceEntry: 600,
+        driveUrl: "https://photos.app.goo.gl/q76ogNhyGAMHfJnH9",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MR+111"
+      },
+      {
+        ref: "REF M 365",
+        types: ["1200%", "4 champs", "4 champ", "tropa mana"],
+        stats: "1204%",
+        details: [
+          "Bruta 1204% 🔥",
+          "4 Champs / Taças 🧡",
+          "Mana - 80% 💜",
+          "6 Fams Lv10 + Vorme Lv9 🐉"
+        ],
+        priceTotal: 8800,
+        priceEntry: 1000,
+        driveUrl: "https://photos.app.goo.gl/J8zppXGKrYHLVPzu8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+M+365"
+      },
+      {
+        ref: "REF R 208",
+        types: ["fillers"],
+        stats: "883% / 859% / 906%",
+        details: [
+          "IND 883% / 859% / 906% 🔥",
+          "Coelho Niv5 / Bonna Niv3 🐉",
+          "1M de Gemas 💎",
+          "Elite ON ⚡",
+          "23M Tropas ⚔️",
+          "Parcelado em 2x R$ 250,00 🪙"
+        ],
+        priceTotal: 450,
+        priceEntry: 250,
+        driveUrl: "https://photos.app.goo.gl/kBRGcxkCk9yHUjWw8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+R+208"
+      },
+      {
+        ref: "REF R 65",
+        types: ["fillers"],
+        stats: "646% / 693% / 635%",
+        details: [
+          "MIX (Furi) 646% / 693% / 635% 🔥",
+          "Set Caça 💛🧡",
+          "41M Tropas ⚔️",
+          "Bag Top 🎒",
+          "Elite ON ⚡"
+        ],
+        priceTotal: 550,
+        priceEntry: 250,
+        driveUrl: "https://photos.app.goo.gl/hXDPcNdUBCfHxKQp8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+R+65"
+      },
+      {
+        ref: "REF MI 08",
+        types: ["t5", "restrita", "restrita 1600+"],
+        stats: "K1811",
+        details: [
+          "Restrita K1811 ⛓️",
+          "T5 / Elite ON ⚡",
+          "Heróis pagos 💛💜"
+        ],
+        priceTotal: 3000,
+        priceEntry: 500,
+        driveUrl: "https://photos.app.goo.gl/1B2B3DUoBLCRhQ4t5",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MI+08"
+      },
+      {
+        ref: "REF M 401",
+        types: ["1200%", "3 champs", "3 champ", "tropa mana"],
+        stats: "1200%",
+        details: [
+          "3 Champs 🧡",
+          "Tropa Mana Lv 1 💜",
+          "Bônus 1200% 🔥",
+          "8 Fams Lv 10 🐉"
+        ],
+        priceTotal: 6800,
+        priceEntry: 850,
+        driveUrl: "https://photos.app.goo.gl/J8yy6hn39yyXjPzv7",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+M+401"
+      },
+      {
+        ref: "REF MIR 016",
+        types: ["t5", "fillers"], 
+        stats: "T5 Liberada",
+        details: [
+          "T5 Liberada ⚔️",
+          "Bag Legal 🎒"
+        ],
+        priceTotal: 300,
+        priceEntry: 100,
+        driveUrl: "https://photos.app.goo.gl/UfEaLcuyqGLNCDKc6",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MIR+016"
+      },
+      {
+        ref: "REF MIR 027",
+        types: ["t5", "fillers", "restrita", "restrita 1600+"], 
+        stats: "K1720 / T5 Liberada",
+        details: [
+          "Restrita K1720",
+          "T5 Liberada ⚔️",
+          "Bag Legal 🎒"
+        ],
+        priceTotal: 300,
+        priceEntry: 100,
+        driveUrl: "https://photos.app.goo.gl/L9bPtsngWg77ztuW9",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MIR+027"
+      },
+      {
+        ref: "REF MIR 2215",
+        types: ["fillers", "restrita", "restrita 1600-"], 
+        stats: "K1430",
+        details: [
+          "Restrita K1430",
+          "Champs 💜",
+          "Familiares Pagos 💥"
+        ],
+        priceTotal: 500,
+        priceEntry: 150,
+        driveUrl: "https://photos.app.goo.gl/epBdyr5q7PvGN19XA",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MIR+2215"
+      },
+      {
+        ref: "REF MIR 2329",
+        types: ["fillers", "restrita", "restrita 1600+"], 
+        stats: "K1842",
+        details: [
+          "Restrita K1842",
+          "Elite ON ⚡",
+          "Facilitada ✅"
+        ],
+        priceTotal: 1200,
+        priceEntry: 200,
+        driveUrl: "https://photos.app.goo.gl/TbqZy8v3CKen2hAE9",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MIR+2329"
+      },
+      {
+        ref: "REF MIJ 1950",
+        types: ["1200%", "10 champs", "10 champ", "7 champ", "tropa mana"], 
+        stats: "1246% / 820% HP",
+        details: [
+          "9 Champs 🧡 + 1 💛",
+          "Mana Lv 1 💜",
+          "820% HP 😎",
+          "Bônus 1246% 🔥"
+        ],
+        priceTotal: 0,
+        priceEntry: 1600,
+        driveUrl: "",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MIJ+1950"
+      },
+      {
+        ref: "REF M 602",
+        types: ["1400%", "5 champs", "5 champ", "tropa mana", "skin de líder"], 
+        stats: "1400%",
+        details: [
+          "2 Skin Leader 👑",
+          "Bônus 1400% 🔥",
+          "Itens Monstruosos 🧡",
+          "Tropa Mana Lv 1 💜",
+          "Aceita conta de entrada 🥳"
+        ],
+        priceTotal: 22500,
+        priceEntry: 3500,
+        driveUrl: "https://photos.app.goo.gl/egdP91ufREEbzVKH6",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+M+602"
+      },
+      {
+        ref: "REF M 601",
+        types: ["1300%", "6 champs", "6 champ", "tropa mana"], 
+        stats: "1375%",
+        details: [
+          "6 Champs 🧡",
+          "Bônus 1375% 🔥",
+          "Itens Monstruosos 🧡",
+          "Tropa Mana Lv 1 💜",
+          "Skin de Exército 👑",
+          "Aceita conta de entrada 🥳"
+        ],
+        priceTotal: 21500,
+        priceEntry: 3000,
+        driveUrl: "https://photos.app.goo.gl/7TU7Dify9WLHyekx7",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+M+601"
+      },
+      {
+        ref: "REF MICG1053",
+        types: ["fillers"], 
+        stats: "FAM 10/6/6/4/3",
+        details: [
+          "FAM 10/6/6/4/3 😱",
+          "Elite ON ✅",
+          "Champs 🧡💛💜"
+        ],
+        priceTotal: 2400,
+        priceEntry: 300,
+        driveUrl: "https://photos.app.goo.gl/LGMbh3bCBz3JcXLo8",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MICG1053"
+      },
+      {
+        ref: "REF MI 1223",
+        types: ["fillers"], 
+        stats: "7 Fam. Pagos Full / 7 Chinas",
+        details: [
+          "7 Familiares pagos Full 😱",
+          "7 Chinas 🛑",
+          "Heróis pagos 💛"
+        ],
+        priceTotal: 6000,
+        priceEntry: 800,
+        driveUrl: "https://photos.app.goo.gl/hGUQ5xQsTEdJs2J97",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+MI+1223"
+      },
+      {
+        ref: "REF M 43",
+        types: ["1400%", "16 champs", "7 champ", "tropa mana"], 
+        stats: "1444% / 1407% / 1415%",
+        details: [
+          "IND 1444/1407/1415% FF 🔥",
+          "16 CHAMPS 🧡💛",
+          "ASTRO CHAMP 13/12/12/12/10",
+          "73 Abençoados ✨",
+          "Tropa Mágica Lvl 1 💜"
+        ],
+        priceTotal: 40000,
+        priceEntry: 5000,
+        driveUrl: "https://drive.google.com/drive/folders/1UO7etwYafcpi6JvfgnKSAikqnoAQRhE1",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+M+43"
+      },
+      {
+        ref: "REF M 603",
+        types: ["1100%", "3 champs", "3 champ", "tropa mana"], 
+        stats: "1105%",
+        details: [
+          "3 Champs (2+1) 🧡",
+          "Bônus 1105% 🔥",
+          "Tropas Lotadas ⚔️",
+          "Evolução de Mana 65% 💜",
+          "Aceita conta de entrada 🛑"
+        ],
+        priceTotal: 5500,
+        priceEntry: 1000,
+        driveUrl: "https://photos.app.goo.gl/",
+        imgUrl: "https://via.placeholder.com/400x300?text=REF+M+603"
+      },
       {
         ref: "REF MR 605",
         types: ["1200%", "tropa mana", "2 champs", "2 champ"], 
@@ -468,7 +789,6 @@
         types: ["1000%", "tropa mágica", "3 champs", "3 champ"], 
         stats: "1059% / 1013% / 1019%",
         details: [
-          "IND FF 1059% / 1013% / 1019%",
           "3 Famílias Pagos Full + 1 Nível 9 + 1 Nível 8 💥",
           "Heróis Pagos 💛",
           "Tropa Mágica Niv 1 💜",
@@ -509,17 +829,13 @@
       const container = document.getElementById('vendor-list');
       container.innerHTML = '';
 
-      // Busca o objeto completo da conta
       const accountObj = accounts.find(acc => acc.ref === ref);
-      
       if (!accountObj) return;
 
-      // Monta a lista de detalhes da conta formatada
       const detailsText = accountObj.details.map(d => `• ${d}`).join('\n');
       const entradaText = accountObj.priceEntry ? ` (Entrada: R$ ${accountObj.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})})` : '';
 
       VENDEDORES.forEach(vendedor => {
-        // Monta o texto completo do anúncio
         const mensagemTexto = 
 `💥 *STARK GAMES - INTERESSE EM CONTA*
 
@@ -587,16 +903,16 @@ ${accountObj.driveUrl}`;
 
         const matchFeatures = selectedFeatures.every(feat => {
           if (feat === 'tropa_magica_mana') {
-            return fullAccText.includes('tropa mágica') || fullAccText.includes('tropa magica') || fullAccText.includes('tropa mana');
+            return fullAccText.includes('tropa mágica') || fullAccText.includes('tropa magica') || fullAccText.includes('tropa mana') || fullAccText.includes('mana');
           }
           if (feat === 'skin_lider') {
             return fullAccText.includes('skin leader') || fullAccText.includes('skin de líder') || fullAccText.includes('skin de lider') || fullAccText.includes('skin lider');
           }
           if (feat === 'restrita_ate_1600') {
-            return fullAccText.includes('restrita') && kingdomNumber !== null && kingdomNumber <= 1600;
+            return fullAccText.includes('restrita') && (kingdomNumber !== null ? kingdomNumber <= 1600 : true);
           }
           if (feat === 'restrita_1600_plus') {
-            return fullAccText.includes('restrita') && kingdomNumber !== null && kingdomNumber > 1600;
+            return fullAccText.includes('restrita') && (kingdomNumber !== null ? kingdomNumber > 1600 : true);
           }
           return fullAccText.includes(feat);
         });
@@ -647,11 +963,11 @@ ${accountObj.driveUrl}`;
               <div class="ref-title">💥 ${acc.ref}</div>
               <ul class="details-list">${detailsHTML}</ul>
               <div class="price-box">
-                <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
+                <div class="main-price">${acc.priceTotal > 0 ? `R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}` : 'A CONSULTAR / LEILÃO'}</div>
                 ${acc.priceEntry ? `<div class="down-payment">🔥 ENTRADA DE R$ ${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>` : ''}
               </div>
               <div class="actions">
-                <a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Ver Prints</a>
+                ${acc.driveUrl ? `<a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Ver Prints</a>` : `<span class="btn btn-drive" style="opacity:0.5; cursor:not-allowed;">📁 Sem Prints</span>`}
                 <button type="button" onclick="openVendorModal('${acc.ref}', ${acc.priceTotal})" class="btn btn-whatsapp">💬 Comprar</button>
               </div>
             </div>
@@ -661,7 +977,6 @@ ${accountObj.driveUrl}`;
       });
     }
 
-    // Inicialização da página
     applyFilters();
     updateSearch();
   </script>
