@@ -222,7 +222,7 @@
     .drawer-groups-list::-webkit-scrollbar-thumb:hover,
     .vendor-list::-webkit-scrollbar-thumb:hover { background: #22c55e; }
 
-    /* OCULTA O BADGE E FERRAMENTAS DA NETLIFY */
+    /* OCULTA BADGES EXTERNOS OU IFRAMES */
     [data-netlify-deploy-id],
     #netlify-modal-root,
     iframe[src*="netlify"],
@@ -318,7 +318,7 @@
 
     <div class="filter-footer">
       <button class="btn-clear" onclick="clearFilters()">Limpar Filtros</button>
-      <button class="btn-search" id="btn-search-count" onclick="applyFilters()">Procurar Contas (3)</button>
+      <button class="btn-search" id="btn-search-count" onclick="applyFilters()">Procurar Contas (0)</button>
     </div>
   </section>
 
@@ -353,7 +353,7 @@
     const accounts = [
       {
         ref: "REF MR 605",
-        types: ["1200%", "tropa mana", "2 champs"], 
+        types: ["1200%", "tropa mana", "2 champs", "2 champ"], 
         stats: "1225%",
         details: [
           "2 Champ🧡💛 / 4 Taças🧡",
@@ -368,7 +368,7 @@
       },
       {
         ref: "REF MC 31",
-        types: ["1200%", "tropa mágica", "restrita", "Skin de Líder"], 
+        types: ["1200%", "tropa mágica", "restrita", "skin de líder"], 
         stats: "1214 / 1206 / 1198% FF",
         details: [
           "IND 1214/1206/1198% FF",
@@ -384,7 +384,7 @@
       },
       {
         ref: "REF R 207",
-        types: ["1 champ", "1083%"], 
+        types: ["1 champ", "1000%", "1083%"], 
         stats: "1 Champ / 1 Taça / 5 Fam Full",
         details: [
           "1 Champ🧡",
@@ -399,25 +399,25 @@
         imgUrl: "https://i.ibb.co/tMQb7LjZ/Whats-App-Image-2026-08-24-at-22-09-51.jpg"
       },
       {
-  ref: "REF R 125",
-  types: ["1100%", "2 champs"],
-  stats: "1094% / 1002% / 1106%",
-  details: [
-    "2 Champs 🧡",
-    "IND FF 1094% / 1002% / 1106%",
-    "Set Caça 🧡",
-    "4 Famílias Pagos Full + 1 Nivel 9 💥",
-    "Heróis (3 WH💛) / Elite On 💥",
-    "37M Tropas ⚔️"
-  ],
-  priceTotal: 4000,
-  priceEntry: 500,
-  driveUrl: "https://photos.app.goo.gl/nim4c1XhTYujZfxn7",
-  imgUrl: "REF R 125.jpeg"
-},
+        ref: "REF R 125",
+        types: ["1100%", "2 champs", "2 champ"],
+        stats: "1094% / 1002% / 1106%",
+        details: [
+          "2 Champs 🧡",
+          "IND FF 1094% / 1002% / 1106%",
+          "Set Caça 🧡",
+          "4 Famílias Pagos Full + 1 Nivel 9 💥",
+          "Heróis (3 WH💛) / Elite On 💥",
+          "37M Tropas ⚔️"
+        ],
+        priceTotal: 4000,
+        priceEntry: 500,
+        driveUrl: "https://photos.app.goo.gl/nim4c1XhTYujZfxn7",
+        imgUrl: "REF R 125.jpeg"
+      },
       {
         ref: "REF MR 360",
-        types: ["1100%","7 Champs"], 
+        types: ["1100%", "7 champs", "7 champ"], 
         stats: "1150% / 1110% / 1153%",
         details: [
           "IND FF 1150% / 1110% / 1153%",
@@ -433,7 +433,7 @@
       },
       {
         ref: "REF MR 603",
-        types: ["1400%", "11 champs", "tropa mana","Skin lider","full Champs"], 
+        types: ["1400%", "7 champ", "full champs", "tropa mana", "skin de líder"], 
         stats: "1400%",
         details: [
           "11 Champs (10+1) 🧡",
@@ -449,7 +449,7 @@
       },
       {
         ref: "REF R 206",
-        types: ["1 champ","935%","filler"], 
+        types: ["1 champ", "900%", "fillers"], 
         stats: "1 Champ",
         details: [
           "1 Champ 💛",
@@ -465,7 +465,7 @@
       },
       {
         ref: "REF R 199",
-        types: ["1000%", "tropa mágica", "3 Champs"], 
+        types: ["1000%", "tropa mágica", "3 champs", "3 champ"], 
         stats: "1059% / 1013% / 1019%",
         details: [
           "IND FF 1059% / 1013% / 1019%",
@@ -481,7 +481,7 @@
       },
       {
         ref: "REF R 77",
-        types: ["1 champ", "fillers","928%"], 
+        types: ["1 champ", "fillers", "900%"], 
         stats: "840% / 827% / 928%",
         details: [
           "1 Champ 🧡",
@@ -495,7 +495,7 @@
         priceEntry: 400,
         driveUrl: "https://photos.app.goo.gl/r6jrtWCf4WSCG7ug6",
         imgUrl: "REF R 77.jpeg"
-      },
+      }
     ];
 
     let selectedType = 'all';
@@ -510,7 +510,7 @@
       container.innerHTML = '';
 
       VENDEDORES.forEach(vendedor => {
-        const msgWhatsapp = encodeURIComponent(`Olá ${vendedor.nome}! Tenho interesse na conta [${ref}] no valor de R$ ${priceTotal.toLocaleString('pt-BR')}.`);
+        const msgWhatsapp = encodeURIComponent(`Olá ${vendedor.nome}! Tenho interesse na conta [${ref}] no valor de R$ ${priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}.`);
         const linkWhatsapp = `https://wa.me/${vendedor.numero}?text=${msgWhatsapp}`;
 
         container.innerHTML += `
@@ -598,7 +598,7 @@
       const allTag = document.querySelectorAll('.type-tag')[0];
       toggleTypeTag(allTag, 'all');
       
-      renderCatalog(accounts);
+      applyFilters();
     }
 
     function renderCatalog(data) {
@@ -617,7 +617,7 @@
           <div class="card">
             <div class="card-header-badge">STARK GAMES</div>
             <div class="card-img-container">
-              <img src="${acc.imgUrl}" class="card-img" alt="${acc.ref}">
+              <img src="${acc.imgUrl}" class="card-img" alt="${acc.ref}" onerror="this.src='https://via.placeholder.com/400x300?text=Imagem+Indispon%C3%ADvel'">
             </div>
             <div class="card-body">
               <div class="ref-title">💥 ${acc.ref}</div>
@@ -627,7 +627,7 @@
                 ${acc.priceEntry ? `<div class="down-payment">🔥 ENTRADA DE R$ ${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>` : ''}
               </div>
               <div class="actions">
-                <a href="${acc.driveUrl}" target="_blank" class="btn btn-drive">📁 Ver Prints</a>
+                <a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Ver Prints</a>
                 <button type="button" onclick="openVendorModal('${acc.ref}', ${acc.priceTotal})" class="btn btn-whatsapp">💬 Comprar</button>
               </div>
             </div>
@@ -637,7 +637,8 @@
       });
     }
 
-    renderCatalog(accounts);
+    // Inicialização da página
+    applyFilters();
     updateSearch();
   </script>
 </body>
