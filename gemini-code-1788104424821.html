@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Contas - Lords Mobile</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #0f172a; color: #f8fafc; padding: 20px; }
+    
+    header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 2px solid #334155; }
+    header h1 { color: #f59e0b; font-size: 2.2rem; margin-bottom: 5px; }
+    header p { color: #94a3b8; }
+
+    /* Painel de Filtros */
+    .filters { background: #1e293b; padding: 20px; border-radius: 10px; margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    .filter-group { display: flex; flex-direction: column; gap: 5px; }
+    .filter-group label { font-size: 0.85rem; color: #cbd5e1; font-weight: bold; }
+    .filter-group select, .filter-group input { padding: 10px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; font-size: 0.9rem; }
+
+    /* Grid do Catálogo */
+    .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    
+    /* Card da Conta */
+    .card { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); border-color: #f59e0b; }
+    .card-img { width: 100%; height: 180px; object-fit: cover; background: #334155; }
+    
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-title { font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
+    
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+    .tag { background: #334155; color: #f59e0b; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+    
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: #0f172a; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 15px; }
+    .stat-item { color: #94a3b8; }
+    .stat-item strong { color: #e2e8f0; }
+
+    .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 15px; border-top: 1px solid #334155; }
+    .price { font-size: 1.3rem; color: #10b981; font-weight: bold; }
+    
+    .btn-whatsapp { background: #25d366; color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
+    .btn-whatsapp:hover { background: #1da851; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Catálogo de Contas Lords Mobile</h1>
+    <p>Encontre a conta ideal para o seu estilo de jogo</p>
+  </header>
+
+  <section class="filters">
+    <div class="filter-group">
+      <label for="filter-tier">Tipo de Tropa</label>
+      <select id="filter-tier" onchange="filterAccounts()">
+        <option value="all">Todas</option>
+        <option value="T5">T5 Liberado</option>
+        <option value="T4">T4 Liberado</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="filter-atk">Ataque Mínimo (Ex: 600%)</label>
+      <input type="number" id="filter-atk" placeholder="Ex: 600" oninput="filterAccounts()">
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-price">Preço Máximo (R$)</label>
+      <input type="number" id="filter-price" placeholder="Ex: 2000" oninput="filterAccounts()">
+    </div>
+  </section>
+
+  <main class="catalog" id="catalog-container"></main>
+
+  <script>
+    // Configuração do seu WhatsApp para contato
+    const SEU_NUMERO_WHATSAPP = "5500000000000"; // Substitua pelo seu número (com DDD)
+
+    // Lista de Contas (Banco de dados local)
+    const accounts = [
+      {
+        id: "LM-01",
+        title: "Conta T5 Monstra - Rally Lead",
+        tier: "T5",
+        power: "1.2B",
+        atkCav: 780,
+        atkInf: 750,
+        atkArc: 760,
+        price: 3500,
+        img: "https://via.placeholder.com/400x200/1e293b/f59e0b?text=Print+da+Conta+01"
+      },
+      {
+        id: "LM-02",
+        title: "Trap Account T4 Econômica",
+        tier: "T4",
+        power: "450M",
+        atkCav: 550,
+        atkInf: 520,
+        atkArc: 540,
+        price: 1200,
+        img: "https://via.placeholder.com/400x200/1e293b/f59e0b?text=Print+da+Conta+02"
+      },
+      {
+        id: "LM-03",
+        title: "Conta Wonder Ready - T5",
+        tier: "T5",
+        power: "1.8B",
+        atkCav: 890,
+        atkInf: 860,
+        atkArc: 880,
+        price: 5800,
+        img: "https://via.placeholder.com/400x200/1e293b/f59e0b?text=Print+da+Conta+03"
+      }
+    ];
+
+    function renderCatalog(data) {
+      const container = document.getElementById('catalog-container');
+      container.innerHTML = '';
+
+      if (data.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #94a3b8;">Nenhuma conta encontrada com esses filtros.</p>';
+        return;
+      }
+
+      data.forEach(acc => {
+        const msgWhatsapp = encodeURIComponent(`Olá! Tenho interesse na conta ID: ${acc.id} (${acc.title}) do catálogo.`);
+        const linkWhatsapp = `https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${msgWhatsapp}`;
+
+        const cardHTML = `
+          <div class="card">
+            <img src="${acc.img}" class="card-img" alt="${acc.title}">
+            <div class="card-body">
+              <h2 class="card-title">${acc.title}</h2>
+              <div class="tags">
+                <span class="tag">ID: ${acc.id}</span>
+                <span class="tag">${acc.tier}</span>
+                <span class="tag">Poder: ${acc.power}</span>
+              </div>
+              <div class="stats-grid">
+                <div class="stat-item">ATK CAV: <strong>${acc.atkCav}%</strong></div>
+                <div class="stat-item">ATK INF: <strong>${acc.atkInf}%</strong></div>
+                <div class="stat-item">ATK ARC: <strong>${acc.atkArc}%</strong></div>
+              </div>
+              <div class="card-footer">
+                <span class="price">R$ ${acc.price.toLocaleString('pt-BR')}</span>
+                <a href="${linkWhatsapp}" target="_blank" class="btn-whatsapp">Tenho Interesse</a>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += cardHTML;
+      });
+    }
+
+    function filterAccounts() {
+      const tierFilter = document.getElementById('filter-tier').value;
+      const atkFilter = parseFloat(document.getElementById('filter-atk').value) || 0;
+      const priceFilter = parseFloat(document.getElementById('filter-price').value) || Infinity;
+
+      const filtered = accounts.filter(acc => {
+        const matchTier = (tierFilter === 'all' || acc.tier === tierFilter);
+        const matchAtk = (acc.atkCav >= atkFilter || acc.atkInf >= atkFilter || acc.atkArc >= atkFilter);
+        const matchPrice = (acc.price <= priceFilter);
+        return matchTier && matchAtk && matchPrice;
+      });
+
+      renderCatalog(filtered);
+    }
+
+    // Carregar todos os itens ao iniciar
+    renderCatalog(accounts);
+  </script>
+</body>
+</html>
