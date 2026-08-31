@@ -22,70 +22,122 @@
     header h1 { color: #f59e0b; font-size: 2.5rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
     header p { color: #94a3b8; font-size: 1.1rem; }
 
-    /* SEÇÃO GRUPOS DO WHATSAPP */
-    .whatsapp-groups-card {
-      background: rgba(22, 30, 46, 0.85);
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 25px;
-      text-align: center;
-      backdrop-filter: blur(8px);
+    /* ABA LATERAL FLUTUANTE (CANTO DIREITO) - GRUPOS DO WHATSAPP */
+    .whatsapp-drawer-wrapper {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .groups-title {
-      font-size: 1.1rem;
+
+    /* Botão/Gatilho da Aba */
+    .whatsapp-drawer-toggle {
+      background: #25d366;
+      color: #fff;
+      padding: 16px 12px;
+      border-radius: 12px 0 0 12px;
+      cursor: pointer;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: -4px 0 15px rgba(37, 211, 102, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: none;
+    }
+    .whatsapp-drawer-toggle:hover {
+      background: #1da851;
+    }
+    .whatsapp-drawer-toggle span {
+      transform: rotate(180deg);
+    }
+
+    /* Conteúdo Expandível da Aba */
+    .whatsapp-drawer-content {
+      width: 0;
+      opacity: 0;
+      visibility: hidden;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid #1e293b;
+      border-right: none;
+      border-radius: 12px 0 0 12px;
+      padding: 0;
+      backdrop-filter: blur(12px);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      max-height: 85vh;
+    }
+
+    /* Estado Aberto (Classe ativa ou no Hover da aba) */
+    .whatsapp-drawer-wrapper.open .whatsapp-drawer-content,
+    .whatsapp-drawer-wrapper:hover .whatsapp-drawer-content {
+      width: 320px;
+      opacity: 1;
+      visibility: visible;
+      padding: 20px;
+    }
+
+    .drawer-header {
+      border-bottom: 1px solid #334155;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .drawer-title {
+      font-size: 1.05rem;
       font-weight: bold;
       color: #f59e0b;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      letter-spacing: 0.5px;
     }
-    .groups-subtitle {
-      font-size: 0.85rem;
+    .drawer-subtitle {
+      font-size: 0.8rem;
       color: #94a3b8;
-      margin-bottom: 15px;
-    }
-    .groups-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-    }
-    .group-btn {
-      flex: 1;
-      min-width: 220px;
-      background: #25d366;
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-    }
-    .group-btn:hover {
-      background: #1da851;
-      transform: translateY(-2px);
-    }
-    .group-btn.btn-leilao {
-      background: #7c3aed;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-    }
-    .group-btn.btn-leilao:hover {
-      background: #6d28d9;
-    }
-    .group-btn.btn-avisos {
-      background: #0284c7;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
-    }
-    .group-btn.btn-avisos:hover {
-      background: #0369a1;
+      margin-top: 4px;
     }
 
-    /* PAINEL DE FILTROS ESTILO IMOBILIÁRIA */
+    .drawer-groups-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 60vh;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .drawer-group-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f8fafc;
+      padding: 12px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+    .drawer-group-btn:hover {
+      background: #25d366;
+      color: #fff;
+      border-color: #25d366;
+      transform: translateX(-4px);
+    }
+
+    /* PAINEL DE FILTROS */
     .filter-card { background: rgba(22, 30, 46, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 35px; backdrop-filter: blur(8px); }
     .filter-section-title { font-size: 0.85rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; margin-top: 15px; }
     .filter-section-title:first-child { margin-top: 0; }
@@ -160,9 +212,14 @@
     .btn-close-modal { margin-top: 15px; background: transparent; border: 1px solid #334155; color: #cbd5e1; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; flex-shrink: 0; }
     .btn-close-modal:hover { background: #334155; }
 
+    /* Scrollbars customizados */
+    .drawer-groups-list::-webkit-scrollbar,
     .vendor-list::-webkit-scrollbar { width: 6px; }
+    .drawer-groups-list::-webkit-scrollbar-track,
     .vendor-list::-webkit-scrollbar-track { background: #0f172a; border-radius: 10px; }
+    .drawer-groups-list::-webkit-scrollbar-thumb,
     .vendor-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    .drawer-groups-list::-webkit-scrollbar-thumb:hover,
     .vendor-list::-webkit-scrollbar-thumb:hover { background: #22c55e; }
   </style>
 </head>
@@ -173,17 +230,34 @@
     <p>Catálogo Oficial de Contas - Lords Mobile</p>
   </header>
 
-  <!-- SEÇÃO DE GRUPOS DO WHATSAPP -->
-  <section class="whatsapp-groups-card">
-    <div class="groups-title">📢 NOSSOS GRUPOS DO WHATSAPP</div>
-    <div class="groups-subtitle">Entre nos nossos grupos oficiais para participar de leilões, sorteios e ver novidades em primeira mão:</div>
-    <div class="groups-grid">
-      <a href="https://chat.whatsapp.com/GbySR9Fq65SAe6a1JjVEHu" target="_blank" class="group-btn">
-        <span>💬 Stark - Made In China Oficial</span>
-      </a>
+  <!-- ABA FLUTUANTE DO CANTO DIREITO (NOSSOS GRUPOS DO WHATSAPP) -->
+  <div class="whatsapp-drawer-wrapper" id="whatsapp-drawer">
+    <div class="whatsapp-drawer-toggle" onclick="toggleDrawer()">
+      <span>💬 Nossos Grupos</span>
     </div>
-  </section>
+    <div class="whatsapp-drawer-content">
+      <div class="drawer-header">
+        <div class="drawer-title">💬 Grupos no WhatsApp</div>
+        <div class="drawer-subtitle">Acesse nossos canais oficiais</div>
+      </div>
+      <div class="drawer-groups-list">
+        <a href="https://chat.whatsapp.com/HJgyZ76Rm4zACjpRyyGSey" target="_blank" rel="noopener" class="drawer-group-btn">
+          <span>🏆 STARK LORDS VIP 🏆</span>
+        </a>
+        <a href="https://chat.whatsapp.com/GbySR9Fq65SAe6a1JjVEHu" target="_blank" rel="noopener" class="drawer-group-btn">
+          <span>Stark - Made In China Oficial</span>
+        </a>
+        <a href="https://chat.whatsapp.com/HUwYV26idV2HbwSSu713SS" target="_blank" rel="noopener" class="drawer-group-btn">
+          <span>🔥 Stark Games - 10K+ 🔥</span>
+        </a>
+        <a href="https://chat.whatsapp.com/HmOvR7DX8zrKnwht9JUAL3" target="_blank" rel="noopener" class="drawer-group-btn">
+          <span>🛑 STARK - RESTRITAS ⛓️</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
+  <!-- PAINEL DE FILTROS -->
   <section class="filter-card">
     <div class="filter-section-title">Tipo / Atributo da Conta</div>
     <div class="type-tags-container" id="type-tags-box">
@@ -299,6 +373,11 @@
     ];
 
     let selectedType = 'all';
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('whatsapp-drawer');
+      drawer.classList.toggle('open');
+    }
 
     function openVendorModal(ref, priceTotal) {
       const container = document.getElementById('vendor-list');
