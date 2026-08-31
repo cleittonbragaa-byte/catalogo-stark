@@ -221,6 +221,16 @@
     .vendor-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     .drawer-groups-list::-webkit-scrollbar-thumb:hover,
     .vendor-list::-webkit-scrollbar-thumb:hover { background: #22c55e; }
+
+    /* OCULTA O BADGE E FERRAMENTAS DA NETLIFY */
+    [data-netlify-deploy-id],
+    #netlify-modal-root,
+    iframe[src*="netlify"],
+    div[class*="netlify"],
+    .netlify-drawer-button {
+      display: none !important;
+      visibility: hidden !important;
+    }
   </style>
 </head>
 <body>
