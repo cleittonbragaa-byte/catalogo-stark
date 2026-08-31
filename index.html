@@ -509,8 +509,32 @@
       const container = document.getElementById('vendor-list');
       container.innerHTML = '';
 
+      // Busca o objeto completo da conta
+      const accountObj = accounts.find(acc => acc.ref === ref);
+      
+      if (!accountObj) return;
+
+      // Monta a lista de detalhes da conta formatada
+      const detailsText = accountObj.details.map(d => `• ${d}`).join('\n');
+      const entradaText = accountObj.priceEntry ? ` (Entrada: R$ ${accountObj.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})})` : '';
+
       VENDEDORES.forEach(vendedor => {
-        const msgWhatsapp = encodeURIComponent(`Olá ${vendedor.nome}! Tenho interesse na conta [${ref}] no valor de R$ ${priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}.`);
+        // Monta o texto completo do anúncio
+        const mensagemTexto = 
+`💥 *STARK GAMES - INTERESSE EM CONTA*
+
+Olá, *${vendedor.nome}*! Tenho interesse no anúncio abaixo:
+
+📌 *Conta:* ${accountObj.ref}
+💰 *Valor:* R$ ${accountObj.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}${entradaText}
+
+📋 *Detalhes da Conta:*
+${detailsText}
+
+📁 *Link dos Prints:*
+${accountObj.driveUrl}`;
+
+        const msgWhatsapp = encodeURIComponent(mensagemTexto);
         const linkWhatsapp = `https://wa.me/${vendedor.numero}?text=${msgWhatsapp}`;
 
         container.innerHTML += `
