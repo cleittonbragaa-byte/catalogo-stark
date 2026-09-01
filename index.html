@@ -764,7 +764,7 @@
         driveUrl: "https://photos.app.goo.gl/nim4c1XhTYujZfxn7",
         imgUrl: "REF R 125.jpeg"
       },
-     {
+      {
         ref: "REF MR 360",
         types: ["1100%", "7 champ", "full champ"], 
         stats: "1150% / 1110% / 1153%",
@@ -788,7 +788,7 @@
     }
 
     function toggleTypeTag(element, type) {
-      if (type === 'all') {
+      if (type.toLowerCase() === 'all') {
         selectedTypes = ['all'];
         document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
         element.classList.add('active');
@@ -801,9 +801,9 @@
 
         element.classList.toggle('active');
         if (element.classList.contains('active')) {
-          selectedTypes.push(type);
+          selectedTypes.push(type.toLowerCase());
         } else {
-          const tIndex = selectedTypes.indexOf(type);
+          const tIndex = selectedTypes.indexOf(type.toLowerCase());
           if (tIndex > -1) selectedTypes.splice(tIndex, 1);
         }
 
@@ -862,7 +862,7 @@
       container.innerHTML = '';
 
       if (list.length === 0) {
-        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8;">Nenhuma conta encontrada com os filtros selecionados.</p>';
+        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8; padding: 30px;">Nenhuma conta encontrada com os filtros selecionados.</p>';
         return;
       }
 
@@ -959,10 +959,20 @@
       }
     }
 
-    // Inicialização do catálogo
-    window.onload = () => {
+    window.addEventListener('DOMContentLoaded', () => {
       applyFilters();
-    };
+
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setTimeout(() => {
+          const targetCard = document.getElementById(hash);
+          if (targetCard) {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetCard.classList.add('highlighted');
+          }
+        }, 300);
+      }
+    });
   </script>
 </body>
 </html>
