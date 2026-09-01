@@ -104,8 +104,9 @@
 
     /* PAINEL DE FILTROS */
     .filter-card { background: rgba(22, 30, 46, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 35px; backdrop-filter: blur(8px); }
-    .filter-section-title { font-size: 0.85rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; margin-top: 15px; }
-    .filter-section-title:first-child { margin-top: 0; }
+    .filter-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 15px; }
+    .filter-section-header:first-child { margin-top: 0; }
+    .filter-section-title { font-size: 0.85rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; }
 
     .type-tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
     .type-tag { padding: 8px 16px; background: #0f172a; border: 1px solid #334155; color: #cbd5e1; font-weight: 600; border-radius: 20px; cursor: pointer; transition: 0.2s; font-size: 0.85rem; user-select: none; }
@@ -116,10 +117,10 @@
     .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #e2e8f0; cursor: pointer; }
     .checkbox-item input { accent-color: #22c55e; width: 16px; height: 16px; cursor: pointer; }
 
-    .price-range-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    .price-sort-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 20px; }
     .input-box label { font-size: 0.8rem; color: #94a3b8; display: block; margin-bottom: 6px; font-weight: bold; }
-    .input-box input { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
-    .input-box input:focus { border-color: #22c55e; }
+    .input-box input, .input-box select { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
+    .input-box input:focus, .input-box select:focus { border-color: #22c55e; }
 
     .filter-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 20px; gap: 15px; flex-wrap: wrap; }
     .btn-clear { background: transparent; border: none; color: #94a3b8; font-weight: bold; cursor: pointer; font-size: 0.9rem; text-decoration: underline; }
@@ -235,21 +236,25 @@
   </div>
 
   <section class="filter-card">
-    <div class="filter-section-title">Tipo / Atributo da Conta</div>
+    <div class="filter-section-header">
+      <div class="filter-section-title">Tipo / Atributo da Conta (Múltipla Seleção)</div>
+    </div>
     <div class="type-tags-container" id="type-tags-box">
-      <div class="type-tag active" onclick="toggleTypeTag(this, 'all')">Todas</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, 'Fillers')">Fillers</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '900%')">900%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1000%')">1000%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1100%')">1100%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1200%')">1200%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1300%')">1300%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1400%')">1400%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1500%')">1500%</div>
-      <div class="type-tag" onclick="toggleTypeTag(this, '1500%+')">1500%+</div>
+      <div class="type-tag active" data-type="all" onclick="toggleTypeTag(this, 'all')">Todas</div>
+      <div class="type-tag" data-type="Fillers" onclick="toggleTypeTag(this, 'Fillers')">Fillers</div>
+      <div class="type-tag" data-type="900%" onclick="toggleTypeTag(this, '900%')">900%</div>
+      <div class="type-tag" data-type="1000%" onclick="toggleTypeTag(this, '1000%')">1000%</div>
+      <div class="type-tag" data-type="1100%" onclick="toggleTypeTag(this, '1100%')">1100%</div>
+      <div class="type-tag" data-type="1200%" onclick="toggleTypeTag(this, '1200%')">1200%</div>
+      <div class="type-tag" data-type="1300%" onclick="toggleTypeTag(this, '1300%')">1300%</div>
+      <div class="type-tag" data-type="1400%" onclick="toggleTypeTag(this, '1400%')">1400%</div>
+      <div class="type-tag" data-type="1500%" onclick="toggleTypeTag(this, '1500%')">1500%</div>
+      <div class="type-tag" data-type="1500%+" onclick="toggleTypeTag(this, '1500%+')">1500%+</div>
     </div>
 
-    <div class="filter-section-title">Quantidade de Champs</div>
+    <div class="filter-section-header">
+      <div class="filter-section-title">Quantidade de Champs</div>
+    </div>
     <div class="checkbox-grid">
       <label class="checkbox-item"><input type="checkbox" value="1 champ" onchange="updateSearch()"> 1 Champ</label>
       <label class="checkbox-item"><input type="checkbox" value="2 champ" onchange="updateSearch()"> 2 Champs</label>
@@ -261,7 +266,9 @@
       <label class="checkbox-item"><input type="checkbox" value="full champ" onchange="updateSearch()"> Full Champs</label>
     </div>
 
-    <div class="filter-section-title">Outras Características Específicas</div>
+    <div class="filter-section-header">
+      <div class="filter-section-title">Outras Características Específicas</div>
+    </div>
     <div class="checkbox-grid">
       <label class="checkbox-item"><input type="checkbox" value="tropa_magica_mana" onchange="updateSearch()"> Tropa Mágica / Mana</label>
       <label class="checkbox-item"><input type="checkbox" value="skin_lider" onchange="updateSearch()"> Skin de Líder</label>
@@ -271,15 +278,25 @@
       <label class="checkbox-item"><input type="checkbox" value="t5" onchange="updateSearch()"> T5 Liberada</label>
     </div>
 
-    <div class="filter-section-title">Valor (R$)</div>
-    <div class="price-range-grid">
+    <div class="filter-section-header">
+      <div class="filter-section-title">Valores & Ordenação</div>
+    </div>
+    <div class="price-sort-grid">
       <div class="input-box">
-        <label>Mínimo</label>
+        <label>Valor Mínimo (R$)</label>
         <input type="number" id="price-min" placeholder="R$ 0" oninput="updateSearch()">
       </div>
       <div class="input-box">
-        <label>Máximo</label>
+        <label>Valor Máximo (R$)</label>
         <input type="number" id="price-max" placeholder="R$ 50.000+" oninput="updateSearch()">
+      </div>
+      <div class="input-box">
+        <label>Ordenar Por Preço</label>
+        <select id="sort-order" onchange="updateSearch()">
+          <option value="default">Padrão (Relevância)</option>
+          <option value="asc">Do Menor para o Maior Valor</option>
+          <option value="desc">Do Maior para o Menor Valor</option>
+        </select>
       </div>
     </div>
 
@@ -781,17 +798,37 @@
       }
     ];
 
-    let selectedType = 'all';
+    let selectedTypes = [];
     let currentSelectedRef = '';
 
     function toggleDrawer() {
       document.getElementById('whatsapp-drawer').classList.toggle('open');
     }
 
+    // SUPORTE A MÚLTIPLA SELEÇÃO DE TAGS (PORCENTAGENS)
     function toggleTypeTag(element, type) {
-      document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
-      element.classList.add('active');
-      selectedType = type;
+      const allTag = document.querySelector('.type-tag[data-type="all"]');
+
+      if (type === 'all') {
+        selectedTypes = [];
+        document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
+        allTag.classList.add('active');
+      } else {
+        allTag.classList.remove('active');
+        
+        if (selectedTypes.includes(type)) {
+          selectedTypes = selectedTypes.filter(t => t !== type);
+          element.classList.remove('active');
+        } else {
+          selectedTypes.push(type);
+          element.classList.add('active');
+        }
+
+        if (selectedTypes.length === 0) {
+          allTag.classList.add('active');
+        }
+      }
+
       updateSearch();
     }
 
@@ -804,24 +841,31 @@
       const minPrice = parseFloat(document.getElementById('price-min').value) || 0;
       const maxPrice = parseFloat(document.getElementById('price-max').value) || Infinity;
       const selectedFeatures = getSelectedCheckboxes();
+      const sortOrder = document.getElementById('sort-order').value;
 
-      return accounts.filter(acc => {
+      let filtered = accounts.filter(acc => {
+        // Filtro por preço mínimo e máximo
         if (acc.priceTotal < minPrice || (maxPrice !== Infinity && acc.priceTotal > maxPrice)) {
           return false;
         }
 
-        if (selectedType !== 'all') {
-          const typeMatch = acc.types.some(t => {
-            const tag = selectedType.toLowerCase();
-            const itemType = t.toLowerCase();
-            if (tag === '1500%+') {
-              return itemType.includes('1500%+') || itemType.includes('1600%');
-            }
-            return itemType.includes(tag);
+        // Filtro Múltiplo por Porcentagens/Atributos
+        if (selectedTypes.length > 0) {
+          const typeMatch = selectedTypes.some(selectedTag => {
+            return acc.types.some(t => {
+              const tag = selectedTag.toLowerCase();
+              const itemType = t.toLowerCase();
+              if (tag === '1500%+') {
+                return itemType.includes('1500%+') || itemType.includes('1600%');
+              }
+              return itemType.includes(tag);
+            });
           });
+
           if (!typeMatch) return false;
         }
 
+        // Filtro por Características Específicas
         if (selectedFeatures.length > 0) {
           const accDetailsString = (acc.details.join(' ') + ' ' + acc.types.join(' ') + ' ' + acc.stats).toLowerCase();
           
@@ -854,6 +898,15 @@
 
         return true;
       });
+
+      // ORDENAÇÃO POR PREÇO (MENOR -> MAIOR OU MAIOR -> MENOR)
+      if (sortOrder === 'asc') {
+        filtered.sort((a, b) => a.priceTotal - b.priceTotal);
+      } else if (sortOrder === 'desc') {
+        filtered.sort((a, b) => b.priceTotal - a.priceTotal);
+      }
+
+      return filtered;
     }
 
     function updateSearch() {
@@ -867,13 +920,14 @@
     }
 
     function clearFilters() {
-      selectedType = 'all';
+      selectedTypes = [];
       document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
-      document.querySelector('.type-tag').classList.add('active');
+      document.querySelector('.type-tag[data-type="all"]').classList.add('active');
 
       document.querySelectorAll('.checkbox-grid input[type="checkbox"]').forEach(cb => cb.checked = false);
       document.getElementById('price-min').value = '';
       document.getElementById('price-max').value = '';
+      document.getElementById('sort-order').value = 'default';
 
       updateSearch();
       renderCatalog(accounts);
@@ -935,7 +989,6 @@
       checkUrlHash();
     }
 
-    // MONTA O TEXTO FORMATADO COMPLETO DO ANÚNCIO (ESTILO DA IMAGEM)
     function generateAdvertisementText(acc) {
       const baseUrl = window.location.href.split('#')[0];
       const accountLink = `${baseUrl}#${acc.ref.replace(/\s+/g, '-')}`;
