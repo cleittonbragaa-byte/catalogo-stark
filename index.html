@@ -29,14 +29,14 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* CARROSSEL DE DESTAQUES */
+    /* CARROSSEL DE DESTAQUES (AMPLIADO) */
     .featured-container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto 30px auto;
       background: rgba(15, 23, 42, 0.95);
       border: 2px solid #f59e0b;
       border-radius: 16px;
-      padding: 20px;
+      padding: 15px;
       box-shadow: 0 0 25px rgba(245, 158, 11, 0.3);
       position: relative;
     }
@@ -45,7 +45,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       border-bottom: 1px solid #334155;
       padding-bottom: 10px;
     }
@@ -71,9 +71,9 @@
     }
 
     .featured-img-box {
-      flex: 1;
-      min-width: 280px;
-      max-height: 400px;
+      flex: 1.2;
+      min-width: 320px;
+      max-height: 480px;
       overflow: hidden;
       border-radius: 12px;
       border: 1px solid #334155;
@@ -91,13 +91,13 @@
 
     .featured-info {
       flex: 1;
-      min-width: 280px;
+      min-width: 300px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .featured-title { font-size: 1.6rem; color: #f59e0b; font-weight: bold; }
+    .featured-title { font-size: 1.7rem; color: #f59e0b; font-weight: bold; }
     
     .featured-controls {
       display: flex;
@@ -496,12 +496,10 @@
 
     function toggleDrawer() { document.getElementById('whatsapp-drawer').classList.toggle('open'); }
 
-    /* FUNÇÃO PARA EXPANDIR / RECOLHER O PAINEL DE FILTROS */
     function toggleFilterPanel() {
       document.getElementById('filter-card').classList.toggle('open');
     }
 
-    /* CARROSSEL DE DESTAQUES */
     function renderFeatured() {
       const container = document.getElementById('featured-card-content');
       const ref = featuredRefs[currentFeaturedIndex];
@@ -577,7 +575,7 @@
           if (allTag) allTag.classList.add('active');
         }
       }
-      applyFilters(); // Atualiza automaticamente ao trocar tag
+      applyFilters();
     }
 
     function getFilteredAccounts() {
@@ -622,7 +620,6 @@
       const container = document.getElementById('catalog-container');
       container.innerHTML = '';
 
-      // Atualiza o contador no cabeçalho do filtro
       const badge = document.getElementById('filter-count-badge');
       if (list.length === accounts.length) {
         badge.innerText = `(Exibindo todas as ${list.length} contas)`;
