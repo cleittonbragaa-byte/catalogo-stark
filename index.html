@@ -18,9 +18,30 @@
       padding: 20px; 
     }
     
-    header { text-align: center; margin-bottom: 25px; padding: 20px 0; border-bottom: 2px solid #1e293b; }
-    header h1 { color: #f59e0b; font-size: 2.5rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
-    header p { color: #94a3b8; font-size: 1.1rem; }
+    /* ESTILO DO CABEÇALHO (BANNER DE IMAGEM) */
+    header { 
+      text-align: center; 
+      margin-bottom: 25px; 
+      padding: 10px 0; 
+    }
+    
+    .header-banner {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ESTILO DO DIVISOR ELEGANTE (NEON) */
+    .glow-divider {
+      width: 85%;
+      height: 2px;
+      margin: 40px auto;
+      background: linear-gradient(90deg, transparent, #00ffcc, transparent);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+    }
 
     /* ABA LATERAL FLUTUANTE - GRUPOS DO WHATSAPP */
     .whatsapp-drawer-wrapper {
@@ -103,7 +124,7 @@
     .drawer-group-btn:hover { background: #25d366; color: #fff; border-color: #25d366; transform: translateX(-4px); }
 
     /* PAINEL DE FILTROS */
-    .filter-card { background: rgba(22, 30, 46, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 35px; backdrop-filter: blur(8px); }
+    .filter-card { background: rgba(22, 30, 46, 0.85); border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 10px; backdrop-filter: blur(8px); }
     .filter-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 15px; }
     .filter-section-header:first-child { margin-top: 0; }
     .filter-section-title { font-size: 0.85rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; }
@@ -204,10 +225,10 @@
 </head>
 <body>
 
+  <!-- CABEÇALHO COM A IMAGEM -->
   <header>
-    <h1>💥 STARK GAMES 💥</h1>
-    <p>Catálogo Oficial de Contas - Lords Mobile</p>
-  </header>
+  <img src="banner-cabecalho.jpg" alt="STARK GAMES - Catálogo Oficial de Contas" class="header-banner">
+</header>
 
   <div class="whatsapp-drawer-wrapper" id="whatsapp-drawer">
     <div class="whatsapp-drawer-toggle" onclick="toggleDrawer()">
@@ -305,6 +326,9 @@
       <button class="btn-search" id="btn-search-count" onclick="applyFilters()">Procurar Contas (0)</button>
     </div>
   </section>
+
+  <!-- DIVISOR ELEGANTE (NEON) ENTRE OS FILTROS E O CATÁLOGO -->
+  <div class="glow-divider"></div>
 
   <main class="catalog" id="catalog-container"></main>
 
@@ -824,22 +848,18 @@
       const checkedFeatures = Array.from(document.querySelectorAll('#features-checkboxes input:checked')).map(cb => cb.value.toLowerCase());
 
       let filtered = accounts.filter(acc => {
-        // Filtro por preço
         if (acc.priceTotal < minPrice || acc.priceTotal > maxPrice) return false;
 
-        // Filtro por tipo/tags
         if (!selectedTypes.includes('all')) {
           const hasType = selectedTypes.some(t => acc.types.some(accType => accType.toLowerCase() === t.toLowerCase()));
           if (!hasType) return false;
         }
 
-        // Filtro por checkboxes de Champs
         if (checkedChamps.length > 0) {
           const hasChamp = checkedChamps.some(c => acc.types.some(accType => accType.toLowerCase().includes(c)));
           if (!hasChamp) return false;
         }
 
-        // Filtro por características
         if (checkedFeatures.length > 0) {
           const hasFeature = checkedFeatures.some(f => acc.types.some(accType => accType.toLowerCase().includes(f)));
           if (!hasFeature) return false;
