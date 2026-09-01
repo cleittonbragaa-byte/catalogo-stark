@@ -509,7 +509,7 @@
         imgUrl: "REF R 65.jpeg"
       },
       {
-        ref: "REF MI 08",
+        ref: "REF MI08",
         types: ["t5", "restrita", "restrita 1600+"],
         stats: "K1811",
         details: [
@@ -655,7 +655,7 @@
         imgUrl: "REF MICG1053.jpeg"
       },
       {
-        ref: "REF MI 1223",
+        ref: "REF MI1223",
         types: ["fillers"], 
         stats: "7 Fam. Pagos Full / 7 Chinas",
         details: [
@@ -805,7 +805,6 @@
       document.getElementById('whatsapp-drawer').classList.toggle('open');
     }
 
-    // SUPORTE A MÚLTIPLA SELEÇÃO DE TAGS (PORCENTAGENS)
     function toggleTypeTag(element, type) {
       const allTag = document.querySelector('.type-tag[data-type="all"]');
 
@@ -844,12 +843,10 @@
       const sortOrder = document.getElementById('sort-order').value;
 
       let filtered = accounts.filter(acc => {
-        // Filtro por preço mínimo e máximo
         if (acc.priceTotal < minPrice || (maxPrice !== Infinity && acc.priceTotal > maxPrice)) {
           return false;
         }
 
-        // Filtro Múltiplo por Porcentagens/Atributos
         if (selectedTypes.length > 0) {
           const typeMatch = selectedTypes.some(selectedTag => {
             return acc.types.some(t => {
@@ -865,7 +862,6 @@
           if (!typeMatch) return false;
         }
 
-        // Filtro por Características Específicas
         if (selectedFeatures.length > 0) {
           const accDetailsString = (acc.details.join(' ') + ' ' + acc.types.join(' ') + ' ' + acc.stats).toLowerCase();
           
@@ -899,7 +895,6 @@
         return true;
       });
 
-      // ORDENAÇÃO POR PREÇO (MENOR -> MAIOR OU MAIOR -> MENOR)
       if (sortOrder === 'asc') {
         filtered.sort((a, b) => a.priceTotal - b.priceTotal);
       } else if (sortOrder === 'desc') {
@@ -989,30 +984,33 @@
       checkUrlHash();
     }
 
+    // GERAÇÃO DO ANÚNCIO DESTACADO PARA WHATSAPP
     function generateAdvertisementText(acc) {
       const baseUrl = window.location.href.split('#')[0];
       const accountLink = `${baseUrl}#${acc.ref.replace(/\s+/g, '-')}`;
 
       const formattedTotal = acc.priceTotal > 0 
-        ? `${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})} Valor`
+        ? `R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
         : 'Sob Consulta';
 
       const formattedEntry = acc.priceEntry > 0 
-        ? `${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})} Entrada`
-        : 'Consulte Entrada';
+        ? `A partir de R$ ${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
+        : 'Consulte condições de entrada';
 
-      const detailsText = acc.details.map(d => `  • ⚡ > ${d}`).join('\n');
+      const detailsText = acc.details.map(d => `  • ${d}`).join('\n');
 
-      let text = `🏆🦁STARK GAMES🦁\n`;
-      text += `${acc.ref}\n\n`;
+      let text = `🚨 *OFERTA IMPERDÍVEL - STARK GAMES* 🚨\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `🏆 *${acc.ref}* ── ${acc.stats || 'OPORTUNIDADE'}\n\n`;
+      text += `💥 *DESTAQUES DA CONTA:*\n`;
       text += `${detailsText}\n\n`;
-      text += `💸 ${formattedTotal}\n`;
-      text += `🪙 ${formattedEntry}\n\n`;
-      text += `-----------  ----------------\n`;
+      text += `💰 *VALOR:* ${formattedTotal}\n`;
+      text += `🪙 *ENTRADA:* ${formattedEntry}\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
       if (acc.driveUrl) {
-        text += `📁 Fotos da Conta: ${acc.driveUrl}\n`;
+        text += `📁 *Fotos da Conta:* ${acc.driveUrl}\n`;
       }
-      text += `🌐 Ver no Catálogo: ${accountLink}`;
+      text += `🌐 *Ver no Catálogo:* ${accountLink}`;
 
       return text;
     }
