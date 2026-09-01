@@ -255,7 +255,7 @@
     <div class="filter-section-header">
       <div class="filter-section-title">Quantidade de Champs</div>
     </div>
-    <div class="checkbox-grid">
+    <div class="checkbox-grid" id="champs-checkboxes">
       <label class="checkbox-item"><input type="checkbox" value="1 champ" onchange="updateSearch()"> 1 Champ</label>
       <label class="checkbox-item"><input type="checkbox" value="2 champ" onchange="updateSearch()"> 2 Champs</label>
       <label class="checkbox-item"><input type="checkbox" value="3 champ" onchange="updateSearch()"> 3 Champs</label>
@@ -269,7 +269,7 @@
     <div class="filter-section-header">
       <div class="filter-section-title">Outras Características Específicas</div>
     </div>
-    <div class="checkbox-grid">
+    <div class="checkbox-grid" id="features-checkboxes">
       <label class="checkbox-item"><input type="checkbox" value="tropa_magica_mana" onchange="updateSearch()"> Tropa Mágica / Mana</label>
       <label class="checkbox-item"><input type="checkbox" value="skin_lider" onchange="updateSearch()"> Skin de Líder</label>
       <label class="checkbox-item"><input type="checkbox" value="restrita_ate_1600" onchange="updateSearch()"> Restrita (K) até 1600</label>
@@ -368,7 +368,7 @@
       },
       {
         ref: "REF R 204",
-        types: ["900%", "tropa mana", "tropa mágica"],
+        types: ["900%", "tropa_magica_mana", "tropa mana", "tropa mágica"],
         stats: "977% / 966% / 901%",
         details: [
           "IND (FF) 977% / 966% / 901% 🔥",
@@ -415,7 +415,7 @@
       },
       {
         ref: "REF R 200",
-        types: ["1100%", "skin de líder"],
+        types: ["1100%", "7 Champs"],
         stats: "1169% / 1103% / 1130%",
         details: [
           "IND (FF) 1169% / 1103% / 1130% 🔥",
@@ -431,7 +431,7 @@
       },
       {
         ref: "REF MB 09",
-        types: ["tropa mana", "tropa mágica", "t5"],
+        types: ["tropa_magica_mana", "tropa mana", "tropa mágica", "t5"],
         stats: "51M Tropas Total",
         details: [
           "1.6M de Gemas 💎",
@@ -446,7 +446,7 @@
       },
       {
         ref: "REF MR 111",
-        types: ["1000%", "skin de líder"],
+        types: ["1000%", "1 Champ"],
         stats: "1046% / 1015% / 1050%",
         details: [
           "IND 1046% / 1015% / 1050% FF 🔥",
@@ -462,7 +462,7 @@
       },
       {
         ref: "REF M 365",
-        types: ["1200%", "4 champs", "4 champ", "tropa mana"],
+        types: ["1200%", "4 champ", "4 champs", "tropa_magica_mana", "tropa mana"],
         stats: "1204%",
         details: [
           "Bruta 1204% 🔥",
@@ -477,7 +477,7 @@
       },
       {
         ref: "REF R 208",
-        types: ["fillers"],
+        types: ["fillers", "900%"],
         stats: "883% / 859% / 906%",
         details: [
           "IND 883% / 859% / 906% 🔥",
@@ -510,7 +510,7 @@
       },
       {
         ref: "REF MI08",
-        types: ["t5", "restrita", "restrita 1600+"],
+        types: ["t5", "restrita_1600_plus", "restrita"],
         stats: "K1811",
         details: [
           "Restrita K1811 ⛓️",
@@ -524,7 +524,7 @@
       },
       {
         ref: "REF M 401",
-        types: ["1200%", "3 champs", "3 champ", "tropa mana"],
+        types: ["1200%", "3 champ", "3 champs", "tropa_magica_mana", "tropa mana"],
         stats: "1200%",
         details: [
           "3 Champs 🧡",
@@ -552,7 +552,7 @@
       },
       {
         ref: "REF MIR 027",
-        types: ["t5", "fillers", "restrita", "restrita 1600+"], 
+        types: ["t5", "fillers", "restrita_1600_plus", "restrita"], 
         stats: "K1720 / T5 Liberada",
         details: [
           "Restrita K1720",
@@ -566,7 +566,7 @@
       },
       {
         ref: "REF MIR 2215",
-        types: ["fillers", "restrita", "restrita 1600-"], 
+        types: ["fillers", "restrita_ate_1600", "restrita"], 
         stats: "K1430",
         details: [
           "Restrita K1430",
@@ -580,7 +580,7 @@
       },
       {
         ref: "REF MIR 2329",
-        types: ["fillers", "restrita", "restrita 1600+"], 
+        types: ["fillers", "restrita_1600_plus", "restrita"], 
         stats: "K1842",
         details: [
           "Restrita K1842",
@@ -594,7 +594,7 @@
       },
       {
         ref: "REF MIJ 1950",
-        types: ["1200%", "10 champs", "10 champ", "7 champ", "tropa mana"], 
+        types: ["1200%", "7 champ", "full champ", "tropa_magica_mana", "tropa mana"], 
         stats: "1246% / 820% HP",
         details: [
           "9 Champs 🧡 + 1 💛",
@@ -602,14 +602,14 @@
           "820% HP 😎",
           "Bônus 1246% 🔥"
         ],
-        priceTotal: 0,
+        priceTotal: 18000,
         priceEntry: 1600,
         driveUrl: "",
         imgUrl: "REF MIJ 1950.jpeg"
       },
       {
         ref: "REF M 602",
-        types: ["1400%", "5 champs", "5 champ", "tropa mana", "skin de líder"], 
+        types: ["1400%", "5 champ", "5 champs", "tropa_magica_mana", "tropa mana", "skin_lider", "skin de líder"], 
         stats: "1400%",
         details: [
           "2 Skin Leader 👑",
@@ -625,7 +625,7 @@
       },
       {
         ref: "REF M 601",
-        types: ["1300%", "6 champs", "6 champ", "tropa mana"], 
+        types: ["1300%", "6 champ", "6 champs", "tropa_magica_mana", "tropa mana"], 
         stats: "1375%",
         details: [
           "6 Champs 🧡",
@@ -642,7 +642,7 @@
       },
       {
         ref: "REF MICG1053",
-        types: ["fillers"], 
+        types: ["2 champs", "980%"], 
         stats: "FAM 10/6/6/4/3",
         details: [
           "FAM 10/6/6/4/3 😱",
@@ -656,11 +656,11 @@
       },
       {
         ref: "REF MI1223",
-        types: ["fillers"], 
+        types: ["tropas magicas", "3 Champs", "1100%"], 
         stats: "7 Fam. Pagos Full / 7 Chinas",
         details: [
           "7 Familiares pagos Full 😱",
-          "7 Chinas 🛑",
+          "7 Crinas 🛑",
           "Heróis pagos 💛"
         ],
         priceTotal: 6000,
@@ -670,7 +670,7 @@
       },
       {
         ref: "REF M 43",
-        types: ["1400%", "16 champs", "7 champ", "tropa mana"], 
+        types: ["1400%", "7 champ", "full champ", "tropa_magica_mana", "tropa mana"], 
         stats: "1444% / 1407% / 1415%",
         details: [
           "IND 1444/1407/1415% FF 🔥",
@@ -686,7 +686,7 @@
       },
       {
         ref: "REF M 603",
-        types: ["1100%", "3 champs", "3 champ", "tropa mana"], 
+        types: ["1100%", "3 champ", "3 champs", "tropa_magica_mana", "tropa mana"], 
         stats: "1105%",
         details: [
           "3 Champs (2+1) 🧡",
@@ -702,7 +702,7 @@
       },
       {
         ref: "REF MR 605",
-        types: ["1200%", "tropa mana", "2 champs", "2 champ"], 
+        types: ["1200%", "tropa_magica_mana", "tropa mana", "2 champ", "2 champs"], 
         stats: "1225%",
         details: [
           "2 Champ🧡💛 / 4 Taças🧡",
@@ -717,7 +717,7 @@
       },
       {
         ref: "REF MC 31",
-        types: ["1200%", "tropa mágica", "restrita", "skin de líder"], 
+        types: ["1200%", "tropa_magica_mana", "tropa mágica", "restrita_ate_1600", "restrita", "skin_lider"], 
         stats: "1214 / 1206 / 1198% FF",
         details: [
           "IND 1214/1206/1198% FF",
@@ -733,7 +733,7 @@
       },
       {
         ref: "REF R 207",
-        types: ["1 champ", "1000%", "1083%"], 
+        types: ["1 champ", "1000%"], 
         stats: "1 Champ / 1 Taça / 5 Fam Full",
         details: [
           "1 Champ🧡",
@@ -749,7 +749,7 @@
       },
       {
         ref: "REF R 125",
-        types: ["1100%", "2 champs", "2 champ"],
+        types: ["1100%", "2 champ", "2 champs"],
         stats: "1094% / 1002% / 1106%",
         details: [
           "2 Champs 🧡",
@@ -766,7 +766,7 @@
       },
       {
         ref: "REF MR 360",
-        types: ["1100%", "7 champs", "7 champ"], 
+        types: ["1100%", "7 champ", "full champ"], 
         stats: "1150% / 1110% / 1153%",
         details: [
           "IND FF 1150% / 1110% / 1153%",
@@ -779,122 +779,84 @@
         priceEntry: 1500,
         driveUrl: "https://photos.app.goo.gl/4VNyE8eJ4LdgGjAt7",
         imgUrl: "REF MR 360.jpeg"
-      },
-      {
-        ref: "REF MR 603",
-        types: ["1400%", "7 champ", "full champs", "tropa mana", "skin de líder"], 
-        stats: "1400%",
-        details: [
-          "11 Champs (10+1) 🧡",
-          "Bônus 1400% 🔥",
-          "30 Heróis 💛",
-          "Tropa Mana Lv2 💜",
-          "Parcelas de R$ 1.200,00 🤩"
-        ],
-        priceTotal: 34500,
-        priceEntry: 3500,
-        driveUrl: "https://photos.app.goo.gl/",
-        imgUrl: "REF MR 603.jpeg"
       }
     ];
 
-    let selectedTypes = [];
-    let currentSelectedRef = '';
+    let selectedTypes = ['all'];
+    let currentAccountRef = "";
 
     function toggleDrawer() {
       document.getElementById('whatsapp-drawer').classList.toggle('open');
     }
 
-    function toggleTypeTag(element, type) {
-      const allTag = document.querySelector('.type-tag[data-type="all"]');
-
+    function toggleTypeTag(el, type) {
       if (type === 'all') {
-        selectedTypes = [];
-        document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
-        allTag.classList.add('active');
+        selectedTypes = ['all'];
+        document.querySelectorAll('.type-tag').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
       } else {
-        allTag.classList.remove('active');
+        const allTag = document.querySelector('.type-tag[data-type="all"]');
+        if (allTag) allTag.classList.remove('active');
         
-        if (selectedTypes.includes(type)) {
-          selectedTypes = selectedTypes.filter(t => t !== type);
-          element.classList.remove('active');
-        } else {
-          selectedTypes.push(type);
-          element.classList.add('active');
-        }
+        selectedTypes = selectedTypes.filter(t => t !== 'all');
 
-        if (selectedTypes.length === 0) {
-          allTag.classList.add('active');
+        if (el.classList.contains('active')) {
+          el.classList.remove('active');
+          selectedTypes = selectedTypes.filter(t => t !== type);
+          if (selectedTypes.length === 0) {
+            selectedTypes = ['all'];
+            if (allTag) allTag.classList.add('active');
+          }
+        } else {
+          el.classList.add('active');
+          selectedTypes.push(type);
         }
       }
-
       updateSearch();
     }
 
-    function getSelectedCheckboxes() {
-      const checkboxes = document.querySelectorAll('.checkbox-grid input[type="checkbox"]:checked');
-      return Array.from(checkboxes).map(cb => cb.value.toLowerCase());
-    }
-
-    function filterAccounts() {
+    function getFilteredAccounts() {
       const minPrice = parseFloat(document.getElementById('price-min').value) || 0;
       const maxPrice = parseFloat(document.getElementById('price-max').value) || Infinity;
-      const selectedFeatures = getSelectedCheckboxes();
       const sortOrder = document.getElementById('sort-order').value;
 
+      const checkedChamps = Array.from(document.querySelectorAll('#champs-checkboxes input:checked')).map(cb => cb.value.toLowerCase());
+      const checkedFeatures = Array.from(document.querySelectorAll('#features-checkboxes input:checked')).map(cb => cb.value.toLowerCase());
+
       let filtered = accounts.filter(acc => {
-        if (acc.priceTotal < minPrice || (maxPrice !== Infinity && acc.priceTotal > maxPrice)) {
-          return false;
+        // Preço
+        if (acc.priceTotal < minPrice || acc.priceTotal > maxPrice) return false;
+
+        // Tipo / Atributo (Tags)
+        if (!selectedTypes.includes('all')) {
+          const accTypesLower = acc.types.map(t => t.toLowerCase());
+          const hasType = selectedTypes.some(st => accTypesLower.includes(st.toLowerCase()));
+          if (!hasType) return false;
         }
 
-        if (selectedTypes.length > 0) {
-          const typeMatch = selectedTypes.some(selectedTag => {
-            return acc.types.some(t => {
-              const tag = selectedTag.toLowerCase();
-              const itemType = t.toLowerCase();
-              if (tag === '1500%+') {
-                return itemType.includes('1500%+') || itemType.includes('1600%');
-              }
-              return itemType.includes(tag);
-            });
+        // Checkboxes de Champs
+        if (checkedChamps.length > 0) {
+          const accTypesLower = acc.types.map(t => t.toLowerCase());
+          const hasChampMatch = checkedChamps.some(cc => accTypesLower.includes(cc));
+          if (!hasChampMatch) return false;
+        }
+
+        // Checkboxes de Características
+        if (checkedFeatures.length > 0) {
+          const accTypesLower = acc.types.map(t => t.toLowerCase());
+          const accDetailsLower = acc.details.map(d => d.toLowerCase()).join(" ");
+
+          const hasFeatureMatch = checkedFeatures.every(feat => {
+            return accTypesLower.includes(feat) || accDetailsLower.includes(feat);
           });
 
-          if (!typeMatch) return false;
-        }
-
-        if (selectedFeatures.length > 0) {
-          const accDetailsString = (acc.details.join(' ') + ' ' + acc.types.join(' ') + ' ' + acc.stats).toLowerCase();
-          
-          for (let feature of selectedFeatures) {
-            if (feature === 'tropa_magica_mana') {
-              if (!accDetailsString.includes('mana') && !accDetailsString.includes('mágica') && !accDetailsString.includes('magica')) return false;
-            } else if (feature === 'skin_lider') {
-              if (!accDetailsString.includes('skin') && !accDetailsString.includes('líder') && !accDetailsString.includes('lider')) return false;
-            } else if (feature === 'restrita_ate_1600') {
-              const kMatch = accDetailsString.match(/k(\d+)/);
-              if (kMatch) {
-                const kNum = parseInt(kMatch[1]);
-                if (kNum > 1600) return false;
-              } else if (!accDetailsString.includes('restrita')) {
-                return false;
-              }
-            } else if (feature === 'restrita_1600_plus') {
-              const kMatch = accDetailsString.match(/k(\d+)/);
-              if (kMatch) {
-                const kNum = parseInt(kMatch[1]);
-                if (kNum <= 1600) return false;
-              } else if (!accDetailsString.includes('restrita')) {
-                return false;
-              }
-            } else {
-              if (!accDetailsString.includes(feature)) return false;
-            }
-          }
+          if (!hasFeatureMatch) return false;
         }
 
         return true;
       });
 
+      // Ordenação
       if (sortOrder === 'asc') {
         filtered.sort((a, b) => a.priceTotal - b.priceTotal);
       } else if (sortOrder === 'desc') {
@@ -905,21 +867,20 @@
     }
 
     function updateSearch() {
-      const filtered = filterAccounts();
+      const filtered = getFilteredAccounts();
       document.getElementById('btn-search-count').innerText = `Procurar Contas (${filtered.length})`;
     }
 
     function applyFilters() {
-      const filtered = filterAccounts();
-      renderCatalog(filtered);
+      renderCatalog(getFilteredAccounts());
     }
 
     function clearFilters() {
-      selectedTypes = [];
-      document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
+      selectedTypes = ['all'];
+      document.querySelectorAll('.type-tag').forEach(t => t.classList.remove('active'));
       document.querySelector('.type-tag[data-type="all"]').classList.add('active');
 
-      document.querySelectorAll('.checkbox-grid input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
       document.getElementById('price-min').value = '';
       document.getElementById('price-max').value = '';
       document.getElementById('sort-order').value = 'default';
@@ -928,35 +889,26 @@
       renderCatalog(accounts);
     }
 
-    function renderCatalog(items) {
+    function renderCatalog(data) {
       const container = document.getElementById('catalog-container');
       container.innerHTML = '';
 
-      if (items.length === 0) {
+      if (data.length === 0) {
         container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8; font-size: 1.2rem;">Nenhuma conta encontrada com os filtros selecionados.</div>`;
         return;
       }
 
-      items.forEach(acc => {
+      data.forEach(acc => {
         const card = document.createElement('div');
         card.className = 'card';
-        const cardId = acc.ref.replace(/\s+/g, '-');
-        card.id = cardId;
-
-        const formattedTotal = acc.priceTotal > 0 
-          ? `R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
-          : 'Sob Consulta';
-
-        const formattedEntry = acc.priceEntry > 0 
-          ? `Entrada a partir de R$ ${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
-          : 'Consulte condições de entrada';
+        card.id = acc.ref.replace(/\s+/g, '-');
 
         const detailsHtml = acc.details.map(d => `<li>${d}</li>`).join('');
 
         card.innerHTML = `
-          <div class="card-header-badge">${acc.stats || 'OPORTUNIDADE'}</div>
+          <div class="card-header-badge">${acc.stats}</div>
           <div class="card-img-container">
-            <img class="card-img" src="${acc.imgUrl}" alt="${acc.ref}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=STARK+GAMES'">
+            <img class="card-img" src="${acc.imgUrl}" alt="${acc.ref}" onerror="this.src='https://via.placeholder.com/400x500/0f172a/f59e0b?text=${encodeURIComponent(acc.ref)}'">
           </div>
           <div class="card-body">
             <div>
@@ -967,117 +919,39 @@
             </div>
             <div>
               <div class="price-box">
-                <div class="main-price">${formattedTotal}</div>
-                <div class="down-payment">${formattedEntry}</div>
+                <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR')},00</div>
+                <div class="down-payment">Entrada: R$ ${acc.priceEntry.toLocaleString('pt-BR')},00</div>
               </div>
               <div class="actions">
-                ${acc.driveUrl ? `<a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Fotos</a>` : `<button class="btn btn-drive" disabled style="opacity: 0.5;">📁 Fotos</button>`}
-                <button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>
-                <button class="btn btn-share" onclick="shareAccount('${acc.ref}')">🔗 Enviar</button>
+                <a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Fotos</a>
+                <button onclick="openVendorModal('${acc.ref}')" class="btn btn-whatsapp">💬 Comprar</button>
+                <button onclick="shareAccount('${acc.ref}')" class="btn btn-share">🔗 Compartilhar</button>
               </div>
             </div>
           </div>
         `;
         container.appendChild(card);
       });
-
-      checkUrlHash();
-    }
-
-    // GERAÇÃO DO ANÚNCIO DESTACADO PARA WHATSAPP
-    function generateAdvertisementText(acc) {
-      const baseUrl = window.location.href.split('#')[0];
-      const accountLink = `${baseUrl}#${acc.ref.replace(/\s+/g, '-')}`;
-
-      const formattedTotal = acc.priceTotal > 0 
-        ? `R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
-        : 'Sob Consulta';
-
-      const formattedEntry = acc.priceEntry > 0 
-        ? `A partir de R$ ${acc.priceEntry.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
-        : 'Consulte condições de entrada';
-
-      const detailsText = acc.details.map(d => `  • ${d}`).join('\n');
-
-      let text = `🚨 *OFERTA IMPERDÍVEL - STARK GAMES* 🚨\n`;
-      text += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      text += `🏆 *${acc.ref}* ── ${acc.stats || 'OPORTUNIDADE'}\n\n`;
-      text += `💥 *DESTAQUES DA CONTA:*\n`;
-      text += `${detailsText}\n\n`;
-      text += `💰 *VALOR:* ${formattedTotal}\n`;
-      text += `🪙 *ENTRADA:* ${formattedEntry}\n`;
-      text += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      if (acc.driveUrl) {
-        text += `📁 *Fotos da Conta:* ${acc.driveUrl}\n`;
-      }
-      text += `🌐 *Ver no Catálogo:* ${accountLink}`;
-
-      return text;
-    }
-
-    function shareAccount(ref) {
-      const acc = accounts.find(a => a.ref === ref);
-      if (!acc) return;
-
-      const fullAdText = generateAdvertisementText(acc);
-
-      if (navigator.share) {
-        navigator.share({
-          title: `Conta ${acc.ref} - Stark Games`,
-          text: fullAdText
-        }).catch(() => {});
-      } else {
-        navigator.clipboard.writeText(fullAdText).then(() => {
-          alert(`Anúncio completo da ${ref} copiado com sucesso!`);
-        }).catch(() => {
-          prompt("Copie o anúncio abaixo:", fullAdText);
-        });
-      }
-    }
-
-    function checkUrlHash() {
-      if (window.location.hash) {
-        const targetId = window.location.hash.substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          setTimeout(() => {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            targetElement.classList.add('highlighted');
-          }, 300);
-        }
-      }
     }
 
     function openVendorModal(ref) {
-      currentSelectedRef = ref;
-      const listContainer = document.getElementById('vendor-list');
-      listContainer.innerHTML = '';
+      currentAccountRef = ref;
+      const vendorList = document.getElementById('vendor-list');
+      vendorList.innerHTML = '';
 
-      const acc = accounts.find(a => a.ref === ref);
-      if (!acc) return;
+      VENDEDORES.forEach(v => {
+        const msg = encodeURIComponent(`Olá ${v.nome}, tenho interesse na conta ${currentAccountRef} do catálogo Stark Games!`);
+        const link = `https://wa.me/${v.numero}?text=${msg}`;
 
-      const adText = generateAdvertisementText(acc);
-
-      VENDEDORES.forEach(vendor => {
-        const textMessage = `Olá ${vendor.nome}, tenho interesse na conta ${currentSelectedRef}!\n\n${adText}`;
-        const message = encodeURIComponent(textMessage);
-        const waUrl = `https://wa.me/${vendor.numero}?text=${message}`;
-
-        const vendorCard = document.createElement('a');
-        vendorCard.className = 'vendor-card';
-        vendorCard.href = waUrl;
-        vendorCard.target = '_blank';
-        vendorCard.rel = 'noopener';
-        vendorCard.onclick = closeVendorModal;
-
-        vendorCard.innerHTML = `
-          <img class="vendor-avatar" src="${vendor.foto}" alt="${vendor.nome}">
-          <div class="vendor-info">
-            <div class="vendor-name">${vendor.nome}</div>
-            <div class="vendor-status">Disponível no WhatsApp</div>
-          </div>
+        vendorList.innerHTML += `
+          <a href="${link}" target="_blank" rel="noopener" class="vendor-card" onclick="closeVendorModal()">
+            <img src="${v.foto}" class="vendor-avatar" alt="${v.nome}">
+            <div class="vendor-info">
+              <div class="vendor-name">${v.nome}</div>
+              <div class="vendor-status">Atendimento Online</div>
+            </div>
+          </a>
         `;
-        listContainer.appendChild(vendorCard);
       });
 
       document.getElementById('vendor-modal').style.display = 'flex';
@@ -1087,15 +961,36 @@
       document.getElementById('vendor-modal').style.display = 'none';
     }
 
-    document.getElementById('vendor-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeVendorModal();
+    function shareAccount(ref) {
+      const url = `${window.location.origin}${window.location.pathname}?ref=${encodeURIComponent(ref)}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          alert(`Link da conta ${ref} copiado com sucesso!`);
+        });
+      } else {
+        alert(`Copie o link: ${url}`);
+      }
+    }
+
+    // Inicialização ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCatalog(accounts);
+      updateSearch();
+
+      // Checar se veio com parâmetro REF na URL
+      const params = new URLSearchParams(window.location.search);
+      const targetRef = params.get('ref');
+      if (targetRef) {
+        const cardId = targetRef.replace(/\s+/g, '-');
+        setTimeout(() => {
+          const targetEl = document.getElementById(cardId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetEl.classList.add('highlighted');
+          }
+        }, 400);
+      }
     });
-
-    window.addEventListener('hashchange', checkUrlHash);
-
-    // Inicialização
-    updateSearch();
-    renderCatalog(accounts);
   </script>
 </body>
 </html>
