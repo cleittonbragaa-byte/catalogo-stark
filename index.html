@@ -129,8 +129,19 @@
 
     /* GRID DO CATÁLOGO */
     .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .card { background: rgba(22, 30, 46, 0.90); border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; transition: all 0.3s ease; display: flex; flex-direction: column; backdrop-filter: blur(6px); }
+    .card { background: rgba(22, 30, 46, 0.90); border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; transition: all 0.3s ease; display: flex; flex-direction: column; backdrop-filter: blur(6px); scroll-margin-top: 20px; }
     .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(34, 197, 94, 0.15); border-color: #22c55e; }
+    
+    /* ANIMAÇÃO DE DESTAQUE AO ABRIR LINK DIRETO */
+    .card.highlighted {
+      animation: pulseHighlight 2.5s ease-out;
+    }
+    @keyframes pulseHighlight {
+      0% { border-color: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+      50% { border-color: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+      100% { border-color: #1e293b; box-shadow: none; }
+    }
+
     .card-header-badge { background: #f59e0b; color: #000; font-weight: 900; padding: 6px 12px; font-size: 0.85rem; text-transform: uppercase; text-align: center; }
     
     .card-img-container { position: relative; width: 100%; height: auto; background: #050811; overflow: hidden; display: flex; justify-content: center; align-items: center; }
@@ -146,12 +157,15 @@
     .main-price { font-size: 1.5rem; color: #10b981; font-weight: 800; }
     .down-payment { font-size: 0.9rem; color: #f59e0b; margin-top: 4px; font-weight: 600; }
 
-    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
-    .btn { padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; text-decoration: none; text-align: center; transition: background 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+    /* BOTÕES DA CONTA (GRID EM 3 COLUNAS PARA COMPARTILHAR) */
+    .actions { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 6px; margin-top: auto; }
+    .btn { padding: 10px 6px; border-radius: 8px; font-weight: bold; font-size: 0.8rem; text-decoration: none; text-align: center; transition: background 0.2s, transform 0.1s; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border: none; cursor: pointer; }
     .btn-drive { background: #334155; color: #f8fafc; }
     .btn-drive:hover { background: #475569; }
-    .btn-whatsapp { background: #25d366; color: #fff; border: none; cursor: pointer; }
+    .btn-whatsapp { background: #25d366; color: #fff; }
     .btn-whatsapp:hover { background: #1da851; }
+    .btn-share { background: #0284c7; color: #fff; }
+    .btn-share:hover { background: #0369a1; }
 
     /* MODAL DE SELEÇÃO DE VENDEDOR */
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
@@ -481,7 +495,7 @@
         imgUrl: "REF R 65.jpeg"
       },
       {
-        ref: "REF MI08",
+        ref: "REF MI 08",
         types: ["t5", "restrita", "restrita 1600+"],
         stats: "K1811",
         details: [
@@ -492,7 +506,7 @@
         priceTotal: 3000,
         priceEntry: 500,
         driveUrl: "https://photos.app.goo.gl/1B2B3DUoBLCRhQ4t5",
-        imgUrl: "REF MI08.jpeg"
+        imgUrl: "REF MI 08.jpeg"
       },
       {
         ref: "REF M 401",
@@ -627,7 +641,7 @@
         imgUrl: "REF MICG1053.jpeg"
       },
       {
-        ref: "REF MI1223",
+        ref: "REF MI 1223",
         types: ["fillers"], 
         stats: "7 Fam. Pagos Full / 7 Chinas",
         details: [
@@ -638,7 +652,7 @@
         priceTotal: 6000,
         priceEntry: 800,
         driveUrl: "https://photos.app.goo.gl/hGUQ5xQsTEdJs2J97",
-        imgUrl: "REF MI1223.jpeg"
+        imgUrl: "REF MI 1223.jpeg"
       },
       {
         ref: "REF M 43",
@@ -883,6 +897,8 @@
       items.forEach(acc => {
         const card = document.createElement('div');
         card.className = 'card';
+        const cardId = acc.ref.replace(/\s+/g, '-');
+        card.id = cardId; // Define ID único no HTML para a âncora funcionar
 
         const formattedTotal = acc.priceTotal > 0 
           ? `R$ ${acc.priceTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`
@@ -912,14 +928,52 @@
                 <div class="down-payment">${formattedEntry}</div>
               </div>
               <div class="actions">
-                ${acc.driveUrl ? `<a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Fotos / Drive</a>` : `<button class="btn btn-drive" disabled style="opacity: 0.5;">📁 Sem fotos</button>`}
+                ${acc.driveUrl ? `<a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Fotos</a>` : `<button class="btn btn-drive" disabled style="opacity: 0.5;">📁 Fotos</button>`}
                 <button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>
+                <button class="btn btn-share" onclick="shareAccount('${acc.ref}')">🔗 Enviar</button>
               </div>
             </div>
           </div>
         `;
         container.appendChild(card);
       });
+
+      // Rola automaticamente para o card se houver hash na URL ao carregar
+      checkUrlHash();
+    }
+
+    function shareAccount(ref) {
+      const baseUrl = window.location.href.split('#')[0];
+      const accountLink = `${baseUrl}#${ref.replace(/\s+/g, '-')}`;
+      const shareTitle = `Conta ${ref} - Stark Games`;
+      const shareText = `Confira os detalhes da conta ${ref} no catálogo da Stark Games:`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: accountLink
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(accountLink).then(() => {
+          alert(`Link da ${ref} copiado para a área de transferência!`);
+        }).catch(() => {
+          prompt("Copie o link abaixo:", accountLink);
+        });
+      }
+    }
+
+    function checkUrlHash() {
+      if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetElement.classList.add('highlighted');
+          }, 300);
+        }
+      }
     }
 
     function openVendorModal(ref) {
@@ -927,8 +981,12 @@
       const listContainer = document.getElementById('vendor-list');
       listContainer.innerHTML = '';
 
+      const baseUrl = window.location.href.split('#')[0];
+      const accountLink = `${baseUrl}#${ref.replace(/\s+/g, '-')}`;
+
       VENDEDORES.forEach(vendor => {
-        const message = encodeURIComponent(`Olá ${vendor.nome}, tenho interesse na conta ${currentSelectedRef} do catálogo Stark Games!`);
+        const textMessage = `Olá ${vendor.nome}, tenho interesse na conta ${currentSelectedRef} do catálogo Stark Games!\n\nLink do Anúncio:\n${accountLink}`;
+        const message = encodeURIComponent(textMessage);
         const waUrl = `https://wa.me/${vendor.numero}?text=${message}`;
 
         const vendorCard = document.createElement('a');
@@ -955,10 +1013,11 @@
       document.getElementById('vendor-modal').style.display = 'none';
     }
 
-    // Fechar modal clicando fora da caixa
     document.getElementById('vendor-modal').addEventListener('click', function(e) {
       if (e.target === this) closeVendorModal();
     });
+
+    window.addEventListener('hashchange', checkUrlHash);
 
     // Inicialização
     updateSearch();
