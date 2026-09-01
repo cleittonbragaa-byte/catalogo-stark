@@ -764,52 +764,52 @@
         driveUrl: "https://photos.app.goo.gl/nim4c1XhTYujZfxn7",
         imgUrl: "REF R 125.jpeg"
       },
-      {
+     {
         ref: "REF MR 360",
         types: ["1100%", "7 champ", "full champ"], 
         stats: "1150% / 1110% / 1153%",
         details: [
+          "7 Champs 🧡",
           "IND FF 1150% / 1110% / 1153%",
-          "5 Taças 🧡",
-          "1M Gemas 🤩",
-          "27M Tropas 🪖",
-          "Aceita conta de entrada 🛑"
+          "Ótimo Set de Ataque ⚔️"
         ],
-        priceTotal: 10500,
-        priceEntry: 1500,
-        driveUrl: "https://photos.app.goo.gl/4VNyE8eJ4LdgGjAt7",
+        priceTotal: 4500,
+        priceEntry: 600,
+        driveUrl: "https://photos.app.goo.gl/",
         imgUrl: "REF MR 360.jpeg"
       }
     ];
 
-    let selectedTypes = ['all'];
-    let currentAccountRef = "";
+    let selectedTypes = ["all"];
+    let currentRefForModal = "";
 
     function toggleDrawer() {
       document.getElementById('whatsapp-drawer').classList.toggle('open');
     }
 
-    function toggleTypeTag(el, type) {
+    function toggleTypeTag(element, type) {
       if (type === 'all') {
         selectedTypes = ['all'];
-        document.querySelectorAll('.type-tag').forEach(t => t.classList.remove('active'));
-        el.classList.add('active');
+        document.querySelectorAll('.type-tag').forEach(tag => tag.classList.remove('active'));
+        element.classList.add('active');
       } else {
         const allTag = document.querySelector('.type-tag[data-type="all"]');
         if (allTag) allTag.classList.remove('active');
         
-        selectedTypes = selectedTypes.filter(t => t !== 'all');
+        const index = selectedTypes.indexOf('all');
+        if (index > -1) selectedTypes.splice(index, 1);
 
-        if (el.classList.contains('active')) {
-          el.classList.remove('active');
-          selectedTypes = selectedTypes.filter(t => t !== type);
-          if (selectedTypes.length === 0) {
-            selectedTypes = ['all'];
-            if (allTag) allTag.classList.add('active');
-          }
-        } else {
-          el.classList.add('active');
+        element.classList.toggle('active');
+        if (element.classList.contains('active')) {
           selectedTypes.push(type);
+        } else {
+          const tIndex = selectedTypes.indexOf(type);
+          if (tIndex > -1) selectedTypes.splice(tIndex, 1);
+        }
+
+        if (selectedTypes.length === 0) {
+          selectedTypes = ['all'];
+          if (allTag) allTag.classList.add('active');
         }
       }
       updateSearch();
@@ -824,39 +824,30 @@
       const checkedFeatures = Array.from(document.querySelectorAll('#features-checkboxes input:checked')).map(cb => cb.value.toLowerCase());
 
       let filtered = accounts.filter(acc => {
-        // Preço
+        // Filtro por preço
         if (acc.priceTotal < minPrice || acc.priceTotal > maxPrice) return false;
 
-        // Tipo / Atributo (Tags)
+        // Filtro por tipo/tags
         if (!selectedTypes.includes('all')) {
-          const accTypesLower = acc.types.map(t => t.toLowerCase());
-          const hasType = selectedTypes.some(st => accTypesLower.includes(st.toLowerCase()));
+          const hasType = selectedTypes.some(t => acc.types.some(accType => accType.toLowerCase() === t.toLowerCase()));
           if (!hasType) return false;
         }
 
-        // Checkboxes de Champs
+        // Filtro por checkboxes de Champs
         if (checkedChamps.length > 0) {
-          const accTypesLower = acc.types.map(t => t.toLowerCase());
-          const hasChampMatch = checkedChamps.some(cc => accTypesLower.includes(cc));
-          if (!hasChampMatch) return false;
+          const hasChamp = checkedChamps.some(c => acc.types.some(accType => accType.toLowerCase().includes(c)));
+          if (!hasChamp) return false;
         }
 
-        // Checkboxes de Características
+        // Filtro por características
         if (checkedFeatures.length > 0) {
-          const accTypesLower = acc.types.map(t => t.toLowerCase());
-          const accDetailsLower = acc.details.map(d => d.toLowerCase()).join(" ");
-
-          const hasFeatureMatch = checkedFeatures.every(feat => {
-            return accTypesLower.includes(feat) || accDetailsLower.includes(feat);
-          });
-
-          if (!hasFeatureMatch) return false;
+          const hasFeature = checkedFeatures.some(f => acc.types.some(accType => accType.toLowerCase().includes(f)));
+          if (!hasFeature) return false;
         }
 
         return true;
       });
 
-      // Ordenação
       if (sortOrder === 'asc') {
         filtered.sort((a, b) => a.priceTotal - b.priceTotal);
       } else if (sortOrder === 'desc') {
@@ -866,39 +857,16 @@
       return filtered;
     }
 
-    function updateSearch() {
-      const filtered = getFilteredAccounts();
-      document.getElementById('btn-search-count').innerText = `Procurar Contas (${filtered.length})`;
-    }
-
-    function applyFilters() {
-      renderCatalog(getFilteredAccounts());
-    }
-
-    function clearFilters() {
-      selectedTypes = ['all'];
-      document.querySelectorAll('.type-tag').forEach(t => t.classList.remove('active'));
-      document.querySelector('.type-tag[data-type="all"]').classList.add('active');
-
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      document.getElementById('price-min').value = '';
-      document.getElementById('price-max').value = '';
-      document.getElementById('sort-order').value = 'default';
-
-      updateSearch();
-      renderCatalog(accounts);
-    }
-
-    function renderCatalog(data) {
+    function renderCatalog(list) {
       const container = document.getElementById('catalog-container');
       container.innerHTML = '';
 
-      if (data.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8; font-size: 1.2rem;">Nenhuma conta encontrada com os filtros selecionados.</div>`;
+      if (list.length === 0) {
+        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8;">Nenhuma conta encontrada com os filtros selecionados.</p>';
         return;
       }
 
-      data.forEach(acc => {
+      list.forEach(acc => {
         const card = document.createElement('div');
         card.className = 'card';
         card.id = acc.ref.replace(/\s+/g, '-');
@@ -908,25 +876,19 @@
         card.innerHTML = `
           <div class="card-header-badge">${acc.stats}</div>
           <div class="card-img-container">
-            <img class="card-img" src="${acc.imgUrl}" alt="${acc.ref}" onerror="this.src='https://via.placeholder.com/400x500/0f172a/f59e0b?text=${encodeURIComponent(acc.ref)}'">
+            <img src="${acc.imgUrl}" alt="${acc.ref}" class="card-img" onerror="this.src='https://via.placeholder.com/400x300?text=Sem+Imagem'">
           </div>
           <div class="card-body">
-            <div>
-              <div class="ref-title">${acc.ref}</div>
-              <ul class="details-list">
-                ${detailsHtml}
-              </ul>
+            <div class="ref-title">${acc.ref}</div>
+            <ul class="details-list">${detailsHtml}</ul>
+            <div class="price-box">
+              <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR')}</div>
+              <div class="down-payment">Entrada de R$ ${acc.priceEntry.toLocaleString('pt-BR')}</div>
             </div>
-            <div>
-              <div class="price-box">
-                <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR')},00</div>
-                <div class="down-payment">Entrada: R$ ${acc.priceEntry.toLocaleString('pt-BR')},00</div>
-              </div>
-              <div class="actions">
-                <a href="${acc.driveUrl}" target="_blank" rel="noopener" class="btn btn-drive">📁 Fotos</a>
-                <button onclick="openVendorModal('${acc.ref}')" class="btn btn-whatsapp">💬 Comprar</button>
-                <button onclick="shareAccount('${acc.ref}')" class="btn btn-share">🔗 Compartilhar</button>
-              </div>
+            <div class="actions">
+              <a href="${acc.driveUrl || '#'}" target="_blank" class="btn btn-drive">📁 Fotos</a>
+              <button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>
+              <button class="btn btn-share" onclick="shareAccount('${acc.ref}')">🔗 Compartilhar</button>
             </div>
           </div>
         `;
@@ -934,17 +896,43 @@
       });
     }
 
+    function updateSearch() {
+      const filtered = getFilteredAccounts();
+      document.getElementById('btn-search-count').innerText = `Procurar Contas (${filtered.length})`;
+    }
+
+    function applyFilters() {
+      const filtered = getFilteredAccounts();
+      renderCatalog(filtered);
+    }
+
+    function clearFilters() {
+      document.getElementById('price-min').value = '';
+      document.getElementById('price-max').value = '';
+      document.getElementById('sort-order').value = 'default';
+      
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      
+      selectedTypes = ['all'];
+      document.querySelectorAll('.type-tag').forEach(tag => {
+        if (tag.getAttribute('data-type') === 'all') tag.classList.add('active');
+        else tag.classList.remove('active');
+      });
+
+      applyFilters();
+    }
+
     function openVendorModal(ref) {
-      currentAccountRef = ref;
+      currentRefForModal = ref;
       const vendorList = document.getElementById('vendor-list');
       vendorList.innerHTML = '';
 
       VENDEDORES.forEach(v => {
-        const msg = encodeURIComponent(`Olá ${v.nome}, tenho interesse na conta ${currentAccountRef} do catálogo Stark Games!`);
-        const link = `https://wa.me/${v.numero}?text=${msg}`;
-
+        const msg = encodeURIComponent(`Olá ${v.nome}! Tenho interesse na conta ${ref} do catálogo STARK GAMES.`);
+        const url = `https://wa.me/${v.numero}?text=${msg}`;
+        
         vendorList.innerHTML += `
-          <a href="${link}" target="_blank" rel="noopener" class="vendor-card" onclick="closeVendorModal()">
+          <a href="${url}" target="_blank" class="vendor-card">
             <img src="${v.foto}" class="vendor-avatar" alt="${v.nome}">
             <div class="vendor-info">
               <div class="vendor-name">${v.nome}</div>
@@ -962,35 +950,19 @@
     }
 
     function shareAccount(ref) {
-      const url = `${window.location.origin}${window.location.pathname}?ref=${encodeURIComponent(ref)}`;
+      const shareUrl = `${window.location.origin}${window.location.pathname}#${ref.replace(/\s+/g, '-')}`;
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(url).then(() => {
-          alert(`Link da conta ${ref} copiado com sucesso!`);
-        });
+        navigator.clipboard.writeText(shareUrl);
+        alert(`Link da conta ${ref} copiado para a área de transferência!`);
       } else {
-        alert(`Copie o link: ${url}`);
+        alert(`Link: ${shareUrl}`);
       }
     }
 
-    // Inicialização ao carregar
-    window.addEventListener('DOMContentLoaded', () => {
-      renderCatalog(accounts);
-      updateSearch();
-
-      // Checar se veio com parâmetro REF na URL
-      const params = new URLSearchParams(window.location.search);
-      const targetRef = params.get('ref');
-      if (targetRef) {
-        const cardId = targetRef.replace(/\s+/g, '-');
-        setTimeout(() => {
-          const targetEl = document.getElementById(cardId);
-          if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            targetEl.classList.add('highlighted');
-          }
-        }, 400);
-      }
-    });
+    // Inicialização do catálogo
+    window.onload = () => {
+      applyFilters();
+    };
   </script>
 </body>
 </html>
