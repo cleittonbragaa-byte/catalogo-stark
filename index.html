@@ -29,7 +29,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* CARROSSEL DE DESTAQUES (AMPLIADO) */
+    /* CARROSSEL DE DESTAQUES */
     .featured-container {
       max-width: 1200px;
       margin: 0 auto 30px auto;
@@ -205,7 +205,7 @@
     }
     .drawer-group-btn:hover { background: #25d366; color: #fff; border-color: #25d366; transform: translateX(-4px); }
 
-    /* PAINEL DE FILTROS RETRÁTIL */
+    /* PAINEL DE FILTROS */
     .filter-card { 
       background: rgba(22, 30, 46, 0.85); 
       border: 1px solid #1e293b; 
@@ -386,11 +386,8 @@
         <label class="checkbox-item"><input type="checkbox" value="1 champ" onchange="applyFilters()"> 1 Champ</label>
         <label class="checkbox-item"><input type="checkbox" value="2 champ" onchange="applyFilters()"> 2 Champs</label>
         <label class="checkbox-item"><input type="checkbox" value="3 champ" onchange="applyFilters()"> 3 Champs</label>
-        <label class="checkbox-item"><input type="checkbox" value="4 champ" onchange="applyFilters()"> 4 Champs</label>
-        <label class="checkbox-item"><input type="checkbox" value="5 champ" onchange="applyFilters()"> 5 Champs</label>
-        <label class="checkbox-item"><input type="checkbox" value="6 champ" onchange="applyFilters()"> 6 Champs</label>
-        <label class="checkbox-item"><input type="checkbox" value="7 champ" onchange="applyFilters()"> 7+ Champs</label>
         <label class="checkbox-item"><input type="checkbox" value="full champ" onchange="applyFilters()"> Full Champs</label>
+        <label class="checkbox-item"><input type="checkbox" value="4 champ+" onchange="applyFilters()"> 4 Champs+</label>
       </div>
 
       <div class="filter-section-header"><div class="filter-section-title">Outras Características Específicas</div></div>
@@ -443,7 +440,7 @@
 
   <script>
     const VENDEDORES = [
-      { nome: "Ribas", numero: "5555981208377", foto: "https://ui-avatars.com/api/?name=Ribas+MM&background=22c55e&color=fff&size=128" },
+      { nome: "Ribas MM", numero: "5555981208377", foto: "https://ui-avatars.com/api/?name=Ribas+MM&background=22c55e&color=fff&size=128" },
       { nome: "Missinha", numero: "5551991204526", foto: "https://ui-avatars.com/api/?name=Missinha&background=0284c7&color=fff&size=128" },
       { nome: "Dr. Abobrinha", numero: "5514997661879", foto: "https://ui-avatars.com/api/?name=Dr+Abobrinha&background=f59e0b&color=fff&size=128" },
       { nome: "Samuel", numero: "5522992336426", foto: "https://ui-avatars.com/api/?name=Samuel&background=8b5cf6&color=fff&size=128" },
@@ -455,10 +452,7 @@
       { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" }
     ];
 
-    // Array zerado para refazer o catálogo
     const accounts = [];
-
-    // Array de referências em destaque zerado
     const featuredRefs = [];
     let currentFeaturedIndex = 0;
     let featuredTimer = null;
