@@ -397,10 +397,10 @@
       <div class="checkbox-grid" id="features-checkboxes">
         <label class="checkbox-item"><input type="checkbox" value="tropa_magica_mana" onchange="applyFilters()"> Tropa Mágica / Mana</label>
         <label class="checkbox-item"><input type="checkbox" value="skin_lider" onchange="applyFilters()"> Skin de Líder</label>
-        <label class="checkbox-item"><input type="checkbox" value="restrita_ate_1600" onchange="applyFilters()"> Restrita (K) até 1600</label>
-        <label class="checkbox-item"><input type="checkbox" value="restrita_1600_plus" onchange="applyFilters()"> Restrita (K) 1600+</label>
+        <label class="checkbox-item"><input type="checkbox" value="skin_exercito" onchange="applyFilters()"> Skin de Exército</label>
+        <label class="checkbox-item"><input type="checkbox" value="restrita_ate_1699" onchange="applyFilters()"> Restrita (K) até 1699</label>
+        <label class="checkbox-item"><input type="checkbox" value="restrita_1700_plus" onchange="applyFilters()"> Restrita (K) 1700+</label>
         <label class="checkbox-item"><input type="checkbox" value="low quest" onchange="applyFilters()"> Low Quest</label>
-        <label class="checkbox-item"><input type="checkbox" value="t5" onchange="applyFilters()"> T5 Liberada</label>
       </div>
 
       <div class="filter-section-header"><div class="filter-section-title">Valores & Ordenação</div></div>
@@ -443,7 +443,7 @@
 
   <script>
     const VENDEDORES = [
-      { nome: "Ribas MM", numero: "5555981208377", foto: "https://ui-avatars.com/api/?name=Ribas+MM&background=22c55e&color=fff&size=128" },
+      { nome: "Ribas", numero: "5555981208377", foto: "https://ui-avatars.com/api/?name=Ribas+MM&background=22c55e&color=fff&size=128" },
       { nome: "Missinha", numero: "5551991204526", foto: "https://ui-avatars.com/api/?name=Missinha&background=0284c7&color=fff&size=128" },
       { nome: "Dr. Abobrinha", numero: "5514997661879", foto: "https://ui-avatars.com/api/?name=Dr+Abobrinha&background=f59e0b&color=fff&size=128" },
       { nome: "Samuel", numero: "5522992336426", foto: "https://ui-avatars.com/api/?name=Samuel&background=8b5cf6&color=fff&size=128" },
@@ -455,39 +455,11 @@
       { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" }
     ];
 
-    const accounts = [
-      { ref: "REF R 203", types: ["1100%", "1000%"], stats: "1091% / 1045% / 1170%", details: ["IND (FF) 1091% / 1045% / 1170% 🔥", "2.4M Gemas 😱", "Heróis P2W 💛", "44M Tropas ⚔️", "Skin Godzilla 🏰"], priceTotal: 3000, priceEntry: 800, driveUrl: "https://photos.app.goo.gl/MdGkZBaiYWJ4xVkG7", imgUrl: "REF R 203.jpeg" },
-      { ref: "REF RM 201", types: ["1000%", "3 champs", "3 champ"], stats: "1050% / 1010% / 1007%", details: ["IND (FF) 1050% / 1010% / 1007% 🔥", "3 Champs 🧡💛", "5 Fam Full + 1 Niv 7 🐉", "Elite ON ⚡", "Heróis (3 WH) 💛"], priceTotal: 3800, priceEntry: 800, driveUrl: "https://photos.app.goo.gl/6zXoUA5V7URxmmhd8", imgUrl: "REF RM 201.jpeg" },
-      { ref: "REF R 204", types: ["900%", "tropa_magica_mana"], stats: "977% / 966% / 901%", details: ["IND (FF) 977% / 966% / 901% 🔥", "1M Gemas 💎", "Elite ON ⚡", "45M Tropas ⚔️", "Tropas Mágicas 1 💜", "Aceita conta de Entrada 🛑"], priceTotal: 2500, priceEntry: 500, driveUrl: "https://photos.app.goo.gl/oV5GS8QQbZmMrp7c8", imgUrl: "REF R 204.jpeg" },
-      { ref: "REF C 64", types: ["1000%"], stats: "1056% / 1004% / 1036%", details: ["IND 1056% / 1004% / 1036% FF 🔥", "3 Taças Míticas 🧡", "4 FAM FULL + 1 Nvl 7 🐉", "16 Heróis 💛 (3 de WoW💛)"], priceTotal: 3000, priceEntry: 400, driveUrl: "https://drive.google.com/drive/folders/1OROPNPqjr-uFia4CmvyHXs_XzxMqC8vR", imgUrl: "REF C 64.jpeg" },
-      { ref: "REF R 101", types: ["1 champ", "fillers"], stats: "1 Champ", details: ["1 Champ 💛", "5 Heróis 💛", "26M Tropas ⚔️", "Elite ON ⚡"], priceTotal: 1500, priceEntry: 400, driveUrl: "https://photos.app.goo.gl/bjwad4taSLp9XArZ8", imgUrl: "REF R 101.jpeg" },
-      { ref: "REF R 200", types: ["1100%", "7 Champs", "7 champ"], stats: "1169% / 1103% / 1130%", details: ["IND (FF) 1169% / 1103% / 1130% 🔥", "25 Heróis 💛 (1x 11k 💛)", "1M de Gemas 💎", "Skin de Exército 👑", "7 Fam Pagos Full 💥"], priceTotal: 12000, priceEntry: 1500, driveUrl: "https://photos.app.goo.gl/ifBuYVgnqRwTMvqx8", imgUrl: "REF R 200.jpeg" },
-      { ref: "REF MB 09", types: ["tropa_magica_mana", "t5"], stats: "51M Tropas Total", details: ["1.6M de Gemas 💎", "Tropas Mágicas 85% 💜", "Bag Top 🎒", "1M de Cada T5 (51M Total) ⚔️"], priceTotal: 750, priceEntry: 300, driveUrl: "https://photos.app.goo.gl/VrS4vjz2acFRcTAh8", imgUrl: "REF MB 09.jpeg" },
-      { ref: "REF MR 111", types: ["1000%", "1 Champ"], stats: "1046% / 1015% / 1050%", details: ["IND 1046% / 1015% / 1050% FF 🔥", "6 Fam Pagos Full 💥", "Skin de Exército 👑", "5 Heróis 💛 (3 WH)", "22M Tropas ⚔️"], priceTotal: 2800, priceEntry: 600, driveUrl: "https://photos.app.goo.gl/q76ogNhyGAMHfJnH9", imgUrl: "REF MR 111.jpeg" },
-      { ref: "REF M 365", types: ["1200%", "4 champ", "tropa_magica_mana"], stats: "1204%", details: ["Bruta 1204% 🔥", "4 Champs / Taças 🧡", "Mana - 80% 💜", "6 Fams Lv10 + Vorme Lv9 🐉"], priceTotal: 8800, priceEntry: 1000, driveUrl: "https://photos.app.goo.gl/J8zppXGKrYHLVPzu8", imgUrl: "REF M 365.jpeg" },
-      { ref: "REF R 208", types: ["fillers", "900%"], stats: "883% / 859% / 906%", details: ["IND 883% / 859% / 906% 🔥", "Coelho Niv5 / Bonna Niv3 🐉", "1M de Gemas 💎", "Elite ON ⚡", "23M Tropas ⚔️", "Parcelado em 2x R$ 250,00 🪙"], priceTotal: 450, priceEntry: 250, driveUrl: "https://photos.app.goo.gl/kBRGcxkCk9yHUjWw8", imgUrl: "REF R 208.jpeg" },
-      { ref: "REF R 65", types: ["fillers"], stats: "646% / 693% / 635%", details: ["MIX (Furi) 646% / 693% / 635% 🔥", "Set Caça 💛🧡", "41M Tropas ⚔️", "Bag Top 🎒", "Elite ON ⚡"], priceTotal: 550, priceEntry: 250, driveUrl: "https://photos.app.goo.gl/hXDPcNdUBCfHxKQp8", imgUrl: "REF R 65.jpeg" },
-      { ref: "REF MI08", types: ["t5", "restrita_1600_plus"], stats: "K1811", details: ["Restrita K1811 ⛓️", "T5 / Elite ON ⚡", "Heróis pagos 💛💜"], priceTotal: 3000, priceEntry: 500, driveUrl: "https://photos.app.goo.gl/1B2B3DUoBLCRhQ4t5", imgUrl: "REF MI08.jpeg" },
-      { ref: "REF M 401", types: ["1200%", "3 champ", "tropa_magica_mana"], stats: "1200%", details: ["3 Champs 🧡", "Tropa Mana Lv 1 💜", "Bônus 1200% 🔥", "8 Fams Lv 10 🐉"], priceTotal: 6800, priceEntry: 850, driveUrl: "https://photos.app.goo.gl/J8yy6hn39yyXjPzv7", imgUrl: "REF M 401.jpeg" },
-      { ref: "REF MIR 016", types: ["t5", "fillers"], stats: "T5 Liberada", details: ["T5 Liberada ⚔️", "Bag Legal 🎒"], priceTotal: 300, priceEntry: 100, driveUrl: "https://photos.app.goo.gl/UfEaLcuyqGLNCDKc6", imgUrl: "REF MIR 016.jpeg" },
-      { ref: "REF MIR 027", types: ["t5", "fillers", "restrita_1600_plus"], stats: "K1720 / T5 Liberada", details: ["Restrita K1720", "T5 Liberada ⚔️", "Bag Legal 🎒"], priceTotal: 300, priceEntry: 100, driveUrl: "https://photos.app.goo.gl/L9bPtsngWg77ztuW9", imgUrl: "REF MIR 027.jpeg" },
-      { ref: "REF MIR 2215", types: ["fillers", "restrita_ate_1600"], stats: "K1430", details: ["Restrita K1430", "Champs 💜", "Familiares Pagos 💥"], priceTotal: 500, priceEntry: 150, driveUrl: "https://photos.app.goo.gl/epBdyr5q7PvGN19XA", imgUrl: "REF MIR 2215.jpeg" },
-      { ref: "REF MIR 2329", types: ["fillers", "restrita_1600_plus"], stats: "K1842", details: ["Restrita K1842", "Elite ON ⚡", "Facilitada ✅"], priceTotal: 1200, priceEntry: 200, driveUrl: "https://photos.app.goo.gl/TbqZy8v3CKen2hAE9", imgUrl: "REF MIR 2329.jpeg" },
-      { ref: "REF MIJ 1950", types: ["1200%", "7 champ", "tropa_magica_mana"], stats: "1246% / 820% HP", details: ["9 Champs 🧡 + 1 💛", "Mana Lv 1 💜", "820% HP 😎", "Bônus 1246% 🔥"], priceTotal: 18000, priceEntry: 1600, driveUrl: "", imgUrl: "REF MIJ 1950.jpeg" },
-      { ref: "REF M 602", types: ["1400%", "5 champ", "tropa_magica_mana", "skin_lider"], stats: "1400%", details: ["2 Skin Leader 👑", "Bônus 1400% 🔥", "Itens Monstruosos 🧡", "Tropa Mana Lv 1 💜", "Aceita conta de entrada 🥳"], priceTotal: 22500, priceEntry: 3500, driveUrl: "https://photos.app.goo.gl/egdP91ufREEbzVKH6", imgUrl: "REF M 602.jpeg" },
-      { ref: "REF M 601", types: ["1300%", "6 champ", "tropa_magica_mana", "skin_lider"], stats: "1375%", details: ["6 Champs 🧡", "Bônus 1375% 🔥", "Itens Monstruosos 🧡", "Tropa Mana Lv 1 💜", "Skin de Exército 👑", "Aceita conta de entrada 🥳"], priceTotal: 21500, priceEntry: 3000, driveUrl: "https://photos.app.goo.gl/7TU7Dify9WLHyekx7", imgUrl: "REF M 601.jpeg" },
-      { ref: "REF MICG1053", types: ["2 champs", "980%"], stats: "FAM 10/6/6/4/3", details: ["FAM 10/6/6/4/3 😱", "Elite ON ✅", "Champs 🧡💛💜"], priceTotal: 2400, priceEntry: 300, driveUrl: "https://photos.app.goo.gl/LGMbh3bCBz3JcXLo8", imgUrl: "REF MICG1053.jpeg" },
-      { ref: "REF MI1223", types: ["tropa_magica_mana", "3 Champs", "1100%"], stats: "7 Fam. Pagos Full / 7 Chinas", details: ["7 Familiares pagos Full 😱", "7 Crinas 🛑", "Heróis pagos 💛"], priceTotal: 6000, priceEntry: 800, driveUrl: "https://photos.app.goo.gl/hGUQ5xQsTEdJs2J97", imgUrl: "REF MI1223.jpeg" },
-      { ref: "REF M 43", types: ["1400%", "7 champ", "full champ", "tropa_magica_mana", "skin_lider"], stats: "1444% / 1407% / 1415%", details: ["IND 1444/1407/1415% FF 🔥", "16 CHAMPS 🧡💛", "ASTRO CHAMP 13/12/12/12/10", "73 Abençoados ✨", "Tropa Mágica Lvl 1 💜"], priceTotal: 40000, priceEntry: 5000, driveUrl: "https://drive.google.com/drive/folders/1UO7etwYafcpi6JvfgnKSAikqnoAQRhE1", imgUrl: "REF M 43.jpeg" },
-      { ref: "REF M 603", types: ["1100%", "3 champ", "tropa_magica_mana"], stats: "1105%", details: ["3 Champs (2+1) 🧡", "Bônus 1105% 🔥", "Tropas Lotadas ⚔️", "Evolução de Mana 65% 💜", "Aceita conta de entrada 🛑"], priceTotal: 5500, priceEntry: 1000, driveUrl: "https://photos.app.goo.gl/", imgUrl: "REF M 603.jpeg" },
-      { ref: "REF MR 605", types: ["1200%", "tropa_magica_mana", "2 champ"], stats: "1225%", details: ["2 Champ🧡💛 / 4 Taças🧡", "Bônus 1225%", "3 Heróis Wow💛", "Tropa Mana Lv1💜"], priceTotal: 7500, priceEntry: 1000, driveUrl: "https://photos.app.goo.gl/ewBo5uRY9y71YjUy9", imgUrl: "REF MR 605.jpeg" },
-      { ref: "REF MC 31", types: ["1200%", "tropa_magica_mana", "restrita_ate_1600", "skin_lider"], stats: "1214 / 1206 / 1198% FF", details: ["IND 1214/1206/1198% FF", "LOW QUEST", "Tropa Mágica LVL 1 💜", "MUITO ASTRO MOB 😱😱", "RESTRITA K1663"], priceTotal: 11500, priceEntry: 1500, driveUrl: "https://drive.google.com/drive/folders/1Yxk6aND7fFizxwI5V9yY65BaLriUZTCb", imgUrl: "REF MC 31.jpeg" },
-      { ref: "REF R 207", types: ["1 champ", "1000%"], stats: "1 Champ / 1 Taça / 5 Fam Full", details: ["1 Champ🧡", "1 Taça 🧡 + 2 💛 (Faltando apenas Âmbar)", "5 Famílias Pagos Full 💥", "Heróis 💛", "29M Tropas ⚔️"], priceTotal: 3000, priceEntry: 800, driveUrl: "https://photos.app.goo.gl/H4ivtxyqW3iiVSHP7", imgUrl: "REF R 207.jpeg" },
-      { ref: "REF R 125", types: ["1100%", "2 champ"], stats: "1094% / 1002% / 1106%", details: ["2 Champs 🧡", "IND FF 1094% / 1002% / 1106%", "Set Caça 🧡", "4 Famílias Pagos Full + 1 Nivel 9 💥", "Heróis (3 WH💛) / Elite On 💥", "37M Tropas ⚔️"], priceTotal: 4000, priceEntry: 500, driveUrl: "https://photos.app.goo.gl/nim4c1XhTYujZfxn7", imgUrl: "REF R 125.jpeg" },
-      { ref: "REF MR 360", types: ["1100%", "7 champ"], stats: "1150% / 1110% / 1153%", details: ["7 Champs 🧡", "IND FF 1150% / 1110% / 1153%", "Ótimo Set de Ataque ⚔️"], priceTotal: 4500, priceEntry: 600, driveUrl: "https://photos.app.goo.gl/", imgUrl: "REF MR 360.jpeg" }
-    ];
+    // Array zerado para refazer o catálogo
+    const accounts = [];
 
-    const featuredRefs = ["REF M 43", "REF M 602", "REF MIJ 1950", "REF R 200"];
+    // Array de referências em destaque zerado
+    const featuredRefs = [];
     let currentFeaturedIndex = 0;
     let featuredTimer = null;
 
@@ -502,6 +474,12 @@
 
     function renderFeatured() {
       const container = document.getElementById('featured-card-content');
+      
+      if (featuredRefs.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color: #94a3b8; width: 100%; padding: 20px;">Nenhuma conta em destaque no momento.</p>';
+        return;
+      }
+
       const ref = featuredRefs[currentFeaturedIndex];
       const acc = accounts.find(a => a.ref === ref);
 
@@ -531,12 +509,14 @@
     }
 
     function nextFeatured() {
+      if (featuredRefs.length === 0) return;
       currentFeaturedIndex = (currentFeaturedIndex + 1) % featuredRefs.length;
       renderFeatured();
       resetFeaturedTimer();
     }
 
     function prevFeatured() {
+      if (featuredRefs.length === 0) return;
       currentFeaturedIndex = (currentFeaturedIndex - 1 + featuredRefs.length) % featuredRefs.length;
       renderFeatured();
       resetFeaturedTimer();
@@ -544,6 +524,7 @@
 
     function resetFeaturedTimer() {
       if (featuredTimer) clearInterval(featuredTimer);
+      if (featuredRefs.length === 0) return;
       featuredTimer = setInterval(() => {
         currentFeaturedIndex = (currentFeaturedIndex + 1) % featuredRefs.length;
         renderFeatured();
@@ -628,7 +609,7 @@
       }
 
       if (list.length === 0) {
-        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8; padding: 30px;">Nenhuma conta encontrada com os filtros selecionados.</p>';
+        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8; padding: 30px;">Nenhuma conta cadastrada ou encontrada com os filtros selecionados.</p>';
         return;
       }
 
