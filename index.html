@@ -73,7 +73,6 @@
     .featured-img-box {
       flex: 1.2;
       min-width: 320px;
-      height: 420px;
       overflow: hidden;
       border-radius: 12px;
       border: 1px solid #334155;
@@ -85,8 +84,8 @@
 
     .featured-img-box img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      height: auto;
+      display: block;
     }
 
     .featured-info {
@@ -279,8 +278,10 @@
     .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(34, 197, 94, 0.15); border-color: #22c55e; }
     
     .card-header-badge { background: #f59e0b; color: #000; font-weight: 900; padding: 6px 12px; font-size: 0.85rem; text-transform: uppercase; text-align: center; }
-    .card-img-container { position: relative; width: 100%; height: 450px; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-    .card-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    
+    /* Container ajustado para fluir de acordo com a proporção real da imagem */
+    .card-img-container { position: relative; width: 100%; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .card-img { width: 100%; height: auto; display: block; }
     
     .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .ref-title { color: #f59e0b; font-size: 1.3rem; font-weight: bold; margin-bottom: 12px; }
