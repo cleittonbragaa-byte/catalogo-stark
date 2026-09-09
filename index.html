@@ -452,8 +452,547 @@
       { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" }
     ];
 
-    const accounts = [];
-    const featuredRefs = [];
+    const accounts = [
+      {
+        ref: "REF M 365",
+        stats: "⚡ 1200%+ | 4 Champs 🧡 + 5 Taças 🧡💛 | Mana 80% ⚡",
+        imgUrl: "m365.jpg",
+        driveUrl: "https://photos.app.goo.gl/J8zppXGKrYHLVPzu8",
+        priceTotal: 8800,
+        priceEntry: 1000,
+        types: ["1200%", "4 champ+", "tropa_magica_mana"],
+        details: [
+          "🔥 IND Bruta 1204%",
+          "🔥 4 Champs 🧡",
+          "🔥 5 Taças (4🧡 + 1💛)",
+          "🔥 Mana 80%",
+          "🔥 6 Fams Lv10 + Vorme Lv9"
+        ]
+      },
+      {
+        ref: "REF MR 111",
+        stats: "⚡ IND FF 1000%+ | 1 Champ 🧡 + Skin Exército ⚡",
+        imgUrl: "mr111.jpg",
+        driveUrl: "https://photos.app.goo.gl/q76ogNhyGAMHfJnH9",
+        priceTotal: 2800,
+        priceEntry: 600,
+        types: ["1000%", "skin_exercito"],
+        details: [
+          "🔥 IND (FF) 1046%/1015%/1050%",
+          "🔥 1 Champ 🧡",
+          "🔥 6 Fam Pagos Full",
+          "🔥 Skin de Exército",
+          "🔥 5 Heróis 💛 (3 WH 💛)"
+        ]
+      },
+      {
+        ref: "REF MR 360",
+        stats: "⚡ IND FF 1100%+ | 7 Champs + 5 Taças 🧡✨",
+        imgUrl: "mr360.jpg",
+        driveUrl: "https://photos.app.goo.gl/4VNyE8eJ4LdgGjAt7",
+        priceTotal: 10500,
+        priceEntry: 1500,
+        types: ["1100%", "4 champ+"],
+        details: [
+          "🔥 IND (FF) 1150%/1110%/1153%",
+          "🔥 7 Champs (6🧡 + 1💛)",
+          "🔥 5 Taças 🧡",
+          "🔥 1M Gemas 💎",
+          "🔥 27m Tropas",
+          "🛑 Aceita conta na entrada"
+        ]
+      },
+      {
+        ref: "REF MB 09",
+        stats: "✨IND 800%+ | 1.6M Gemas 💎 + T5 Full✨",
+        imgUrl: "mb09.jpg",
+        driveUrl: "https://photos.app.goo.gl/VrS4vjz2acFRcTAh8",
+        priceTotal: 750,
+        priceEntry: 300,
+        types: ["800%", "tropa_magica_mana"],
+        details: [
+          "🔥 IND 880%/830%/865%",
+          "🔥 1.6M de Gemas 💎",
+          "🔥 Tropas Mágicas 85%",
+          "🔥 Bag Top",
+          "🔥 1M de cada T5 (51m Total)"
+        ]
+      },
+      {
+        ref: "REF R 200",
+        stats: "⚡ IND FF 1100%+ | 7 Champs + Skin Exército ⚡",
+        imgUrl: "r200.jpg",
+        driveUrl: "https://photos.app.goo.gl/ifBuYVgnqRwTMvqx8",
+        priceTotal: 12000,
+        priceEntry: 1500,
+        types: ["1100%", "4 champ+", "skin_exercito"],
+        details: [
+          "🔥 IND (FF) 1169%/1103%/1130%",
+          "🔥 7 Champs (7🧡 + 1💛)",
+          "🔥 11k Tomes de Ouro 📜",
+          "🔥 1M Gemas 💎",
+          "🔥 Skin de Exército",
+          "🔥 7 Fams Pagos Full"
+        ]
+      },
+      {
+        ref: "REF R 204",
+        stats: "✨IND FF 900%+ | 2 Taças 🧡 + 1M Gemas 💎✨",
+        imgUrl: "r204.jpg",
+        driveUrl: "https://photos.app.goo.gl/oV5GS8QQbZmMrp7c8",
+        priceTotal: 2500,
+        priceEntry: 500,
+        types: ["900%", "tropa_magica_mana"],
+        details: [
+          "🔥 IND (FF) 977%/966%/901%",
+          "🔥 2 Taças 🧡 + 1 💛 (quase upando)",
+          "🔥 1M Gemas 💎",
+          "🔥 45m Tropas",
+          "🔥 Tropas Mágicas Lv1 💜",
+          "🛑 Aceita conta na entrada"
+        ]
+      },
+      {
+        ref: "REF RM 201",
+        stats: "✨IND FF 1000%+ | 3 Champs + 3 Taças 🧡💛✨",
+        imgUrl: "rm201.jpg",
+        driveUrl: "https://photos.app.goo.gl/6zXoUA5V7URxmmhd8",
+        priceTotal: 3800,
+        priceEntry: 800,
+        types: ["1000%", "3 champ"],
+        details: [
+          "🔥 IND (FF) 1050%/1010%/1007%",
+          "🔥 3 Champs (🧡💛)",
+          "🔥 3 Taças (🧡💛)",
+          "🔥 5 Fam Full + 1 Niv7",
+          "🔥 Elite On",
+          "🔥 Heróis (3 WH 💛)"
+        ]
+      },
+      {
+        ref: "REF R 203",
+        stats: "✨IND FF 1000%+ | 1 Champ 🧡 + 2.4M Gemas 😱✨",
+        imgUrl: "r203.jpg",
+        driveUrl: "https://photos.app.goo.gl/MdGkZBaiYWJ4xVkG7",
+        priceTotal: 3000,
+        priceEntry: 800,
+        types: ["1000%"],
+        details: [
+          "🔥 IND (FF) 1091%/1045%/1170%",
+          "🔥 1 Champ 🧡",
+          "🔥 2 Taças 🧡",
+          "🔥 Heróis P2W 💛",
+          "🔥 44m Tropas",
+          "🔥 2.4m Gemas 😱"
+        ]
+      },
+      {
+        ref: "REF M 601",
+        stats: "⚡ Bônus 1375% | 6 Champs 🧡 + Skins ⚡",
+        imgUrl: "m601.jpg",
+        driveUrl: "https://photos.app.goo.gl/7TU7Dify9WLHyekx7",
+        priceTotal: 21500,
+        priceEntry: 3000,
+        types: ["1300%", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        details: [
+          "🔥 Bônus 1375%",
+          "🔥 6 Champs 🧡",
+          "🔥 4 Taças 🧡",
+          "🔥 Itens Monstruosos 🧡",
+          "🔥 Tropas Mágicas Mana Lv1 💜",
+          "🔥 Skin de Líder e Exército",
+          "🛑 Aceita conta na entrada"
+        ]
+      },
+      {
+        ref: "REF R 199",
+        stats: "✨IND FF 1000%+ | 3 Champs + 3 Taças 🧡💛✨",
+        imgUrl: "r199.jpg",
+        driveUrl: "https://photos.app.goo.gl/T9D5NhySNo5Yvu7aA",
+        priceTotal: 3500,
+        priceEntry: 600,
+        types: ["1000%", "3 champ", "tropa_magica_mana"],
+        details: [
+          "🔥 IND (FF) 1059%/1013%/1019%",
+          "🔥 3 Champs (2🧡 + 1💛)",
+          "🔥 3 Taças (2🧡 + 1💛)",
+          "🔥 3 Fam Full + 1 Niv9 + 1 Niv8",
+          "🔥 Tropas Mágicas Lv1 💜",
+          "🔥 Heróis Pagos 💛"
+        ]
+      },
+      {
+        ref: "REF R 206",
+        stats: "✨IND 900%+ | 1 Champ 💛 + Tecelã 💛✨",
+        imgUrl: "r206.jpg",
+        driveUrl: "https://photos.app.goo.gl/4KHnB51TWpLDQJY96",
+        priceTotal: 1100,
+        priceEntry: 400,
+        types: ["900%"],
+        details: [
+          "🔥 IND 889%/935%/903%",
+          "🔥 1 Champ 💛",
+          "🔥 Tecelã 💛",
+          "🔥 Wonder II",
+          "🔥 46m Tropas"
+        ]
+      },
+      {
+        ref: "REF MR603",
+        stats: "⚡ 1400% Bônus | 11 Champs 🧡💛⚡",
+        imgUrl: "mr603.jpg",
+        driveUrl: "https://photos.app.goo.gl/DtozP468XDgWZT3z8",
+        priceTotal: 34500,
+        priceEntry: 3500,
+        types: ["1300%", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        details: [
+          "🔥 Bônus 1400%",
+          "🔥 11 Champs (10🧡 + 1💛)",
+          "🔥 Skin de Líder, Exército e Rota",
+          "🔥 30 Heróis 💛",
+          "🔥 Tropas Mágicas Mana Lv2 💜",
+          "💳 Entrada de R$ 3.500,00 + Parcelas de R$ 1.200,00"
+        ]
+      },
+      {
+        ref: "REF R 98",
+        stats: "✨IND FF 1000% | 3 Champs + Aceita Conta✨",
+        imgUrl: "r98.jpg",
+        driveUrl: "https://photos.app.goo.gl/vEV12H8snDDWhqyW8",
+        priceTotal: 2500,
+        priceEntry: 400,
+        types: ["1000%", "3 champ"],
+        details: [
+          "🔥 IND (FF) 1034/975/984%",
+          "🔥 3 Champs (🧡💛)",
+          "🔥 3 Heróis 💛",
+          "🔥 27m Tropas / Elite On",
+          "🔥 2 Fam P2W Full + 1 Niv 9",
+          "🛑 Aceita conta na negociação"
+        ]
+      },
+      {
+        ref: "REF R 125",
+        stats: "✨IND FF 1000%+ | 2 Champs 🧡✨",
+        imgUrl: "r125.jpg",
+        driveUrl: "https://photos.app.goo.gl/nim4c1XhTYujZfxn7",
+        priceTotal: 4000,
+        priceEntry: 500,
+        types: ["1000%", "2 champ"],
+        details: [
+          "🔥 IND FF 1094%/1002%/1106%",
+          "🔥 2 Champs 🧡",
+          "🔥 Set Caça 🧡",
+          "🔥 4 Fam Pagos Full + 1 Niv 9",
+          "🔥 Heróis (3 WH 💛) / Elite On",
+          "🔥 37m Tropas"
+        ]
+      },
+      {
+        ref: "REF MR 605",
+        stats: "✨Bônus 1225% | 2 Champs + 4 Taças✨",
+        imgUrl: "mr605.jpg",
+        driveUrl: "https://photos.app.goo.gl/ewBo5uRY9y71YjUy9",
+        priceTotal: 7500,
+        priceEntry: 1000,
+        types: ["1200%", "2 champ", "skin_exercito", "tropa_magica_mana"],
+        details: [
+          "🔥 Bônus 1225%",
+          "🔥 2 Champs (🧡💛)",
+          "🔥 4 Taças 🧡",
+          "🔥 3 Heróis WoW 💛",
+          "🔥 Tropas Mágicas Lv1 💜 (Mana)",
+          "🔥 Skin de Exército"
+        ]
+      },
+      {
+        ref: "REF R 208",
+        stats: "✨IND 900% | 1M Gemas + 23m Tropas✨",
+        imgUrl: "r208.jpg",
+        driveUrl: "https://photos.app.goo.gl/kBRGcxkCk9yHUjWw8",
+        priceTotal: 450,
+        priceEntry: 250,
+        types: ["900%"],
+        details: [
+          "🔥 IND 883%/859%/906%",
+          "🔥 Coelho Nível 5 / Bonna Nível 3",
+          "🔥 1M de gemas",
+          "🔥 Elite On",
+          "🔥 23m Tropas",
+          "💳 Opção parcelada: 2x R$ 250,00"
+        ]
+      },
+      {
+        ref: "REF R 65",
+        stats: "✨Mix 600%+ | 41m Tropas✨",
+        imgUrl: "r65.jpg",
+        driveUrl: "https://photos.app.goo.gl/hXDPcNdUBCfHxKQp8",
+        priceTotal: 550,
+        priceEntry: 250,
+        types: ["600%"],
+        details: [
+          "🔥 MIX (Fúria) 646/693/635%",
+          "🔥 Set Caça 💛🧡",
+          "🔥 41m Tropas",
+          "🔥 Bag Top",
+          "🔥 Elite On"
+        ]
+      },
+      {
+        ref: "REF MC 65",
+        stats: "⚡ 1500%+ FF | 8 Champs 🧡⚡",
+        imgUrl: "mc65.jpg",
+        driveUrl: "https://drive.google.com/drive/folders/1dPzJ7LH3ff7287y5_acgArezF3qylD_G",
+        priceTotal: 55000,
+        priceEntry: 7500,
+        types: ["1300%", "4 champ+", "restrita_ate_1699", "skin_lider", "tropa_magica_mana"],
+        details: [
+          "🔥 IND 1542/1525/1522% FF",
+          "🔥 8 Champs 🧡",
+          "🔥 ASTRO CHAMP 13/12/9/7/6/6",
+          "🔥 6 Skins Leaders 😱",
+          "🔥 Tropas Mágicas Lv2 💜",
+          "🔥 Restrita K1467"
+        ]
+      },
+      {
+        ref: "REF MC 84",
+        stats: "⚡ 1200%+ FF | 11 Champs 🧡⚡",
+        imgUrl: "mc84.jpg",
+        driveUrl: "https://drive.google.com/drive/folders/17UBatEzEDNA6fMP9Mac67NG3YOHioR37",
+        priceTotal: 22000,
+        priceEntry: 1500,
+        types: ["1200%", "4 champ+", "skin_exercito", "tropa_magica_mana"],
+        details: [
+          "🔥 IND 1229/1133/1268% FF",
+          "🔥 11 CHAMPS 🧡",
+          "🔥 Skin De Exército",
+          "🔥 17 Heróis 💛 (3 de WoW 💛)",
+          "🔥 Tropas Mágicas Lv1 💜"
+        ]
+      },
+      {
+        ref: "REF S 1063",
+        stats: "✨Filler top✨",
+        imgUrl: "s1063.jpg",
+        driveUrl: "https://photos.app.goo.gl/1sN5ZCZ2E79Z6BQL9",
+        priceTotal: 500,
+        priceEntry: 250,
+        types: ["800%"],
+        details: [
+          "🔥 Individuais: 800%",
+          "🔥 Mix 600%",
+          "🔥 Muitas Tropas",
+          "🔥 Quase 1m de gemas",
+          "🔥 Fams Pagos",
+          "🔥 Pesquisas avançadas",
+          "🔥 Elite/loja"
+        ]
+      },
+      {
+        ref: "REF MS 600",
+        stats: "💥RL Facilitada💥",
+        imgUrl: "ms600.jpg",
+        driveUrl: "https://photos.app.goo.gl/HHLgVaULjnxgMja17",
+        priceTotal: 10500,
+        priceEntry: 1000,
+        types: ["1100%", "4 champ+"],
+        details: [
+          "🔥 1100+%",
+          "🔥 7 Champs (6🧡 + 1💛)",
+          "🔥 2 Acessórios (1🧡 + 1💛)",
+          "🔥 5 Taças (4🧡 + 1💛)",
+          "🔥 Top 1165% 😎",
+          "🔥 18 Heróis 💛",
+          "🔥 Todos os familiares com habilidades maximizadas"
+        ]
+      },
+      {
+        ref: "REF MBS 365",
+        stats: "✨RL Básica✨",
+        imgUrl: "mbs365.jpg",
+        driveUrl: "https://photos.app.goo.gl/FSLcXcvTbuHkUxYv5",
+        priceTotal: 2200,
+        priceEntry: 300,
+        types: ["900%", "2 champ"],
+        details: [
+          "🔥 992%",
+          "🔥 3 Heróis de WoW 💛",
+          "🔥 2 Champs 💛",
+          "🔥 Set de Caça Full 🧡",
+          "🔥 4 Fams Lv 10 🐉"
+        ]
+      },
+      {
+        ref: "REF MS 513",
+        stats: "✨Festa no Coliseu✨",
+        imgUrl: "ms513.jpg",
+        driveUrl: "https://photos.app.goo.gl/MGVDpsL7TuQzkEfQ7",
+        priceTotal: 3800,
+        priceEntry: 800,
+        types: ["1100%", "2 champ"],
+        details: [
+          "🔥 Inf 1107%",
+          "🔥 5 Fams Pagos",
+          "🔥 12 Heróis 💛",
+          "🔥 2 Champs 💛"
+        ]
+      },
+      {
+        ref: "REF S 1065",
+        stats: "✨RL Bem Equilibrada✨",
+        imgUrl: "s1065.jpg",
+        driveUrl: "https://photos.app.goo.gl/tFYoaeHDeHP2BeJJ7",
+        priceTotal: 10000,
+        priceEntry: 1000,
+        types: ["1100%", "4 champ+"],
+        details: [
+          "🔥 1143/1114/1158% (Fortes e Fúria)",
+          "🔥 7 Taças (6🧡 + 1💛)",
+          "🔥 6 Champs 🧡",
+          "🔥 12 Heróis Pagos 💛",
+          "🔥 Full Fam Pago Max"
+        ]
+      },
+      {
+        ref: "REF S 1067",
+        stats: "✈️ Migra até o 1679 ✈️",
+        imgUrl: "s1067.jpg",
+        driveUrl: "https://photos.app.goo.gl/iTjxPT73mqR8DFUB9",
+        priceTotal: 20000,
+        priceEntry: 2000,
+        types: ["1100%", "4 champ+", "restrita_ate_1699", "tropa_magica_mana"],
+        details: [
+          "🔥 Migra até o 1679 ✈️",
+          "🔥 1100%",
+          "🔥 3 Taças / 6 Champs 🧡",
+          "🔥 Full Fam Pago Max",
+          "🔥 Heróis Pagos 💛 (3 de WoW)",
+          "🔥 Peças muito bem astrolitadas (Bônus max focado no Mix)",
+          "🔥 Mana lv1 💜"
+        ]
+      },
+      {
+        ref: "REF S 1070",
+        stats: "✈️ Migra até o 1589 ✈️",
+        imgUrl: "s1070.jpg",
+        driveUrl: "https://photos.app.goo.gl/TnF4ZGvkYDsBzQ7W9",
+        priceTotal: 1500,
+        priceEntry: 500,
+        types: ["restrita_ate_1699"],
+        details: [
+          "🔥 Migra até o 1589 ✈️",
+          "🔥 Mix 600%",
+          "🔥 857m de poder em tropas",
+          "🔥 Boa Bag",
+          "🔥 Tecelã 💛",
+          "🔥 Conta bem montada, poder fixo baixo e pesquisas selecionadas"
+        ]
+      },
+      {
+        ref: "REF S 1069",
+        stats: "✈️ Migra até o 1711 ✈️",
+        imgUrl: "s1069.jpg",
+        driveUrl: "https://photos.app.goo.gl/NrKvzcxrVjcbf6ht8",
+        priceTotal: 12500,
+        priceEntry: 1000,
+        types: ["1100%", "4 champ+", "restrita_1700_plus", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        details: [
+          "🔥 Migra até o 1711 ✈️",
+          "🔥 1100%+",
+          "🔥 3 Taças / 4 Champs 🧡",
+          "🔥 Muito bem Astrolitada",
+          "🔥 Muitas Tropas",
+          "🔥 Poder fixo baixo",
+          "🔥 Full Fam Pago Max",
+          "🔥 Heróis Pagos 💛",
+          "🔥 Todos os tipos de Skins",
+          "🔥 Mana lv3 💜"
+        ]
+      },
+      {
+        ref: "REF GC 0898",
+        stats: "✨RL Facilitada✨",
+        imgUrl: "gc0898.jpg",
+        driveUrl: "https://photos.app.goo.gl/6KEJmn4xqnkzEZK16",
+        priceTotal: 5000,
+        priceEntry: 800,
+        types: ["1100%", "3 champ"],
+        details: [
+          "🔥 1100% inf",
+          "🔥 03 CHAMPS 🧡",
+          "🔥 04 TAÇAS 🧡",
+          "🔥 11 Heróis 💛",
+          "🔥 07 FAMS PAGOS FULL"
+        ]
+      },
+      {
+        ref: "REF MGS 4060",
+        stats: "FULL CHAMP 1.300%",
+        imgUrl: "mgs4060.jpg",
+        driveUrl: "https://photos.app.goo.gl/zpJ3FeFkSuax1mEv6",
+        priceTotal: 22500,
+        priceEntry: 1500,
+        types: ["1300%", "full champ", "skin_exercito", "tropa_magica_mana"],
+        details: [
+          "🔥 13 Champs 🧡",
+          "🔥 07 Taças 💛🧡",
+          "🔥 22 Heróis Pagos",
+          "🔥 Skin Rota / Exército",
+          "🔥 Tropas Mágicas 💜"
+        ]
+      },
+      {
+        ref: "REF MS 515",
+        stats: "✨8 Champs + 6 taças✨",
+        imgUrl: "ms515.jpg",
+        driveUrl: "https://photos.app.goo.gl/NoSC4mScG72AMSyK6",
+        priceTotal: 12800,
+        priceEntry: 2500,
+        types: ["1200%", "4 champ+"],
+        details: [
+          "🔥 Cav 1200%",
+          "🔥 8 Champs 🧡",
+          "🔥 6 Taças 🧡",
+          "🔥 25 Heróis 💛"
+        ]
+      }
+    ];
+
+    // Carrossel com as contas com Skin de Líder de maior valor nas primeiras posições:
+    const featuredRefs = [
+      "REF MC 65",   // R$ 55.000 (6 Skins Leaders)
+      "REF MR603",   // R$ 34.500 (Skin de Líder)
+      "REF M 601",   // R$ 21.500 (Skin de Líder)
+      "REF S 1069",  // R$ 12.500 (Todos os tipos de Skins)
+      "REF M 365",   // R$ 8.800
+      "REF MR 111",  // R$ 2.800
+      "REF MR 360",  // R$ 10.500
+      "REF MB 09",   // R$ 750
+      "REF R 200",   // R$ 12.000
+      "REF R 204",   // R$ 2.500
+      "REF RM 201",  // R$ 3.800
+      "REF R 203",   // R$ 3.000
+      "REF R 199",   // R$ 3.500
+      "REF R 206",   // R$ 1.100
+      "REF R 98",    // R$ 2.500
+      "REF R 125",   // R$ 4.000
+      "REF MR 605",  // R$ 7.500
+      "REF R 208",   // R$ 450
+      "REF R 65",    // R$ 550
+      "REF MC 84",   // R$ 22.000
+      "REF S 1063",  // R$ 500
+      "REF MS 600",  // R$ 10.500
+      "REF MBS 365", // R$ 2.200
+      "REF MS 513",  // R$ 3.800
+      "REF S 1065",  // R$ 10.000
+      "REF S 1067",  // R$ 20.000
+      "REF S 1070",  // R$ 1.500
+      "REF GC 0898", // R$ 5.000
+      "REF MGS 4060",// R$ 22.500
+      "REF MS 515"   // R$ 12.800
+    ];
+
     let currentFeaturedIndex = 0;
     let featuredTimer = null;
 
