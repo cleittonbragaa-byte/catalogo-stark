@@ -29,7 +29,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* CARROSSEL DE DESTAQUES - AJUSTADO PARA EXIBIR A CAPA INTEIRA */
+    /* CARROSSEL DE DESTAQUES */
     .featured-container {
       max-width: 1200px;
       margin: 0 auto 30px auto;
@@ -80,13 +80,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #050811;
+      background: #000;
     }
 
     .featured-img-box img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Garante que a capa fique inteira sem cortar */
+      object-fit: cover;
     }
 
     .featured-info {
@@ -279,8 +279,8 @@
     .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(34, 197, 94, 0.15); border-color: #22c55e; }
     
     .card-header-badge { background: #f59e0b; color: #000; font-weight: 900; padding: 6px 12px; font-size: 0.85rem; text-transform: uppercase; text-align: center; }
-    .card-img-container { position: relative; width: 100%; height: auto; background: #050811; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-    .card-img { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block; }
+    .card-img-container { position: relative; width: 100%; height: 450px; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
     
     .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .ref-title { color: #f59e0b; font-size: 1.3rem; font-weight: bold; margin-bottom: 12px; }
@@ -371,8 +371,6 @@
       <div class="type-tags-container" id="type-tags-box">
         <div class="type-tag active" data-type="all" onclick="toggleTypeTag(this, 'all')">Todas</div>
         <div class="type-tag" data-type="Fillers" onclick="toggleTypeTag(this, 'Fillers')">Fillers</div>
-        <div class="type-tag" data-type="600%" onclick="toggleTypeTag(this, '600%')">600%</div>
-        <div class="type-tag" data-type="800%" onclick="toggleTypeTag(this, '800%')">800%</div>
         <div class="type-tag" data-type="900%" onclick="toggleTypeTag(this, '900%')">900%</div>
         <div class="type-tag" data-type="1000%" onclick="toggleTypeTag(this, '1000%')">1000%</div>
         <div class="type-tag" data-type="1100%" onclick="toggleTypeTag(this, '1100%')">1100%</div>
@@ -397,6 +395,7 @@
         <label class="checkbox-item"><input type="checkbox" value="tropa_magica_mana" onchange="applyFilters()"> Tropa Mágica / Mana</label>
         <label class="checkbox-item"><input type="checkbox" value="skin_lider" onchange="applyFilters()"> Skin de Líder</label>
         <label class="checkbox-item"><input type="checkbox" value="skin_exercito" onchange="applyFilters()"> Skin de Exército</label>
+        <label class="checkbox-item"><input type="checkbox" value="trap" onchange="applyFilters()"> Traps</label>
         <label class="checkbox-item"><input type="checkbox" value="restrita_ate_1699" onchange="applyFilters()"> Restrita (K) até 1699</label>
         <label class="checkbox-item"><input type="checkbox" value="restrita_1700_plus" onchange="applyFilters()"> Restrita (K) 1700+</label>
         <label class="checkbox-item"><input type="checkbox" value="low quest" onchange="applyFilters()"> Low Quest</label>
@@ -451,11 +450,201 @@
       { nome: "Caue", numero: "5511956041724", foto: "https://ui-avatars.com/api/?name=Caue&background=6366f1&color=fff&size=128" },
       { nome: "Fernando", numero: "5582993585154", foto: "https://ui-avatars.com/api/?name=Fernando&background=14b8a6&color=fff&size=128" },
       { nome: "Ace", numero: "5575988032672", foto: "https://ui-avatars.com/api/?name=Ace&background=f97316&color=fff&size=128" },
-      { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" },
-      { nome: "Danilo", numero: "5511945145719", foto: "https://ui-avatars.com/api/?name=Danilo&background=3b82f6&color=fff&size=128" }
+      { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" }
     ];
 
     const accounts = [
+      {
+        ref: "REF AC. Adr 02",
+        stats: "✨Ind 749% | 25.8M Tropas + Elite✨",
+        imgUrl: "REF AC. Adr 02.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1PdWKUc-3HgKm13_6gyLidy4Dall8ExyN",
+        priceTotal: 350,
+        priceEntry: 200,
+        types: ["Fillers"],
+        details: [
+          "🔥 Ind 749% ⚔️",
+          "🔥 25.8M de Tropas 💂‍♀️",
+          "🔥 1 Taça 💜",
+          "🔥 Elite Ativado"
+        ]
+      },
+      {
+        ref: "REF G2601 3",
+        stats: "✨RL 946% | 2 Champs 💛 + 2 Taças 🧡💛✨",
+        imgUrl: "REF G2601 3.jpeg",
+        driveUrl: "https://photos.app.goo.gl/bJKzkqny2q6oTWbK8",
+        priceTotal: 2200,
+        priceEntry: 400,
+        types: ["2 champ", "900%"],
+        details: [
+          "🔥 RL 946% Sem Fúria ⚔️",
+          "🔥 2 Champs 💛",
+          "🔥 2 Taças (🧡💛)",
+          "🔥 3 Famílias Pagos + 10 Heróis Pagos 💛"
+        ]
+      },
+      {
+        ref: "REF AC. 1690",
+        stats: "✨Ind 912% | 1 Champ 🧡 + 2 Taças 🧡💛✨",
+        imgUrl: "REF AC. 1690.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1QWFns97R7yqWXVFUsFDY5PErzPX9Rwce",
+        priceTotal: 1650,
+        priceEntry: 500,
+        types: ["900%", "1 champ"],
+        details: [
+          "🔥 Ind 912% ⚔️",
+          "🔥 1 Champ 🧡",
+          "🔥 2 Taças (🧡💛)",
+          "🔥 20.2M de Tropas"
+        ]
+      },
+      {
+        ref: "REF M 300",
+        stats: "✨Mix 700% | 2 Taças 💛 + 900k Gemas 💎✨",
+        imgUrl: "REF M 300.jpeg",
+        driveUrl: "https://photos.app.goo.gl/RQgxFgRzcApoF9qx9",
+        priceTotal: 1250,
+        priceEntry: 300,
+        types: ["trap"],
+        details: [
+          "🔥 Mix 700% ⚔️",
+          "🔥 2 Taças 💛 + Mix Astro",
+          "🔥 1 Pet Full 10 + 1 Lv.04",
+          "🔥 2 Peças Astro Full 15 / 1 Lv.13",
+          "🔥 900k Gemas / 240M de Lunita"
+        ]
+      },
+      {
+        ref: "REF GM 1407",
+        stats: "✨Filler 1.5M T5 | 2M Gemas + 1 Champ 🧡✨",
+        imgUrl: "REF GM 1407.jpeg",
+        driveUrl: "https://photos.app.goo.gl/dNmCao1WFhJ8HkG89",
+        priceTotal: 1200,
+        priceEntry: 300,
+        types: ["Fillers", "900%", "1 champ"],
+        details: [
+          "🔥 Maior Bônus 950% ⚔️",
+          "🔥 1.5M de T5",
+          "🔥 2M de Gemas 💜",
+          "🔥 2 Taças (🧡💛)",
+          "🔥 1 Champ 💛",
+          "🔥 4 Familiares Pagos"
+        ]
+      },
+      {
+        ref: "REF AC. Wl",
+        stats: "✨Ind 747% | 2M+ Gemas + 27.5M Tropas✨",
+        imgUrl: "REF AC. Wl.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1Fb6TxSw-z32eKnyGr7zwfwLfGJ-elYPX",
+        priceTotal: 500,
+        priceEntry: 300,
+        types: ["Fillers"],
+        details: [
+          "🔥 Ind 747% ⚔️",
+          "🔥 27.5M de Tropas 💂‍♂️",
+          "🔥 2 Taças (💛💜)",
+          "🔥 5 Slots",
+          "🔥 +2M de Gemas 💎",
+          "🔥 Bolsa bem gorda"
+        ]
+      },
+      {
+        ref: "REF AC. La",
+        stats: "✨Mix 494% | 2.44M Gemas + 28.4M Tropas✨",
+        imgUrl: "REF AC. La.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/16d0iW44sVwDSaEUGAzz0kxi29jESvl8z",
+        priceTotal: 450,
+        priceEntry: 300,
+        types: ["Fillers"],
+        details: [
+          "🔥 Mix 494% ⚔️",
+          "🔥 28.4M de Tropas (9M T4) 💂‍♂️",
+          "🔥 3 Taças 💜",
+          "🔥 4 Slots",
+          "🔥 2.44M de Gemas + 1.3M de Estrelas",
+          "🔥 Bastante Aceleradores na Bolsa"
+        ]
+      },
+      {
+        ref: "REF Jad AC",
+        stats: "✨Ind 941% | Mix 760% + 2 Taças 🧡💛✨",
+        imgUrl: "REF Jad AC.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1-MpM2l544eZmhDg6GI3-n-VtVRvv52Tl",
+        priceTotal: 1500,
+        priceEntry: 500,
+        types: ["900%"],
+        details: [
+          "🔥 Ind 941% / Mix 760% ⚔️",
+          "🔥 2 Taças (🧡💛)",
+          "🔥 T5 + Elite 💂‍♀️",
+          "🔥 +240K de Gemas 💎",
+          "🔥 5 Slots + Fams Pagos"
+        ]
+      },
+      {
+        ref: "REF AC 190",
+        stats: "✨Mix 500% | T5 Liberada + Boa Bag✨",
+        imgUrl: "REF AC 190.jpeg",
+        driveUrl: "https://photos.app.goo.gl/FCa7Y1bqUYyq7Sob8",
+        priceTotal: 1450,
+        priceEntry: 400,
+        types: ["restrita_1700_plus"],
+        details: [
+          "🔥 Mix 500% 🔥",
+          "🔥 T5 Liberada",
+          "🔥 1M de cada T4",
+          "🔥 Boa Bag",
+          "🔥 Restrita K1720"
+        ]
+      },
+      {
+        ref: "REF AC. KA",
+        stats: "✨Mix 635% | 3 Taças 💜 + 790K Gemas 💎✨",
+        imgUrl: "REF AC. KA.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1ODXfeR2_VIS3UX98I7sA-fgzB69R3g4Q",
+        priceTotal: 350,
+        priceEntry: 350,
+        types: ["trap"],
+        details: [
+          "🔥 Mix 635% ⚔️",
+          "🔥 3 Taças 💜",
+          "🔥 40.7M de Tropas 💂‍♀️",
+          "🔥 790K de Gemas 💎",
+          "🔥 Pré T5"
+        ]
+      },
+      {
+        ref: "REF AC. Ad",
+        stats: "✨Ind 956% | 2 Taças 💛 + 2 Fam Pagos✨",
+        imgUrl: "REF AC. Ad.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1IrqyCPGfubv91X3s45sV2zFf_aOkGbwz",
+        priceTotal: 650,
+        priceEntry: 300,
+        types: ["900%", "Fillers"],
+        details: [
+          "🔥 Ind 956% ⚔️",
+          "🔥 2 Taças 💛",
+          "🔥 2 Fam Pagos",
+          "🔥 5 Slots"
+        ]
+      },
+      {
+        ref: "REF AC. JP",
+        stats: "✨Mix 702% | 2 Taças + 370K Gemas💎✨",
+        imgUrl: "REF AC. JP.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1b6NwIv183ZGI0wCNiOZjoyWdTK5sfKxf",
+        priceTotal: 500,
+        priceEntry: 300,
+        types: ["Fillers"],
+        details: [
+          "🔥 Mix 702% ⚔️",
+          "🔥 2 Taças (💛💜)",
+          "🔥 18.4M de Tropas 💂‍♀️",
+          "🔥 370K de Gemas 💎",
+          "🔥 5 Slots"
+        ]
+      },
       {
         ref: "REF M 365",
         stats: "⚡ 1200%+ | 4 Champs 🧡 + 5 Taças 🧡💛 | Mana 80% ⚡",
@@ -962,13 +1151,12 @@
       }
     ];
 
-    // Restrito estritamente a 5 contas de maior valor com Skin de Líder
     const featuredRefs = [
-      "REF MC 65",   // R$ 55.000 (6 Skins Leaders)
-      "REF MR603",   // R$ 34.500 (Skin de Líder)
-      "REF M 601",   // R$ 21.500 (Skin de Líder)
-      "REF S 1069",  // R$ 12.500 (Todos os tipos de Skins)
-      "REF M 365"    // R$ 8.800
+      "REF MC 65",   
+      "REF MR603",   
+      "REF M 601",   
+      "REF S 1069",  
+      "REF M 365"    
     ];
 
     let currentFeaturedIndex = 0;
