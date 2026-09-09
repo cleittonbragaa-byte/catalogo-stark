@@ -29,7 +29,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* CARROSSEL DE DESTAQUES */
+    /* CARROSSEL DE DESTAQUES - AJUSTADO PARA EXIBIR A CAPA INTEIRA */
     .featured-container {
       max-width: 1200px;
       margin: 0 auto 30px auto;
@@ -73,7 +73,7 @@
     .featured-img-box {
       flex: 1.2;
       min-width: 320px;
-      max-height: 480px;
+      height: 420px;
       overflow: hidden;
       border-radius: 12px;
       border: 1px solid #334155;
@@ -86,7 +86,7 @@
     .featured-img-box img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: contain; /* Garante que a capa fique inteira sem cortar */
     }
 
     .featured-info {
@@ -959,93 +959,16 @@
           "🔥 6 Taças 🧡",
           "🔥 25 Heróis 💛"
         ]
-      },
-      {
-        ref: "REF R 210",
-        stats: "✨IND FF 1000%+ | 2.5M Gemas 💎✨",
-        imgUrl: "REF R 210.jpeg",
-        driveUrl: "https://photos.app.goo.gl/kX3cQnJ12L428Qdr7",
-        priceTotal: 2500,
-        priceEntry: 500,
-        types: ["1000%", "tropa_magica_mana"],
-        details: [
-          "🔥 IND (FF) 1032%/1002%/1008%",
-          "🔥 2 Taças (1🧡 + 1💛)",
-          "🔥 2.5M Gemas 💎",
-          "🔥 Tropas Mágicas Lv1 💜",
-          "🔥 2 Heróis WoW 💛",
-          "🛑 Aceita conta na entrada"
-        ]
-      },
-      {
-        ref: "REF R 211",
-        stats: "✨IND FF 900%+ | 1.8M Gemas 💎✨",
-        imgUrl: "REF R 211.jpeg",
-        driveUrl: "https://photos.app.goo.gl/Wq4Tz2X1sH37Bv4c9",
-        priceTotal: 1800,
-        priceEntry: 400,
-        types: ["900%"],
-        details: [
-          "🔥 IND (FF) 945%/920%/910%",
-          "🔥 1.8M Gemas 💎",
-          "🔥 Set Caça Mítico 🧡",
-          "🔥 3 Fams Pagos",
-          "🔥 Bag Recheada"
-        ]
-      },
-      {
-        ref: "REF R 212",
-        stats: "⚡ IND FF 1200%+ | 5 Champs 🧡 + 6 Taças ⚡",
-        imgUrl: "REF R 212.jpeg",
-        driveUrl: "https://photos.app.goo.gl/9m2L7v1B36C8kX8e6",
-        priceTotal: 9500,
-        priceEntry: 1200,
-        types: ["1200%", "4 champ+", "skin_exercito"],
-        details: [
-          "🔥 IND (FF) 1210%/1180%/1225%",
-          "🔥 5 Champs 🧡",
-          "🔥 6 Taças 🧡",
-          "🔥 Skin de Exército",
-          "🔥 8 Fams Pagos Full",
-          "🛑 Aceita conta na entrada"
-        ]
       }
     ];
 
+    // Restrito estritamente a 5 contas de maior valor com Skin de Líder
     const featuredRefs = [
-      "REF MC 65",
-      "REF MR603",
-      "REF M 601",
-      "REF S 1069",
-      "REF M 365",
-      "REF MR 111",
-      "REF MR 360",
-      "REF MB 09",
-      "REF R 200",
-      "REF R 204",
-      "REF RM 201",
-      "REF R 203",
-      "REF R 199",
-      "REF R 206",
-      "REF R 98",
-      "REF R 125",
-      "REF MR 605",
-      "REF R 208",
-      "REF R 65",
-      "REF MC 84",
-      "REF S 1063",
-      "REF MS 600",
-      "REF MBS 365",
-      "REF MS 513",
-      "REF S 1065",
-      "REF S 1067",
-      "REF S 1070",
-      "REF GC 0898",
-      "REF MGS 4060",
-      "REF MS 515",
-      "REF R 210",
-      "REF R 211",
-      "REF R 212"
+      "REF MC 65",   // R$ 55.000 (6 Skins Leaders)
+      "REF MR603",   // R$ 34.500 (Skin de Líder)
+      "REF M 601",   // R$ 21.500 (Skin de Líder)
+      "REF S 1069",  // R$ 12.500 (Todos os tipos de Skins)
+      "REF M 365"    // R$ 8.800
     ];
 
     let currentFeaturedIndex = 0;
