@@ -371,6 +371,8 @@
       <div class="type-tags-container" id="type-tags-box">
         <div class="type-tag active" data-type="all" onclick="toggleTypeTag(this, 'all')">Todas</div>
         <div class="type-tag" data-type="Fillers" onclick="toggleTypeTag(this, 'Fillers')">Fillers</div>
+        <div class="type-tag" data-type="600%" onclick="toggleTypeTag(this, '600%')">600%</div>
+        <div class="type-tag" data-type="800%" onclick="toggleTypeTag(this, '800%')">800%</div>
         <div class="type-tag" data-type="900%" onclick="toggleTypeTag(this, '900%')">900%</div>
         <div class="type-tag" data-type="1000%" onclick="toggleTypeTag(this, '1000%')">1000%</div>
         <div class="type-tag" data-type="1100%" onclick="toggleTypeTag(this, '1100%')">1100%</div>
@@ -449,7 +451,8 @@
       { nome: "Caue", numero: "5511956041724", foto: "https://ui-avatars.com/api/?name=Caue&background=6366f1&color=fff&size=128" },
       { nome: "Fernando", numero: "5582993585154", foto: "https://ui-avatars.com/api/?name=Fernando&background=14b8a6&color=fff&size=128" },
       { nome: "Ace", numero: "5575988032672", foto: "https://ui-avatars.com/api/?name=Ace&background=f97316&color=fff&size=128" },
-      { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" }
+      { nome: "Felipe (CK)", numero: "5535996702006", foto: "https://ui-avatars.com/api/?name=Felipe+CK&background=ef4444&color=fff&size=128" },
+      { nome: "Danilo", numero: "5511945145719", foto: "https://ui-avatars.com/api/?name=Danilo&background=3b82f6&color=fff&size=128" }
     ];
 
     const accounts = [
@@ -956,6 +959,56 @@
           "🔥 6 Taças 🧡",
           "🔥 25 Heróis 💛"
         ]
+      },
+      {
+        ref: "REF R 210",
+        stats: "✨IND FF 1000%+ | 2.5M Gemas 💎✨",
+        imgUrl: "REF R 210.jpeg",
+        driveUrl: "https://photos.app.goo.gl/kX3cQnJ12L428Qdr7",
+        priceTotal: 2500,
+        priceEntry: 500,
+        types: ["1000%", "tropa_magica_mana"],
+        details: [
+          "🔥 IND (FF) 1032%/1002%/1008%",
+          "🔥 2 Taças (1🧡 + 1💛)",
+          "🔥 2.5M Gemas 💎",
+          "🔥 Tropas Mágicas Lv1 💜",
+          "🔥 2 Heróis WoW 💛",
+          "🛑 Aceita conta na entrada"
+        ]
+      },
+      {
+        ref: "REF R 211",
+        stats: "✨IND FF 900%+ | 1.8M Gemas 💎✨",
+        imgUrl: "REF R 211.jpeg",
+        driveUrl: "https://photos.app.goo.gl/Wq4Tz2X1sH37Bv4c9",
+        priceTotal: 1800,
+        priceEntry: 400,
+        types: ["900%"],
+        details: [
+          "🔥 IND (FF) 945%/920%/910%",
+          "🔥 1.8M Gemas 💎",
+          "🔥 Set Caça Mítico 🧡",
+          "🔥 3 Fams Pagos",
+          "🔥 Bag Recheada"
+        ]
+      },
+      {
+        ref: "REF R 212",
+        stats: "⚡ IND FF 1200%+ | 5 Champs 🧡 + 6 Taças ⚡",
+        imgUrl: "REF R 212.jpeg",
+        driveUrl: "https://photos.app.goo.gl/9m2L7v1B36C8kX8e6",
+        priceTotal: 9500,
+        priceEntry: 1200,
+        types: ["1200%", "4 champ+", "skin_exercito"],
+        details: [
+          "🔥 IND (FF) 1210%/1180%/1225%",
+          "🔥 5 Champs 🧡",
+          "🔥 6 Taças 🧡",
+          "🔥 Skin de Exército",
+          "🔥 8 Fams Pagos Full",
+          "🛑 Aceita conta na entrada"
+        ]
       }
     ];
 
@@ -989,7 +1042,10 @@
       "REF S 1070",
       "REF GC 0898",
       "REF MGS 4060",
-      "REF MS 515"
+      "REF MS 515",
+      "REF R 210",
+      "REF R 211",
+      "REF R 212"
     ];
 
     let currentFeaturedIndex = 0;
