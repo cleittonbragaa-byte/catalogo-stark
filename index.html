@@ -80,6 +80,7 @@
       justify-content: center;
       align-items: center;
       background: #000;
+      position: relative;
     }
 
     .featured-img-box img {
@@ -279,10 +280,30 @@
     
     .card-header-badge { background: #f59e0b; color: #000; font-weight: 900; padding: 6px 12px; font-size: 0.85rem; text-transform: uppercase; text-align: center; }
     
-    /* Container ajustado para fluir de acordo com a proporção real da imagem */
     .card-img-container { position: relative; width: 100%; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; }
     .card-img { width: 100%; height: auto; display: block; }
     
+    /* ESTILOS PARA CONTA VENDIDA */
+    .card.sold .card-img { filter: grayscale(100%) brightness(50%); }
+    .sold-stamp {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-12deg);
+      background: rgba(220, 38, 38, 0.95);
+      color: #fff;
+      font-size: 2.2rem;
+      font-weight: 900;
+      padding: 10px 30px;
+      border: 4px dashed #fff;
+      border-radius: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      z-index: 5;
+      pointer-events: none;
+    }
+
     .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .ref-title { color: #f59e0b; font-size: 1.3rem; font-weight: bold; margin-bottom: 12px; }
     
@@ -301,6 +322,9 @@
     .btn-whatsapp:hover { background: #1da851; }
     .btn-share { background: #0284c7; color: #fff; }
     .btn-share:hover { background: #0369a1; }
+    
+    .btn-sold { background: #475569; color: #94a3b8; cursor: not-allowed; }
+    .btn-sold:hover { background: #475569; }
 
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
     .modal-box { background: #161e2e; border: 1px solid #334155; border-radius: 16px; max-width: 440px; width: 100%; padding: 25px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); max-height: 85vh; display: flex; flex-direction: column; }
@@ -463,6 +487,7 @@
         priceTotal: 350,
         priceEntry: 200,
         types: ["Fillers"],
+        vendida: false, // <-- Use true aqui se a conta for vendida
         details: [
           "🔥 Ind 749% ⚔️",
           "🔥 25.8M de Tropas 💂‍♀️",
@@ -478,6 +503,7 @@
         priceTotal: 2200,
         priceEntry: 400,
         types: ["2 champ", "900%"],
+        vendida: false,
         details: [
           "🔥 RL 946% Sem Fúria ⚔️",
           "🔥 2 Champs 💛",
@@ -493,6 +519,7 @@
         priceTotal: 1650,
         priceEntry: 500,
         types: ["900%", "1 champ"],
+        vendida: false,
         details: [
           "🔥 Ind 912% ⚔️",
           "🔥 1 Champ 🧡",
@@ -508,6 +535,7 @@
         priceTotal: 1250,
         priceEntry: 300,
         types: ["trap"],
+        vendida: false,
         details: [
           "🔥 Mix 700% ⚔️",
           "🔥 2 Taças 💛 + Mix Astro",
@@ -524,6 +552,7 @@
         priceTotal: 1200,
         priceEntry: 300,
         types: ["Fillers", "900%", "1 champ"],
+        vendida: false,
         details: [
           "🔥 Maior Bônus 950% ⚔️",
           "🔥 1.5M de T5",
@@ -541,6 +570,7 @@
         priceTotal: 500,
         priceEntry: 300,
         types: ["Fillers"],
+        vendida: false,
         details: [
           "🔥 Ind 747% ⚔️",
           "🔥 27.5M de Tropas 💂‍♂️",
@@ -558,6 +588,7 @@
         priceTotal: 450,
         priceEntry: 300,
         types: ["Fillers"],
+        vendida: false,
         details: [
           "🔥 Mix 494% ⚔️",
           "🔥 28.4M de Tropas (9M T4) 💂‍♂️",
@@ -575,6 +606,7 @@
         priceTotal: 1500,
         priceEntry: 500,
         types: ["900%"],
+        vendida: false,
         details: [
           "🔥 Ind 941% / Mix 760% ⚔️",
           "🔥 2 Taças (🧡💛)",
@@ -591,6 +623,7 @@
         priceTotal: 1450,
         priceEntry: 400,
         types: ["restrita_1700_plus"],
+        vendida: false,
         details: [
           "🔥 Mix 500% 🔥",
           "🔥 T5 Liberada",
@@ -607,6 +640,7 @@
         priceTotal: 350,
         priceEntry: 350,
         types: ["trap"],
+        vendida: false,
         details: [
           "🔥 Mix 635% ⚔️",
           "🔥 3 Taças 💜",
@@ -623,6 +657,7 @@
         priceTotal: 650,
         priceEntry: 300,
         types: ["900%", "Fillers"],
+        vendida: false,
         details: [
           "🔥 Ind 956% ⚔️",
           "🔥 2 Taças 💛",
@@ -638,6 +673,7 @@
         priceTotal: 500,
         priceEntry: 300,
         types: ["Fillers"],
+        vendida: false,
         details: [
           "🔥 Mix 702% ⚔️",
           "🔥 2 Taças (💛💜)",
@@ -654,6 +690,7 @@
         priceTotal: 8800,
         priceEntry: 1000,
         types: ["1200%", "4 champ+", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 IND Bruta 1204%",
           "🔥 4 Champs 🧡",
@@ -670,6 +707,7 @@
         priceTotal: 2800,
         priceEntry: 600,
         types: ["1000%", "skin_exercito"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1046%/1015%/1050%",
           "🔥 1 Champ 🧡",
@@ -686,6 +724,7 @@
         priceTotal: 10500,
         priceEntry: 1500,
         types: ["1100%", "4 champ+"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1150%/1110%/1153%",
           "🔥 7 Champs (6🧡 + 1💛)",
@@ -703,6 +742,7 @@
         priceTotal: 750,
         priceEntry: 300,
         types: ["800%", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 IND 880%/830%/865%",
           "🔥 1.6M de Gemas 💎",
@@ -719,6 +759,7 @@
         priceTotal: 12000,
         priceEntry: 1500,
         types: ["1100%", "4 champ+", "skin_exercito"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1169%/1103%/1130%",
           "🔥 7 Champs (7🧡 + 1💛)",
@@ -736,6 +777,7 @@
         priceTotal: 2500,
         priceEntry: 500,
         types: ["900%", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 977%/966%/901%",
           "🔥 2 Taças 🧡 + 1 💛 (quase upando)",
@@ -753,6 +795,7 @@
         priceTotal: 3800,
         priceEntry: 800,
         types: ["1000%", "3 champ"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1050%/1010%/1007%",
           "🔥 3 Champs (🧡💛)",
@@ -770,6 +813,7 @@
         priceTotal: 3000,
         priceEntry: 800,
         types: ["1000%"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1091%/1045%/1170%",
           "🔥 1 Champ 🧡",
@@ -787,6 +831,7 @@
         priceTotal: 21500,
         priceEntry: 3000,
         types: ["1300%", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 Bônus 1375%",
           "🔥 6 Champs 🧡",
@@ -805,6 +850,7 @@
         priceTotal: 3500,
         priceEntry: 600,
         types: ["1000%", "3 champ", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1059%/1013%/1019%",
           "🔥 3 Champs (2🧡 + 1💛)",
@@ -822,6 +868,7 @@
         priceTotal: 1100,
         priceEntry: 400,
         types: ["900%"],
+        vendida: false,
         details: [
           "🔥 IND 889%/935%/903%",
           "🔥 1 Champ 💛",
@@ -830,7 +877,7 @@
           "🔥 46m Tropas"
         ]
       },
-   {
+      {
         ref: "REF MR603",
         stats: "⚡ 1400% Bônus | FULL CHAMP 🧡💛⚡",
         imgUrl: "REF MR603.jpeg",
@@ -838,6 +885,7 @@
         priceTotal: 34500,
         priceEntry: 3500,
         types: ["1300%", "full champ", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 Bônus 1400%",
           "🔥 FULL CHAMP (10🧡 + 1💛)",
@@ -855,6 +903,7 @@
         priceTotal: 2500,
         priceEntry: 400,
         types: ["1000%", "3 champ"],
+        vendida: false,
         details: [
           "🔥 IND (FF) 1034/975/984%",
           "🔥 3 Champs (🧡💛)",
@@ -872,6 +921,7 @@
         priceTotal: 4000,
         priceEntry: 500,
         types: ["1000%", "2 champ"],
+        vendida: false,
         details: [
           "🔥 IND FF 1094%/1002%/1106%",
           "🔥 2 Champs 🧡",
@@ -889,6 +939,7 @@
         priceTotal: 7500,
         priceEntry: 1000,
         types: ["1200%", "2 champ", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 Bônus 1225%",
           "🔥 2 Champs (🧡💛)",
@@ -906,6 +957,7 @@
         priceTotal: 450,
         priceEntry: 250,
         types: ["900%"],
+        vendida: false,
         details: [
           "🔥 IND 883%/859%/906%",
           "🔥 Coelho Nível 5 / Bonna Nível 3",
@@ -923,6 +975,7 @@
         priceTotal: 550,
         priceEntry: 250,
         types: ["600%"],
+        vendida: false,
         details: [
           "🔥 MIX (Fúria) 646/693/635%",
           "🔥 Set Caça 💛🧡",
@@ -939,6 +992,7 @@
         priceTotal: 55000,
         priceEntry: 7500,
         types: ["1300%", "4 champ+", "restrita_ate_1699", "skin_lider", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 IND 1542/1525/1522% FF",
           "🔥 8 Champs 🧡",
@@ -948,7 +1002,7 @@
           "🔥 Restrita K1467"
         ]
       },
-     {
+      {
         ref: "REF MC 84",
         stats: "⚡ FULL CHAMP 1200%+ FF ⚡",
         imgUrl: "REF MC 84.jpeg",
@@ -956,6 +1010,7 @@
         priceTotal: 22000,
         priceEntry: 1500,
         types: ["1200%", "full champ", "4 champ+", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 IND 1229/1133/1268% FF",
           "🔥 FULL CHAMP 🧡",
@@ -972,6 +1027,7 @@
         priceTotal: 500,
         priceEntry: 250,
         types: ["800%"],
+        vendida: false,
         details: [
           "🔥 Individuais: 800%",
           "🔥 Mix 600%",
@@ -990,6 +1046,7 @@
         priceTotal: 10500,
         priceEntry: 1000,
         types: ["1100%", "4 champ+"],
+        vendida: false,
         details: [
           "🔥 1100+%",
           "🔥 7 Champs (6🧡 + 1💛)",
@@ -1008,6 +1065,7 @@
         priceTotal: 2200,
         priceEntry: 300,
         types: ["900%", "2 champ"],
+        vendida: false,
         details: [
           "🔥 992%",
           "🔥 3 Heróis de WoW 💛",
@@ -1024,6 +1082,7 @@
         priceTotal: 3800,
         priceEntry: 800,
         types: ["1100%", "2 champ"],
+        vendida: false,
         details: [
           "🔥 Inf 1107%",
           "🔥 5 Fams Pagos",
@@ -1039,6 +1098,7 @@
         priceTotal: 10000,
         priceEntry: 1000,
         types: ["1100%", "4 champ+"],
+        vendida: false,
         details: [
           "🔥 1143/1114/1158% (Fortes e Fúria)",
           "🔥 7 Taças (6🧡 + 1💛)",
@@ -1055,6 +1115,7 @@
         priceTotal: 20000,
         priceEntry: 2000,
         types: ["1100%", "4 champ+", "restrita_ate_1699", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 Migra até o 1679 ✈️",
           "🔥 1100%",
@@ -1073,6 +1134,7 @@
         priceTotal: 1500,
         priceEntry: 500,
         types: ["restrita_ate_1699", "trap"],
+        vendida: false,
         details: [
           "🔥 Migra até o 1589 ✈️",
           "🔥 Mix 600%",
@@ -1090,6 +1152,7 @@
         priceTotal: 12500,
         priceEntry: 1000,
         types: ["1100%", "4 champ+", "restrita_1700_plus", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 Migra até o 1711 ✈️",
           "🔥 1100%+",
@@ -1111,6 +1174,7 @@
         priceTotal: 5000,
         priceEntry: 800,
         types: ["1100%", "3 champ"],
+        vendida: false,
         details: [
           "🔥 1100% inf",
           "🔥 03 CHAMPS 🧡",
@@ -1127,6 +1191,7 @@
         priceTotal: 22500,
         priceEntry: 1500,
         types: ["1300%", "full champ", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
         details: [
           "🔥 13 Champs 🧡",
           "🔥 07 Taças 💛🧡",
@@ -1143,6 +1208,7 @@
         priceTotal: 12800,
         priceEntry: 2500,
         types: ["1200%", "4 champ+"],
+        vendida: true,
         details: [
           "🔥 Cav 1200%",
           "🔥 8 Champs 🧡",
@@ -1186,13 +1252,19 @@
       if (!acc) return;
 
       const detailsHtml = acc.details.map(d => `<li>${d}</li>`).join('');
+      const soldClass = acc.vendida ? 'sold' : '';
+      const soldStampHtml = acc.vendida ? '<div class="sold-stamp">VENDIDA</div>' : '';
+      const buyButtonHtml = acc.vendida 
+        ? `<button class="btn btn-sold">🚫 Vendida</button>` 
+        : `<button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>`;
 
       container.innerHTML = `
-        <div class="featured-img-box">
+        <div class="featured-img-box ${soldClass}">
+          ${soldStampHtml}
           <img src="${acc.imgUrl}" alt="${acc.ref}" onerror="this.src='https://via.placeholder.com/400x300?text=Sem+Imagem'">
         </div>
         <div class="featured-info">
-          <div class="featured-title">${acc.ref}</div>
+          <div class="featured-title">${acc.ref} ${acc.vendida ? ' <span style="color:#ef4444; font-size:1.1rem;">(VENDIDA)</span>' : ''}</div>
           <div style="color: #cbd5e1; font-weight: bold;">${acc.stats}</div>
           <ul class="details-list">${detailsHtml}</ul>
           <div class="price-box">
@@ -1201,7 +1273,7 @@
           </div>
           <div class="actions">
             <a href="${acc.driveUrl || '#'}" target="_blank" class="btn btn-drive">📁 Fotos</a>
-            <button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>
+            ${buyButtonHtml}
             <button class="btn btn-share" onclick="shareAccount('${acc.ref}')">🔗 Compartilhar</button>
           </div>
         </div>
@@ -1315,18 +1387,24 @@
 
       list.forEach(acc => {
         const card = document.createElement('div');
-        card.className = 'card';
+        soldClass = acc.vendida ? 'sold' : '';
+        card.className = `card ${soldClass}`;
         card.id = acc.ref.replace(/\s+/g, '-');
 
         const detailsHtml = acc.details.map(d => `<li>${d}</li>`).join('');
+        const soldStampHtml = acc.vendida ? '<div class="sold-stamp">VENDIDA</div>' : '';
+        const buyButtonHtml = acc.vendida 
+          ? `<button class="btn btn-sold">🚫 Vendida</button>` 
+          : `<button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>`;
 
         card.innerHTML = `
           <div class="card-header-badge">${acc.stats}</div>
           <div class="card-img-container">
+            ${soldStampHtml}
             <img src="${acc.imgUrl}" alt="${acc.ref}" class="card-img" onerror="this.src='https://via.placeholder.com/400x300?text=Sem+Imagem'">
           </div>
           <div class="card-body">
-            <div class="ref-title">${acc.ref}</div>
+            <div class="ref-title">${acc.ref} ${acc.vendida ? ' <span style="color:#ef4444; font-size:1rem;">(VENDIDA)</span>' : ''}</div>
             <ul class="details-list">${detailsHtml}</ul>
             <div class="price-box">
               <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR')}</div>
@@ -1334,7 +1412,7 @@
             </div>
             <div class="actions">
               <a href="${acc.driveUrl || '#'}" target="_blank" class="btn btn-drive">📁 Fotos</a>
-              <button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>
+              ${buyButtonHtml}
               <button class="btn btn-share" onclick="shareAccount('${acc.ref}')">🔗 Compartilhar</button>
             </div>
           </div>
