@@ -324,7 +324,27 @@
     .btn-share:hover { background: #0369a1; }
     
     .btn-sold { background: #475569; color: #94a3b8; cursor: not-allowed; }
-    .btn-sold:hover { background: #475569; }
+
+    /* SEÇÃO / ABA DE CONTAS VENDIDAS */
+    .sold-section-container {
+      margin-top: 60px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 25px;
+    }
+    .sold-section-title {
+      font-size: 1.5rem;
+      color: #ef4444;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 10px;
+    }
 
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
     .modal-box { background: #161e2e; border: 1px solid #334155; border-radius: 16px; max-width: 440px; width: 100%; padding: 25px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); max-height: 85vh; display: flex; flex-direction: column; }
@@ -453,7 +473,14 @@
 
   <div class="glow-divider"></div>
 
+  <!-- CATÁLOGO PRINCIPAL -->
   <main class="catalog" id="catalog-container"></main>
+
+  <!-- ABA / SEÇÃO DE CONTAS JÁ VENDIDAS (APÓS 2 SEMANAS) -->
+  <section class="sold-section-container" id="sold-section" style="display: none;">
+    <div class="sold-section-title">🔒 Histórico de Contas Vendidas</div>
+    <div class="catalog" id="sold-container"></div>
+  </section>
 
   <div class="modal-overlay" id="vendor-modal">
     <div class="modal-box">
@@ -480,6 +507,281 @@
 
     const accounts = [
       {
+        ref: "REF MI 1827",
+        stats: "⚡ 1200%+ | 4 Champs 🧡 + Mana lvl 1 ⚡",
+        imgUrl: "REF MI 1827.jpeg",
+        driveUrl: "https://photos.app.goo.gl/6E8tNHBsJmN8f3en7",
+        priceTotal: 10500,
+        priceEntry: 1500,
+        types: ["1200%", "4 champ+", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 IND 1227% / 1130% / 1190%",
+          "🔥 4 Champs ✅",
+          "🔥 Mana lvl 1 💜",
+          "🔥 Full Fam + HP 700%+"
+        ]
+      },
+      {
+        ref: "REF MI 603",
+        stats: "⚡ 1150% Bônus | 7 Champs + Mana Lv1 ⚡",
+        imgUrl: "REF MI 603.jpeg",
+        driveUrl: "https://photos.app.goo.gl/RTrRThPTCQBgEA8UA",
+        priceTotal: 9900,
+        priceEntry: 1500,
+        types: ["1100%", "4 champ+", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Bônus 1150% 🔥",
+          "🔥 7 Champs (6 + 1)",
+          "🔥 Lotada de Tropas",
+          "🔥 Tropa Mana Lv1 💜",
+          "🛑 Aceita conta de entrada"
+        ]
+      },
+      {
+        ref: "REF MI1711",
+        stats: "✨ Mix 700%+ | 53M de Tropas (Trap) ✨",
+        imgUrl: "REF MI1711.jpeg",
+        driveUrl: "https://photos.app.goo.gl/hCWiA6JBYzexhA5r6",
+        priceTotal: 1200,
+        priceEntry: 400,
+        types: ["trap"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 MIX 725/730/700%",
+          "🔥 690M de poder em Tropas 💛",
+          "🔥 53M de tropas",
+          "💸 De R$ 1.500,00 por APENAS R$ 1.200,00"
+        ]
+      },
+      {
+        ref: "REF MMIC 83",
+        stats: "⚡ FULL CHAMP 1200%+ FF | Skin de Exército ⚡",
+        imgUrl: "REF MMIC 83.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1hfHV2qZd0kMVQhf0eVA4LY3H4IAQa8cd",
+        priceTotal: 23000,
+        priceEntry: 2000,
+        types: ["1200%", "full champ", "4 champ+", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 IND 1283/1205/1311% FF",
+          "🔥 FULL CHAMP 🧡",
+          "🔥 Skin de Exército",
+          "🔥 8 FULL FAM 🐉",
+          "🔥 4 Taças 🧡",
+          "🔥 Tropas Mágicas Lvl 1 💜"
+        ]
+      },
+      {
+        ref: "REF MIC 74",
+        stats: "⚡ FULL CHAMP 1500%+ FF | 22 Champs 🧡 + Skin de Líder e Exército ⚡",
+        imgUrl: "REF MIC 74.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1QC3H-r4ramHjuPvHZKfEwEGMWMikFll-",
+        priceTotal: 80000,
+        priceEntry: 12000,
+        types: ["1500%+", "full champ", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 IND 1575/1542/1547% FF",
+          "🔥 FULL CHAMP (22 Champs 🧡)",
+          "🔥 Skin de Líder e Exército",
+          "🔥 ASTRO CHAMP 1x15 1x13 10x12",
+          "🔥 3x11K Lendário 💛😱",
+          "🔥 Tropas Mágicas Lvl 2 💜"
+        ]
+      },
+      {
+        ref: "REF MMIC 81",
+        stats: "⚡ FULL CHAMP 1400%+ FF | 9 Champs 🧡💛 + Skin de Líder ⚡",
+        imgUrl: "REF MMIC 81.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1_NwGO8MA3iWU5o1G9FAa1aTrCkS5w42Y",
+        priceTotal: 39000,
+        priceEntry: 3500,
+        types: ["1400%", "full champ", "4 champ+", "skin_lider", "tropa_magica_mana", "restrita_ate_1699"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 IND 1430/1381/1432% FF",
+          "🔥 FULL CHAMP (9 Champs 🧡💛)",
+          "🔥 Skin de Líder",
+          "🔥 ASTRO CHAMP 13/12/10/8/8",
+          "🔥 Tropas Mágicas Lvl 1 💜",
+          "🔥 RESTRITA K1313"
+        ]
+      },
+      {
+        ref: "REF MMIC 85",
+        stats: "⚡ FULL CHAMP 1500%+ FF | 12 Champs 🧡💛 + Skin de Líder e Exército ⚡",
+        imgUrl: "REF MMIC 85.jpeg",
+        driveUrl: "https://drive.google.com/drive/folders/1LxaYE22-ry1I_Wh4WtATpwtfK7-HlIcR",
+        priceTotal: 48000,
+        priceEntry: 6000,
+        types: ["1500%+", "full champ", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 IND 1522/1482/1523% FF",
+          "🔥 FULL CHAMP (12 Champs 🧡💛)",
+          "🔥 Skin de Líder e Exército",
+          "🔥 ASTRO CHAMP 6x12 1x10",
+          "🔥 26 HERÓIS 💛",
+          "🔥 Tropas Mágicas Lvl 2 💜 (90%)"
+        ]
+      },
+      {
+        ref: "REF MI142",
+        stats: "✨ IND 900%+ | 2 Champs 🧡 + Skin de Exército ✨",
+        imgUrl: "REF MI142.jpeg",
+        driveUrl: "https://photos.app.goo.gl/1Yykf6Fre5wan8E97",
+        priceTotal: 4750,
+        priceEntry: 400,
+        types: ["900%", "2 champ", "skin_exercito", "restrita_ate_1699"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Inv (Fúria) 900%/883%/790%",
+          "🔥 2 Champs 🧡 + 1 💛",
+          "🔥 2 Taças 🧡",
+          "🔥 4 Fam Pagos Full",
+          "🔥 Skin de Exército",
+          "🔥 Elite On",
+          "🔥 Restrita K1670",
+          "💸 De R$ 5.000,00 por APENAS R$ 4.750,00 (Aceita conta de entrada)"
+        ]
+      },
+      {
+        ref: "REF M 602",
+        stats: "⚡ Bônus 1400% | 2 Skins de Líder + Itens Monstruosos ⚡",
+        imgUrl: "REF M 602.jpeg",
+        driveUrl: "https://photos.app.goo.gl/egdP91ufREEbzVKH6",
+        priceTotal: 22500,
+        priceEntry: 3500,
+        types: ["1400%", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Bônus 1400%",
+          "🔥 2 Skins de Líder",
+          "🔥 Itens Monstruosos 🧡",
+          "🔥 Tropas Mágicas Mana Lv1 💜",
+          "🛑 Aceita conta na entrada"
+        ]
+      },
+      {
+        ref: "REF M 401",
+        stats: "✨ Bônus 1200% | 3 Champs 🧡 + Tropas Mágicas Lv 1 ✨",
+        imgUrl: "REF M 401.jpeg",
+        driveUrl: "https://photos.app.goo.gl/J8yy6hn39yyXjPzv7",
+        priceTotal: 6800,
+        priceEntry: 850,
+        types: ["1200%", "3 champ", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Bônus 1.200%",
+          "🔥 3 Champs 🧡",
+          "🔥 Tropas Mágicas Lv 1 💜",
+          "🔥 8 Fams Lv 10 🐉"
+        ]
+      },
+      {
+        ref: "REF RMIJ 1338",
+        stats: "✨ Bônus 1100% | 4 Champs + Skins de Rota e Exército ✨",
+        imgUrl: "REF RMIJ 1338.jpeg",
+        driveUrl: "https://photos.app.goo.gl/oc69PN8uUNM4YZ9u7",
+        priceTotal: 5000,
+        priceEntry: 1500,
+        types: ["1100%", "4 champ+", "skin_exercito", "tropa_magica_mana", "restrita_ate_1699"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Bônus 1100% / K1695",
+          "🔥 4 Champs 🧡",
+          "🔥 30M de Tropas 💂‍♀️",
+          "🔥 Skins de Rota + Exército",
+          "🔥 Tropas Mágicas Mana Lv1 💜",
+          "🔥 8 Familiares ✅",
+          "💸 De R$ 9.000,00 por APENAS R$ 5.000,00 à vista (Entrada de R$ 1.500,00)"
+        ]
+      },
+      {
+        ref: "REF MG 1134",
+        stats: "✨ Fúria 1200%+ | 1 Champ + 20 Heróis 💛 ✨",
+        imgUrl: "REF MG 1134.jpeg",
+        driveUrl: "https://photos.app.goo.gl/BnRbooB9sAZfVkzD9",
+        priceTotal: 9000,
+        priceEntry: 800,
+        types: ["1200%", "1 champ"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Apenas Fúria",
+          "🔥 1200%+ / 1 Champ 🧡",
+          "🔥 20 Heróis 💛 + 3 💜",
+          "🔥 521 Stars / 856 lvls + 15 Abençoados",
+          "🛑 Aceita conta como entrada"
+        ]
+      },
+      {
+        ref: "REF MIA 1218",
+        stats: "✨ Fúria 900% | Skin de Exército + Wonder II Full ✨",
+        imgUrl: "REF MIA 1218.jpeg",
+        driveUrl: "https://photos.app.goo.gl/d7JnwhNKeLQVJ3HG7",
+        priceTotal: 2000,
+        priceEntry: 300,
+        types: ["900%", "skin_exercito", "tropa_magica_mana", "restrita_ate_1699"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Apenas Fúria / Skin de Exército",
+          "🔥 Bônus 900% / K1720",
+          "🔥 Wonder II Full / Low Power",
+          "🔥 Tropas Mágicas Mana Lv1 (95%) 💜",
+          "🔥 Familiares ✅"
+        ]
+      },
+      {
+        ref: "REF MIB 1203",
+        stats: "✨ Fúria 1000%+ | Skin de Exército + Tropas Mágicas Lv 1 ✨",
+        imgUrl: "REF MIB 1203.jpeg",
+        driveUrl: "https://photos.app.goo.gl/bYyBdmZYHNkAuzuo6",
+        priceTotal: 4500,
+        priceEntry: 800,
+        types: ["1000%", "skin_exercito", "tropa_magica_mana", "restrita_ate_1699"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Apenas Fúria / Skins de Exército",
+          "🔥 Bônus 1020% / K1650",
+          "🔥 454 Stars / 835 lvls + 8 Abençoados",
+          "🔥 Mana lvl 1 / Low Power 💜"
+        ]
+      },
+      {
+        ref: "REF M 604",
+        stats: "✨ Bônus 1105% | 3 Champs + Lotada de Tropas ✨",
+        imgUrl: "REF M 604.jpeg",
+        driveUrl: "https://photos.app.goo.gl/M5cNsL3xszTM2PrE9",
+        priceTotal: 5500,
+        priceEntry: 1000,
+        types: ["1100%", "3 champ", "tropa_magica_mana"],
+        vendida: false,
+        dataVendida: "",
+        details: [
+          "🔥 Bônus 1105%",
+          "🔥 3 Champs (2 + 1)",
+          "🔥 Lotado de Tropas",
+          "🔥 Evolução Mana 65% 💜",
+          "🛑 Aceita conta de entrada"
+        ]
+      },
+      {
         ref: "REF AC. Adr 02",
         stats: "✨Ind 749% | 25.8M Tropas + Elite✨",
         imgUrl: "REF AC. Adr 02.jpeg",
@@ -487,7 +789,8 @@
         priceTotal: 350,
         priceEntry: 200,
         types: ["Fillers"],
-        vendida: false, // <-- Use true aqui se a conta for vendida
+        vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Ind 749% ⚔️",
           "🔥 25.8M de Tropas 💂‍♀️",
@@ -504,6 +807,7 @@
         priceEntry: 400,
         types: ["2 champ", "900%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 RL 946% Sem Fúria ⚔️",
           "🔥 2 Champs 💛",
@@ -520,6 +824,7 @@
         priceEntry: 500,
         types: ["900%", "1 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Ind 912% ⚔️",
           "🔥 1 Champ 🧡",
@@ -536,6 +841,7 @@
         priceEntry: 300,
         types: ["trap"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Mix 700% ⚔️",
           "🔥 2 Taças 💛 + Mix Astro",
@@ -553,6 +859,7 @@
         priceEntry: 300,
         types: ["Fillers", "900%", "1 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Maior Bônus 950% ⚔️",
           "🔥 1.5M de T5",
@@ -571,6 +878,7 @@
         priceEntry: 300,
         types: ["Fillers"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Ind 747% ⚔️",
           "🔥 27.5M de Tropas 💂‍♂️",
@@ -589,6 +897,7 @@
         priceEntry: 300,
         types: ["Fillers"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Mix 494% ⚔️",
           "🔥 28.4M de Tropas (9M T4) 💂‍♂️",
@@ -607,6 +916,7 @@
         priceEntry: 500,
         types: ["900%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Ind 941% / Mix 760% ⚔️",
           "🔥 2 Taças (🧡💛)",
@@ -624,6 +934,7 @@
         priceEntry: 400,
         types: ["restrita_1700_plus"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Mix 500% 🔥",
           "🔥 T5 Liberada",
@@ -641,6 +952,7 @@
         priceEntry: 350,
         types: ["trap"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Mix 635% ⚔️",
           "🔥 3 Taças 💜",
@@ -658,6 +970,7 @@
         priceEntry: 300,
         types: ["900%", "Fillers"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Ind 956% ⚔️",
           "🔥 2 Taças 💛",
@@ -674,6 +987,7 @@
         priceEntry: 300,
         types: ["Fillers"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Mix 702% ⚔️",
           "🔥 2 Taças (💛💜)",
@@ -691,6 +1005,7 @@
         priceEntry: 1000,
         types: ["1200%", "4 champ+", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND Bruta 1204%",
           "🔥 4 Champs 🧡",
@@ -708,6 +1023,7 @@
         priceEntry: 600,
         types: ["1000%", "skin_exercito"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1046%/1015%/1050%",
           "🔥 1 Champ 🧡",
@@ -725,6 +1041,7 @@
         priceEntry: 1500,
         types: ["1100%", "4 champ+"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1150%/1110%/1153%",
           "🔥 7 Champs (6🧡 + 1💛)",
@@ -743,6 +1060,7 @@
         priceEntry: 300,
         types: ["800%", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND 880%/830%/865%",
           "🔥 1.6M de Gemas 💎",
@@ -760,6 +1078,7 @@
         priceEntry: 1500,
         types: ["1100%", "4 champ+", "skin_exercito"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1169%/1103%/1130%",
           "🔥 7 Champs (7🧡 + 1💛)",
@@ -778,6 +1097,7 @@
         priceEntry: 500,
         types: ["900%", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 977%/966%/901%",
           "🔥 2 Taças 🧡 + 1 💛 (quase upando)",
@@ -796,6 +1116,7 @@
         priceEntry: 800,
         types: ["1000%", "3 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1050%/1010%/1007%",
           "🔥 3 Champs (🧡💛)",
@@ -814,6 +1135,7 @@
         priceEntry: 800,
         types: ["1000%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1091%/1045%/1170%",
           "🔥 1 Champ 🧡",
@@ -821,25 +1143,6 @@
           "🔥 Heróis P2W 💛",
           "🔥 44m Tropas",
           "🔥 2.4m Gemas 😱"
-        ]
-      },
-      {
-        ref: "REF M 601",
-        stats: "⚡ Bônus 1375% | 6 Champs 🧡 + Skins ⚡",
-        imgUrl: "REF M 601.jpeg",
-        driveUrl: "https://photos.app.goo.gl/7TU7Dify9WLHyekx7",
-        priceTotal: 21500,
-        priceEntry: 3000,
-        types: ["1300%", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
-        vendida: false,
-        details: [
-          "🔥 Bônus 1375%",
-          "🔥 6 Champs 🧡",
-          "🔥 4 Taças 🧡",
-          "🔥 Itens Monstruosos 🧡",
-          "🔥 Tropas Mágicas Mana Lv1 💜",
-          "🔥 Skin de Líder e Exército",
-          "🛑 Aceita conta na entrada"
         ]
       },
       {
@@ -851,6 +1154,7 @@
         priceEntry: 600,
         types: ["1000%", "3 champ", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1059%/1013%/1019%",
           "🔥 3 Champs (2🧡 + 1💛)",
@@ -869,6 +1173,7 @@
         priceEntry: 400,
         types: ["900%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND 889%/935%/903%",
           "🔥 1 Champ 💛",
@@ -886,6 +1191,7 @@
         priceEntry: 3500,
         types: ["1300%", "full champ", "4 champ+", "skin_lider", "skin_exercito", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Bônus 1400%",
           "🔥 FULL CHAMP (10🧡 + 1💛)",
@@ -904,6 +1210,7 @@
         priceEntry: 400,
         types: ["1000%", "3 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND (FF) 1034/975/984%",
           "🔥 3 Champs (🧡💛)",
@@ -922,6 +1229,7 @@
         priceEntry: 500,
         types: ["1000%", "2 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND FF 1094%/1002%/1106%",
           "🔥 2 Champs 🧡",
@@ -940,6 +1248,7 @@
         priceEntry: 1000,
         types: ["1200%", "2 champ", "skin_exercito", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Bônus 1225%",
           "🔥 2 Champs (🧡💛)",
@@ -958,6 +1267,7 @@
         priceEntry: 250,
         types: ["900%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND 883%/859%/906%",
           "🔥 Coelho Nível 5 / Bonna Nível 3",
@@ -976,6 +1286,7 @@
         priceEntry: 250,
         types: ["600%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 MIX (Fúria) 646/693/635%",
           "🔥 Set Caça 💛🧡",
@@ -993,6 +1304,7 @@
         priceEntry: 7500,
         types: ["1300%", "4 champ+", "restrita_ate_1699", "skin_lider", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND 1542/1525/1522% FF",
           "🔥 8 Champs 🧡",
@@ -1011,6 +1323,7 @@
         priceEntry: 1500,
         types: ["1200%", "full champ", "4 champ+", "skin_exercito", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 IND 1229/1133/1268% FF",
           "🔥 FULL CHAMP 🧡",
@@ -1028,6 +1341,7 @@
         priceEntry: 250,
         types: ["800%"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Individuais: 800%",
           "🔥 Mix 600%",
@@ -1047,6 +1361,7 @@
         priceEntry: 1000,
         types: ["1100%", "4 champ+"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 1100+%",
           "🔥 7 Champs (6🧡 + 1💛)",
@@ -1066,6 +1381,7 @@
         priceEntry: 300,
         types: ["900%", "2 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 992%",
           "🔥 3 Heróis de WoW 💛",
@@ -1083,6 +1399,7 @@
         priceEntry: 800,
         types: ["1100%", "2 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Inf 1107%",
           "🔥 5 Fams Pagos",
@@ -1099,6 +1416,7 @@
         priceEntry: 1000,
         types: ["1100%", "4 champ+"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 1143/1114/1158% (Fortes e Fúria)",
           "🔥 7 Taças (6🧡 + 1💛)",
@@ -1116,6 +1434,7 @@
         priceEntry: 2000,
         types: ["1100%", "4 champ+", "restrita_ate_1699", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Migra até o 1679 ✈️",
           "🔥 1100%",
@@ -1135,6 +1454,7 @@
         priceEntry: 500,
         types: ["restrita_ate_1699", "trap"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Migra até o 1589 ✈️",
           "🔥 Mix 600%",
@@ -1153,6 +1473,7 @@
         priceEntry: 1000,
         types: ["1100%", "4 champ+", "restrita_1700_plus", "skin_lider", "skin_exercito", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Migra até o 1711 ✈️",
           "🔥 1100%+",
@@ -1175,6 +1496,7 @@
         priceEntry: 800,
         types: ["1100%", "3 champ"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 1100% inf",
           "🔥 03 CHAMPS 🧡",
@@ -1192,6 +1514,7 @@
         priceEntry: 1500,
         types: ["1300%", "full champ", "skin_exercito", "tropa_magica_mana"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 13 Champs 🧡",
           "🔥 07 Taças 💛🧡",
@@ -1209,6 +1532,7 @@
         priceEntry: 2500,
         types: ["1200%", "4 champ+"],
         vendida: false,
+        dataVendida: "",
         details: [
           "🔥 Cav 1200%",
           "🔥 8 Champs 🧡",
@@ -1221,7 +1545,7 @@
     const featuredRefs = [
       "REF MC 65",   
       "REF MR603",   
-      "REF M 601",   
+      "REF M 602",   
       "REF S 1069",  
       "REF M 365"    
     ];
@@ -1264,7 +1588,7 @@
           <img src="${acc.imgUrl}" alt="${acc.ref}" onerror="this.src='https://via.placeholder.com/400x300?text=Sem+Imagem'">
         </div>
         <div class="featured-info">
-          <div class="featured-title">${acc.ref} ${acc.vendida ? ' <span style="color:#ef4444; font-size:1.1rem;">(VENDIDA)</span>' : ''}</div>
+          <div class="featured-title">${acc.ref}</div>
           <div style="color: #cbd5e1; font-weight: bold;">${acc.stats}</div>
           <ul class="details-list">${detailsHtml}</ul>
           <div class="price-box">
@@ -1331,6 +1655,15 @@
       applyFilters();
     }
 
+    function isOlderThanTwoWeeks(dateString) {
+      if (!dateString) return false;
+      const soldDate = new Date(dateString);
+      const today = new Date();
+      const diffTime = today - soldDate;
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      return diffDays > 14;
+    }
+
     function getFilteredAccounts() {
       const minPrice = parseFloat(document.getElementById('price-min').value) || 0;
       const maxPrice = parseFloat(document.getElementById('price-max').value) || Infinity;
@@ -1340,6 +1673,8 @@
       const checkedFeatures = Array.from(document.querySelectorAll('#features-checkboxes input:checked')).map(cb => cb.value.toLowerCase());
 
       let filtered = accounts.filter(acc => {
+        if (acc.vendida && isOlderThanTwoWeeks(acc.dataVendida)) return false;
+
         if (acc.priceTotal < minPrice || acc.priceTotal > maxPrice) return false;
 
         if (!selectedTypes.includes('all')) {
@@ -1369,42 +1704,24 @@
       return filtered;
     }
 
-    function renderCatalog(list) {
-      const container = document.getElementById('catalog-container');
-      container.innerHTML = '';
+    function renderCardHTML(acc) {
+      const soldClass = acc.vendida ? 'sold' : '';
+      const soldStampHtml = acc.vendida ? '<div class="sold-stamp">VENDIDA</div>' : '';
+      const buyButtonHtml = acc.vendida 
+        ? `<button class="btn btn-sold" disabled>🚫 Vendida</button>` 
+        : `<button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>`;
 
-      const badge = document.getElementById('filter-count-badge');
-      if (list.length === accounts.length) {
-        badge.innerText = `(Exibindo todas as ${list.length} contas)`;
-      } else {
-        badge.innerText = `(${list.length} conta${list.length === 1 ? '' : 's'} encontrada${list.length === 1 ? '' : 's'})`;
-      }
+      const detailsHtml = acc.details.map(d => `<li>${d}</li>`).join('');
 
-      if (list.length === 0) {
-        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8; padding: 30px;">Nenhuma conta cadastrada ou encontrada com os filtros selecionados.</p>';
-        return;
-      }
-
-      list.forEach(acc => {
-        const card = document.createElement('div');
-        soldClass = acc.vendida ? 'sold' : '';
-        card.className = `card ${soldClass}`;
-        card.id = acc.ref.replace(/\s+/g, '-');
-
-        const detailsHtml = acc.details.map(d => `<li>${d}</li>`).join('');
-        const soldStampHtml = acc.vendida ? '<div class="sold-stamp">VENDIDA</div>' : '';
-        const buyButtonHtml = acc.vendida 
-          ? `<button class="btn btn-sold">🚫 Vendida</button>` 
-          : `<button class="btn btn-whatsapp" onclick="openVendorModal('${acc.ref}')">💬 Comprar</button>`;
-
-        card.innerHTML = `
+      return `
+        <div class="card ${soldClass}" id="${acc.ref.replace(/\s+/g, '-')}">
           <div class="card-header-badge">${acc.stats}</div>
           <div class="card-img-container">
             ${soldStampHtml}
             <img src="${acc.imgUrl}" alt="${acc.ref}" class="card-img" onerror="this.src='https://via.placeholder.com/400x300?text=Sem+Imagem'">
           </div>
           <div class="card-body">
-            <div class="ref-title">${acc.ref} ${acc.vendida ? ' <span style="color:#ef4444; font-size:1rem;">(VENDIDA)</span>' : ''}</div>
+            <div class="ref-title">${acc.ref}</div>
             <ul class="details-list">${detailsHtml}</ul>
             <div class="price-box">
               <div class="main-price">R$ ${acc.priceTotal.toLocaleString('pt-BR')}</div>
@@ -1416,9 +1733,49 @@
               <button class="btn btn-share" onclick="shareAccount('${acc.ref}')">🔗 Compartilhar</button>
             </div>
           </div>
-        `;
-        container.appendChild(card);
-      });
+        </div>
+      `;
+    }
+
+    function renderCatalog(list) {
+      const container = document.getElementById('catalog-container');
+      container.innerHTML = '';
+
+      const activeAccounts = accounts.filter(acc => !acc.vendida || !isOlderThanTwoWeeks(acc.dataVendida));
+
+      const badge = document.getElementById('filter-count-badge');
+      if (list.length === activeAccounts.length) {
+        badge.innerText = `(Exibindo todas as ${list.length} contas)`;
+      } else {
+        badge.innerText = `(${list.length} conta${list.length === 1 ? '' : 's'} encontrada${list.length === 1 ? '' : 's'})`;
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #94a3b8; padding: 30px;">Nenhuma conta cadastrada ou encontrada com os filtros selecionados.</p>';
+      } else {
+        list.forEach(acc => {
+          container.innerHTML += renderCardHTML(acc);
+        });
+      }
+
+      renderSoldSection();
+    }
+
+    function renderSoldSection() {
+      const soldContainer = document.getElementById('sold-container');
+      const soldSection = document.getElementById('sold-section');
+      soldContainer.innerHTML = '';
+
+      const oldSoldAccounts = accounts.filter(acc => acc.vendida && isOlderThanTwoWeeks(acc.dataVendida));
+
+      if (oldSoldAccounts.length > 0) {
+        soldSection.style.display = 'block';
+        oldSoldAccounts.forEach(acc => {
+          soldContainer.innerHTML += renderCardHTML(acc);
+        });
+      } else {
+        soldSection.style.display = 'none';
+      }
     }
 
     function applyFilters() {
